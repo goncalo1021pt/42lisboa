@@ -1,5 +1,11 @@
-#include <unistd.h>
 //#include <stdio.h>
+
+void	swap(int *a, int *b){
+	int aux;
+	aux = a;
+	a = b;
+	b = aux;
+}
 
 void ft_rev_int_tab(int *tab, int size)
 {
