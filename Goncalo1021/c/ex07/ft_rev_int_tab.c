@@ -17,9 +17,10 @@ void ft_rev_int_tab(int *tab, int size)
 	reverse = size -1;
 	while (ctd < size/2)
 	{
-		aux = tab[ctd];
+		swap(&tab[ctd], &tab[reverse]);
+		/*aux = tab[ctd];
 		tab[ctd] = tab[reverse];
-		tab[reverse] = aux;
+		tab[reverse] = aux;*/
 		ctd++;
 		reverse--;
 	}
