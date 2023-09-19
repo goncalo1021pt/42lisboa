@@ -1,1 +1,0 @@
-python3 -m c_formatter_42 < ft_str_is_printable.c
