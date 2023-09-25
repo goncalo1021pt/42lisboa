@@ -19,7 +19,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	return (ctd);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 int main() {
     char dest[10];
     char *src = "Hello World!";
@@ -30,4 +30,4 @@ int main() {
     printf("Total characters copied: %ld\n", result);
 
     return 0;
-}
+} */
