@@ -1,5 +1,9 @@
 #include "libft.h"
 
+//This functions copies n bytes from src into dest
+//Stops after finding c
+//It returns a pointer to n the start of dest
+
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
 	unsigned char		*mem;
@@ -19,3 +23,13 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	}
 	return (NULL);
 }
+
+/* #include <stdio.h>
+int	main(void)
+{
+	char c[11] = "test string";
+
+	ft_memmove(c, "hello", 5);
+	printf("%s\n", c);
+	return (0);
+}  */

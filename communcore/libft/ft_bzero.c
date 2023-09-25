@@ -1,5 +1,7 @@
 #include "libft.h"
 
+//This function will set n number of bytes of the string str to \0 character
+
 void	ft_bzero(void *str, size_t n)
 {
 	unsigned char	*mem;
