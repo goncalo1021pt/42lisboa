@@ -1,5 +1,8 @@
 #include "libft.h"
 
+//This function searches for the char c in the string str
+//It returns a pointer to the first char in finds 
+
 char	*ft_strchr(const char *s, int c)
 {
 	int		ctd;

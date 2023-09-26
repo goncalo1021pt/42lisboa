@@ -1,9 +1,22 @@
 #include "libft.h"
 
-char 	strnstr (const char *str, const char *to_find, size_t len)
+//This function searches n bytes of the str for the string to find
+//It returns a pointer to the found string or null if there wasn't 1
+
+static size_t	ft_strlen2(char *str)
 {
-	unsigned int	ctd;
-	unsigned int	ctd2;
+	size_t	ctd;
+
+	ctd = 0;
+	while (str[ctd])
+		ctd++;
+	return (ctd);
+}
+
+char	*ft_strnstr(char *str, char *to_find, size_t len)
+{
+	size_t	ctd;
+	size_t	ctd2;
 
 	ctd = 0;
 	ctd2 = 0;
@@ -13,13 +26,13 @@ char 	strnstr (const char *str, const char *to_find, size_t len)
 	{
 		if (str[ctd] == to_find[ctd2])
 		{
-			while (to_find[ctd2] && (ctd + ctd2) >)
+			while (to_find[ctd2] && (ctd + ctd2) < len)
 			{
 				if (to_find[ctd2] != str[ctd + ctd2])
 					break ;
 				ctd2++;
 			}
-			if (ctd2 == (unsigned int)ft_strlen(to_find))
+			if (ctd2 == ft_strlen2(to_find))
 				return (str + ctd);
 			ctd2 = 0;
 		}
@@ -28,11 +41,12 @@ char 	strnstr (const char *str, const char *to_find, size_t len)
 	return (0);
 }
 
-/* int main()
+/* #include <stdio.h>
+int	main(void)
 {
 	char a[] = "testing my string";
 	char b[] = "my";
 
-	printf("%s", ft_strstr(a, b));
+	printf("%s", ft_strnstr(a, b, 9));
 	return(0);
 } */
