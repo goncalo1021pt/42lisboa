@@ -1,5 +1,0 @@
-
-char *ft_strdup()
-{
-	
-}

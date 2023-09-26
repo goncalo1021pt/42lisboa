@@ -1,0 +1,28 @@
+MY_VAR = this is a string
+
+MY_OTHER_VAR = hello $(MY_VAR)
+
+MY_OTHER_VAR =+ "Bye !"
+
+NAME = libft_creator
+
+MY_SOURCES = ft_putchar.c \
+			ft_swap.c \
+			ft_putstr.c \
+			ft_strlen.c \
+			ft_strcmp.c 
+
+MY_OBJECTS = $(MY_SOURCES:.c=.o)
+
+CFLAGS += -Wall -Wextra -Werror
+
+CUR_DIR = $(shell pwd)
+
+a_prog:ft_putchar.c ft_swap.c ft_putstr.c ft_strlen.c ft_strcmp.c
+	cc -o this prog ft_swap.c ft_putstr.c ft_strlen.c ft_strcmp.c
+
+my_rule: sub_rule
+	echo i will compile my files $(MY_SOURCES)
+
+sub_rule:
+	echo this is my rule in $(CUR_DIR)
