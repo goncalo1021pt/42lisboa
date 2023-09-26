@@ -3,16 +3,6 @@
 //This function searches n bytes of the str for the string to find
 //It returns a pointer to the found string or null if there wasn't 1
 
-static size_t	ft_strlen2(char *str)
-{
-	size_t	ctd;
-
-	ctd = 0;
-	while (str[ctd])
-		ctd++;
-	return (ctd);
-}
-
 char	*ft_strnstr(char *str, char *to_find, size_t len)
 {
 	size_t	ctd;
@@ -32,7 +22,7 @@ char	*ft_strnstr(char *str, char *to_find, size_t len)
 					break ;
 				ctd2++;
 			}
-			if (ctd2 == ft_strlen2(to_find))
+			if (ctd2 == ft_strlen(to_find))
 				return (str + ctd);
 			ctd2 = 0;
 		}

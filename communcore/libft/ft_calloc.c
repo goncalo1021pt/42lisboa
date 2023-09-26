@@ -2,10 +2,34 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void *out;
+	void	*out;
 
-	
 	out = malloc(nmemb * size);
-	
-	return out;
+	if (out != NULL)
+		ft_memset(out, 0, size);
+	return (out);
+}
+
+#include <stdio.h>
+int	main(void)
+{
+	int nmemb = 5;
+
+	int *myAlloc = (int *)ft_calloc(nmemb, sizeof(int));
+	if (myAlloc == NULL)
+	{
+		printf("Memory allocation failed.\n");
+		return (1);
+	}
+	for (int ctd = 0; ctd < nmemb; ctd++)
+	{
+		printf("%d ", ctd);
+		if (myAlloc[ctd] != 0)
+		{
+			printf("Error: Allocated memory is not initialized to zero.\n");
+			return (1);
+		}
+	}
+	free(myAlloc);
+	return (0);
 }

@@ -4,7 +4,7 @@
 //It doesn't take care of overlaping memory
 //It returns a pointer to n the start of dest
 
-void *ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char		*mem;
 	const unsigned char	*old;
