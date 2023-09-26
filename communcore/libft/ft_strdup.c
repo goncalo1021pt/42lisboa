@@ -1,15 +1,12 @@
 #include "libft.h"
 
-char	*strdup(const char *str)
+char	*ft_strdup(char *src)
 {
-	char *out;
+	char	*str;
 
-	out = (char *)malloc(ft_strlen(str));
-	if (/* condition */)
-	{
-		/* code */
-	}
-	
-
-	return out;
+	str = (char *)malloc(ft_strlen(src) + 1);
+	if (str == NULL)
+		return (str);
+	ft_strcpy(str, src);
+	return (str);
 }
