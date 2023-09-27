@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/27 14:02:42 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/09/27 14:06:11 by gfontao-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 //This function eleminates character in set at the start and end of a string s1
@@ -22,7 +34,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	start;
 	size_t	end;
 	size_t	len;
-	size_t ctd;
+	size_t	ctd;
 	char	*str;
 
 	start = 0;
@@ -35,7 +47,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		end--;
 	str = (char *)malloc(len - (start + (len - end)));
 	if (str == NULL)
-		return NULL;
+		return (NULL);
 	while (start <= end)
 	{
 		str[ctd] = s1[start];

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/27 14:01:12 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/09/27 14:05:40 by gfontao-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)
@@ -10,7 +22,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (out);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 int	main(void)
 {
 	int nmemb = 5;
@@ -32,4 +44,4 @@ int	main(void)
 	}
 	free(myAlloc);
 	return (0);
-}
+} */
