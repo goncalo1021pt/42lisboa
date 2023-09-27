@@ -1,5 +1,7 @@
 #include "libft.h"
 
+//This function duplicates a string and returns the duplicate
+
 static char	*ft_strcpy(char *dest, char *src)
 {
 	unsigned int	ctd;

@@ -1,0 +1,58 @@
+#include "libft.h"
+
+//This function eleminates character in set at the start and end of a string s1
+//It returns a new string without those caracters
+
+static int	is_char(const char *str, const char c)
+{
+	int	ctd;
+
+	ctd = 0;
+	while (str[ctd])
+	{
+		if (str[ctd] == c)
+			return (1);
+		ctd++;
+	}
+	return (0);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	start;
+	size_t	end;
+	size_t	len;
+	size_t ctd;
+	char	*str;
+
+	start = 0;
+	ctd = 0;
+	while (s1[start] && is_char(set, s1[start]))
+		start++;
+	len = ft_strlen(s1);
+	end = len - 1;
+	while (end > start && is_char(set, s1[end]))
+		end--;
+	str = (char *)malloc(len - (start + (len - end)));
+	if (str == NULL)
+		return NULL;
+	while (start <= end)
+	{
+		str[ctd] = s1[start];
+		ctd++;
+		start++;
+	}
+	str[start] = '\0';
+	return (str);
+}
+
+/* #include <stdio.h>
+int	main(void)
+{
+	char *test;
+
+	test = ft_strtrim("123321testing my string123321", "123");
+	printf("wtf :%s\n", test);
+
+	free(test);
+} */

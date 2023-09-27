@@ -1,5 +1,8 @@
 #include "libft.h"
 
+//this function concatonates 2 strings together in a string
+//It returns the new string
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	ctd;
@@ -20,11 +23,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		ctd++;
 		ctd2++;
 	}
-	str[ctd]  = '\0';
+	str[ctd] = '\0';
 	return (str);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 int	main(void)
 {
 	char *test;
@@ -33,4 +36,4 @@ int	main(void)
 	printf("%s\n", test);
 
 	free(test);
-}
+} */
