@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 23:18:32 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/28 23:18:33 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:40:22 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		return ;
 	ft_lstclear(&((*lst)->next), del);
 	del((*lst)->content);
-	free(*lst);
+	free(lst);
 }
 
 /* void	ft_lstclear(t_list **lst, void (*del)(void *))

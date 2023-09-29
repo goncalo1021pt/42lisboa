@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:28 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/27 14:02:29 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:30:40 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //This function searches n bytes of the str for the string to find
 //It returns a pointer to the found string or null if there wasn't 1
 
-char	*ft_strnstr(char *str, char *to_find, size_t len)
+char	*ft_strnstr(char *str, const char *to_find, size_t len)
 {
 	size_t	ctd;
 	size_t	ctd2;
@@ -43,12 +43,12 @@ char	*ft_strnstr(char *str, char *to_find, size_t len)
 	return (0);
 }
 
-/* #include <stdio.h>
+#include <stdio.h>
 int	main(void)
 {
 	char a[] = "testing my string";
 	char b[] = "my";
 
-	printf("%s", ft_strnstr(a, b, 9));
+	printf("%s", ft_strnstr(a, b, 15));
 	return(0);
-} */
+}

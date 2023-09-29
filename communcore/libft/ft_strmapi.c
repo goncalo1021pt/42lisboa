@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 18:03:54 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/27 18:18:22 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:15:48 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		ctd;
 	char	*str;
 
-	str = (char *)malloc(ft_strlen(s) + 1);
+	str = (char *)malloc(ft_strlen(s));
 	if (str == NULL)
 		return (NULL);
 	while (s[ctd])

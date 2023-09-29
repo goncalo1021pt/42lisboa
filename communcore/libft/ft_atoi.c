@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:01:04 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/27 14:01:05 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:02:36 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ int	ft_atoi(const char *nptr)
 
 /* int main()
 {
-	printf("%d", ft_atoi("     -1234"));
+	printf("%d", ft_atoi("-124"));
 } */

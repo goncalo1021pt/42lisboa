@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:06 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/27 14:02:06 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:25:37 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(char *s)
 {
 	char	*str;
 
-	str = (char *)malloc(ft_strlen(src) + 1);
+	str = (char *)malloc(ft_strlen(s) + 1);
 	if (str == NULL)
 		return (str);
-	ft_strcpy(str, src);
+	ft_strcpy(str, s);
 	return (str);
 }

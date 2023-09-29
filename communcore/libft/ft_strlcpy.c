@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:15 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/27 14:02:16 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:22:55 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	src_len = 0;
 	while (src[src_len])
 		src_len++;
-	return (ctd);
+	return (src_len);
 }
 
 /* #include <stdio.h>

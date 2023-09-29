@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 18:38:33 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/27 18:41:07 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/29 00:51:31 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	ft_putnbr_fd(int n, int fd)
 		}
 		if ((n / 10) > 0)
 		{
-			ft_putnbr(n / 10, fd);
-			ft_putnbr(n % 10, fd);
+			ft_putnbr_fd(n / 10, fd);
+			ft_putnbr_fd(n % 10, fd);
 		}
 		else
 		{
