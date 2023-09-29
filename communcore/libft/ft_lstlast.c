@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 23:18:44 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/28 23:18:44 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:46:30 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 t_list	*ft_lstlast(t_list *lst)
 {
 	while (lst->next != NULL)
-	{
 		lst = lst->next;
-	}
 	return (lst);
 }

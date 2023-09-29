@@ -6,17 +6,17 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:59:22 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/27 18:04:05 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:07:36 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-static int	total_len(int n)
+static int	total_len(long int n)
 {
-	int	aux;
-	int	size;
+	long int	aux;
+	long int	size;
 
 	aux = n;
 	size = 1;
@@ -40,7 +40,7 @@ char	*ft_itoa(int n)
 	char		*str;
 
 	n1 = n;
-	size = total_len(n);
+	size = total_len(n1);
 	str = (char *)malloc(size + 1);
 	if (str == NULL)
 		return (NULL);
@@ -66,7 +66,7 @@ char	*ft_itoa(int n)
 {
 	char *test;
 
-	test = ft_itoa(0);
+	test = ft_itoa(-2147483648);
 	printf("%s\n", test);
 	free(test);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:01:12 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/27 14:05:40 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:00:51 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*out;
 
-	out = malloc(nmemb * size);
+	out = malloc((nmemb * size) + 1);
 	if (out != NULL)
 		ft_memset(out, 0, size);
 	return (out);

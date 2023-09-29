@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:28 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/29 14:30:40 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:44:40 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_strnstr(char *str, const char *to_find, size_t len)
 	return (0);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 int	main(void)
 {
 	char a[] = "testing my string";
@@ -51,4 +51,4 @@ int	main(void)
 
 	printf("%s", ft_strnstr(a, b, 15));
 	return(0);
-}
+} */

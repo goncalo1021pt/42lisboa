@@ -6,22 +6,22 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 23:18:32 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/29 14:40:22 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:13:46 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+/* void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	if (*lst == NULL)
 		return ;
 	ft_lstclear(&((*lst)->next), del);
 	del((*lst)->content);
 	free(lst);
-}
+} */
 
-/* void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list *current;
 	t_list *next;
@@ -35,4 +35,4 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		current = next;
 	}
 	*lst = NULL;
-} */
+}

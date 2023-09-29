@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:01:49 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/29 14:14:45 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:44:14 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
- #include <stdio.h>
+/*  #include <stdio.h>
 int	main(void)
 {
 	char c[11] = "test string";
@@ -51,4 +51,4 @@ int	main(void)
 	ft_memmove(c, "hello", 5);
 	printf("%s\n", c);
 	return (0);
-}  
+} */
