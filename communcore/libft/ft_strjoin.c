@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:11 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/27 14:02:12 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/30 20:04:23 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	ctd = 0;
 	str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!str)
+		return (NULL);
 	while (s1[ctd])
 	{
 		str[ctd] = s1[ctd];

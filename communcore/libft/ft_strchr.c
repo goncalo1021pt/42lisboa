@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:03 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/29 14:36:42 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/30 21:03:09 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	*ft_strchr(const char *s, int c)
 			return (str + ctd);
 		ctd++;
 	}
+	if (str[ctd] == '\0' && c == '\0')
+		return (str + ctd);
 	return (NULL);
 }
 

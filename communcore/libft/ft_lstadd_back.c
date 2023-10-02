@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 23:18:25 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/29 14:46:03 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/30 20:54:45 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,25 @@
 
 /* void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*i;
+	t_list	*current;
 
-	i = *lst;
-	while (i->next != NULL)
-		i = i->next;
-	i->next = new;
+	current = *lst;
+	if (!(*lst))
+		*lst = new;
+	else
+	{
+		while (current->next != NULL)
+			current = current->next;
+		current->next = new;
+	}
 } */
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (*lst != NULL)
-		ft_lstadd_back(&((*lst)->next), new);
-	*lst = new;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	ft_lstadd_back(&((*lst)->next), new);
 }

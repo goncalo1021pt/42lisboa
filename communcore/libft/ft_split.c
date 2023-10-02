@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:16:31 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/27 14:09:41 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/30 19:37:57 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ char	**ft_split(char const *s, char c)
 	str = (char *)s;
 	ctd = 0;
 	out = (char **)malloc((count_word(str, c) + 1) * sizeof(char *));
+	if (!out)
+		return (NULL);
 	while (*str != '\0')
 	{
 		while (*str != '\0' && *str == c)

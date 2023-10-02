@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:06 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/29 14:25:37 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/30 20:56:25 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,15 @@
 
 //This function duplicates a string and returns the duplicate
 
-static char	*ft_strcpy(char *dest, char *src)
+char	*ft_strdup(const char *s)
 {
-	unsigned int	ctd;
+	char	*duplicate;
 
-	ctd = 0;
-	while (src[ctd] != '\0')
+	duplicate = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (duplicate == NULL)
 	{
-		dest[ctd] = src[ctd];
-		ctd++;
+		return (NULL);
 	}
-	dest[ctd] = '\0';
-	return (dest);
-}
-
-char	*ft_strdup(char *s)
-{
-	char	*str;
-
-	str = (char *)malloc(ft_strlen(s) + 1);
-	if (str == NULL)
-		return (str);
-	ft_strcpy(str, s);
-	return (str);
+	ft_memcpy(duplicate, s, ft_strlen(s) + 1);
+	return (duplicate);
 }

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:01:45 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/29 14:34:57 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/30 19:49:18 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,10 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	const unsigned char	*old;
 	size_t				ctd;
 
-	if (dest == NULL || src == NULL)
-		return (dest);
 	ctd = 0;
 	mem = dest;
 	old = src;
-	while (ctd < n)
+	while (ctd < n && (src || dest))
 	{
 		mem[ctd] = old[ctd];
 		ctd++;

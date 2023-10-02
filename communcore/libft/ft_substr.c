@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:46 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/27 14:02:47 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/30 21:20:46 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	ctd;
 	char			*out;
 
+	if (start > ft_strlen(s))
+		len = 0;
 	out = (char *)malloc(len + 1);
 	if (!out)
 		return (NULL);
 	ctd = 0;
-	while (ctd < len)
+	while (ctd < len && len != 0)
 	{
 		out[ctd] = s[start + ctd];
 		ctd++;

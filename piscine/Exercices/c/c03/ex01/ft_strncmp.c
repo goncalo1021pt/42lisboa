@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:07:45 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/06 17:40:48 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:21:06 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 	c = 0;
 	if (n == 0)
 		return (0);
-	while (s1[c] == s2[c] && (s1[c] != '\0' && s2[c] != '\0') && c < n - 1)
+	while (s1[c] == s2[c] && (s1[c] && s2[c]) && c < n - 1)
 	{
 		c++;
 	}
