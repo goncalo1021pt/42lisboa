@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:42 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/27 14:06:11 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:28:05 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,18 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	start = 0;
 	ctd = 0;
-	while (s1[start] && is_char(set, s1[start]))
-		start++;
-	len = ft_strlen(s1);
-	end = len - 1;
+	if (ft_strlen(s1) == 0 && ft_strlen(set) == 0)
+		return (NULL);
+	if (ft_strlen(set))
+	{
+		while (s1[start] && is_char(set, s1[start]))
+			start++;
+		len = ft_strlen(s1);
+		end = len - 1;
+	}
 	while (end > start && is_char(set, s1[end]))
 		end--;
-	str = (char *)malloc(len - (start + (len - end)));
+	str = (char *)malloc(len - start + (end - len));
 	if (str == NULL)
 		return (NULL);
 	while (start <= end)
@@ -58,13 +63,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (str);
 }
 
-/* #include <stdio.h>
+#include <stdio.h>
 int	main(void)
 {
 	char *test;
 
-	test = ft_strtrim("123321testing my string123321", "123");
-	printf("wtf :%s\n", test);
-
+	test = ft_strtrim("    ", "");
+	printf("%s\n", test);
 	free(test);
-} */
+}
