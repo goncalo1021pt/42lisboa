@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:42 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/02 18:28:05 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/02 19:25:08 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,42 +33,37 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	start;
 	size_t	end;
-	size_t	len;
 	size_t	ctd;
 	char	*str;
 
 	start = 0;
 	ctd = 0;
-	if (ft_strlen(s1) == 0 && ft_strlen(set) == 0)
+	if (!s1)
 		return (NULL);
-	if (ft_strlen(set))
-	{
-		while (s1[start] && is_char(set, s1[start]))
-			start++;
-		len = ft_strlen(s1);
-		end = len - 1;
-	}
-	while (end > start && is_char(set, s1[end]))
+	while (s1[start] && is_char(set, s1[start]))
+		start++;
+	end = ft_strlen(s1);
+	while (end > start && is_char(set, s1[end - 1]))
 		end--;
-	str = (char *)malloc(len - start + (end - len));
+	str = (char *)malloc(end - start + 1);
 	if (str == NULL)
 		return (NULL);
-	while (start <= end)
+	while (start < end)
 	{
 		str[ctd] = s1[start];
 		ctd++;
 		start++;
 	}
-	str[start] = '\0';
+	str[ctd] = '\0';
 	return (str);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 int	main(void)
 {
 	char *test;
 
-	test = ft_strtrim("    ", "");
+	test = ft_strtrim("12345abc123456", "1234567890");
 	printf("%s\n", test);
 	free(test);
-}
+} */
