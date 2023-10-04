@@ -31,23 +31,20 @@ BONUS_OBJS = $(LST:.c=.o)
 
 all: $(NAME)
 
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) 
+
 $(NAME): $(OBJS) 
-	$(COMPRESS) $(NAME) $(OBJS)
+	@$(COMPRESS) $(NAME) $(OBJS)
 
 bonus: $(BONUS_OBJS) $(NAME)
-	$(COMPRESS) $(NAME) $(BONUS_OBJS)
-
-$(OBJS):
-	@$(CC) -c $(CFLAGS) $(SRCS)
-
-$(BONUS_OBJS):
-	@$(CC) -c $(CFLAGS) $(LST)
+	@$(COMPRESS) $(NAME) $(BONUS_OBJS)
 
 clean:
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	@$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

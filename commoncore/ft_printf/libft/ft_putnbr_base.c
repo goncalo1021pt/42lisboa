@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:56:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/03 21:06:35 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:25:38 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,35 +35,31 @@ static int	base_not_valid(char *s)
 	return (0);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+int	ft_putnbr_base(long int nbr, char *base)
 {
 	int			bl;
-	long int	nb;
 	char		c;
+	static int	total;
 
-	nb = nbr;
 	bl = ft_strlen(base);
 	if (bl < 2 || base_not_valid(base))
-		return ;
-	if (nb < 0)
+		return (0);
+	if (nbr < 0)
 	{
-		nb *= -1;
+		nbr *= -1;
+		total++;
 		write(1, "-", 1);
 	}
-	if ((nb / bl) > 0)
+	if ((nbr / bl) > 0)
 	{
-		ft_putnbr_base(nb / bl, base);
-		ft_putnbr_base(nb % bl, base);
+		ft_putnbr_base(nbr / bl, base);
+		ft_putnbr_base(nbr % bl, base);
 	}
 	else 
 	{
-		c = base[nb];
+		c = base[nbr];
+		total++;
 		write(1, &c, 1);
 	}
+	return (total);
 }
-
-/*int		main(void)
-{
-	ft_putnbr_base(47, "");
-	return (0);
-}*/

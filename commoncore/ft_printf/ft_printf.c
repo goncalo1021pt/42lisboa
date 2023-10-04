@@ -6,52 +6,60 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:49:31 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/03 21:40:43 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/04 20:01:01 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
-int flag_type(char c, va_list *args)
+int	flag_type(char c, va_list *args)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (c == 'c')
-		ft_putchar_fd((va_arg(*args, int)), 1);
+		len += ft_putchar_fd((va_arg(*args, int)), 1);
 	if (c == 's')
-		ft_putstr_fd(va_arg(*args, char *), 1);
+		len += ft_putstr_fd(va_arg(*args, char *), 1);
 	if (c == 'p')
-		va_arg(*args, unsigned long);
+	{
+		write(1, "0x", 2);
+		len += ft_putnbr_base(va_arg(*args, unsigned int), EX_LOW_BASE);
+	}
 	if (c == 'd' || c == 'i')
-		ft_putnbr_fd(va_arg(*args, int),1);
+		len += ft_putnbr_fd(va_arg(*args, int), 1);
 	if (c == 'u')
-		ft_putunbr_fd(va_arg(*args, unsigned int), 1, 0);
+		len += ft_putunbr_fd(va_arg(*args, unsigned int), 1);
 	if (c == 'x')
-		va_arg(*args, unsigned int);
+		len += ft_putnbr_base(va_arg(*args, long int), EX_LOW_BASE);
 	if (c == 'X')
-		va_arg(*args, unsigned int);
+		len += ft_putnbr_base(va_arg(*args, long int), EX_UP_BASE);
 	if (c == '%')
-		write(1, "%", 1);
+		len += write(1, "%", 1);
 	return (len);
 }
 
 int	ft_printf(const char *str, ...)
 {
-	int	len;
-	int ctd;
-	va_list args;
+	int		len;
+	int		ctd;
+	va_list	args;
 
 	ctd = 0;
+	len = 0;
 	va_start(args, str);
 	while (str[ctd])
 	{
-		if(str[ctd++] == '%')
-			flag_type(str, &args);
+		if (str[ctd] == '%')
+		{
+			ctd++;
+			len += flag_type(str[ctd], &args);
+		}
 		else
-			write(1, &str[ctd], 1);
+			len += write(1, &str[ctd], 1);
 		ctd++;
 	}
 	va_end(args);
 	return (len);
-}	
+}

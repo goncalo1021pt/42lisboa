@@ -6,17 +6,22 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 18:31:09 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/29 14:04:04 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/04 08:28:24 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
+	int	total;
+
+	total = 0;
 	while (*s)
 	{
 		write(fd, s, 1);
+		total++;
 		s++;
 	}
+	return (total);
 }
