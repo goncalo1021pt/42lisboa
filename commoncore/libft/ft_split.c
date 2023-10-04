@@ -6,12 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:16:31 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/30 19:37:57 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/02 23:14:14 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
 //Recives a string splits it into words based non the char c
 //Returns a array of strings with those words
@@ -46,6 +45,8 @@ static char	*word_aloc(char *str, char c)
 	while (str[word_len] && str[word_len] != c)
 		word_len++;
 	word = (char *)malloc(word_len + 1);
+	if (!word)
+		return (NULL);
 	while (ctd < word_len)
 	{
 		word[ctd] = str[ctd];
@@ -53,6 +54,14 @@ static char	*word_aloc(char *str, char c)
 	}
 	word[ctd] = '\0';
 	return (word);
+}
+
+void	*free_str(char **out, int ctd)
+{
+	while (ctd-- >= 0)
+		free(out[ctd]);
+	free(out);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
@@ -73,6 +82,8 @@ char	**ft_split(char const *s, char c)
 		if (*str != '\0')
 		{
 			out[ctd] = word_aloc(str, c);
+			if (!out[ctd])
+				return (free_str(out, ctd - 1));
 			ctd++;
 		}
 		while (*str && *str != c)
@@ -94,4 +105,4 @@ char	**ft_split(char const *s, char c)
 		index++;
 	}
 	free(split);
-} */
+} */ 
