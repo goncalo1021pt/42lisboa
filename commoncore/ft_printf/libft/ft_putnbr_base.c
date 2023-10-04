@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:56:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/04 18:25:38 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/04 22:04:42 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_putnbr_base(long int nbr, char *base)
 		ft_putnbr_base(nbr / bl, base);
 		ft_putnbr_base(nbr % bl, base);
 	}
-	else 
+	else
 	{
 		c = base[nbr];
 		total++;

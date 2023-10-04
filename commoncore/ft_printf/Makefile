@@ -21,12 +21,11 @@ all: $(NAME)
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) 
 
-$(NAME): $(OBJS)
-	@make -sC ./libft
+$(NAME): $(LIBFT) $(OBJS)
 	@$(COMPRESS) $(NAME) $(OBJS) libft/*.o
 
-#$(LIBFT):
-#	@$(MAKE) -C $(LIBFTDIR) --no-print-directory
+$(LIBFT):
+	@$(MAKE) -C $(LIBFTDIR) --no-print-directory
 
 clean:
 	@$(RM) $(OBJS)
@@ -37,5 +36,8 @@ fclean: clean
 	@$(MAKE) -C $(LIBFTDIR) fclean --no-print-directory
 
 re: fclean all
+
+test:
+	$(CC) $(CFLAGS) main.c $(NAME)
 
 .PHONY: all fclean clean
