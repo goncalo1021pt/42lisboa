@@ -32,12 +32,12 @@ clean:
 	@$(MAKE) -C $(LIBFTDIR) clean --no-print-directory
 
 fclean: clean
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) ft_printf
 	@$(MAKE) -C $(LIBFTDIR) fclean --no-print-directory
 
 re: fclean all
 
 test:
-	$(CC) $(CFLAGS) main.c $(NAME)
+	$(CC) -o ft_printf $(CFLAGS) main.c $(NAME)
 
 .PHONY: all fclean clean
