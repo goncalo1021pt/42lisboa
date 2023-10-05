@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 18:31:09 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/04 08:28:24 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/05 00:35:49 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 int	ft_putstr_fd(char *s, int fd)
 {
-	int	total;
+	int	ctd;
 
-	total = 0;
-	while (*s)
+	ctd = 0;
+	while (s[ctd])
 	{
-		write(fd, s, 1);
-		total++;
-		s++;
+		write(fd, &s[ctd], 1);
+		ctd++;
 	}
-	return (total);
+	return (ctd);
 }

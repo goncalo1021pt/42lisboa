@@ -1,4 +1,4 @@
-SRCS = ft_printf.c
+SRCS = ft_printf.c aux_functions.c
 
 NAME = libftprintf.a
 

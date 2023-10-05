@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:49:31 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/04 20:01:01 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/05 00:57:50 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ int	flag_type(char c, va_list *args)
 	if (c == 'p')
 	{
 		write(1, "0x", 2);
-		len += ft_putnbr_base(va_arg(*args, unsigned int), EX_LOW_BASE);
+		len += ft_putnbr_base(va_arg(*args, unsigned int), EX_LOW_BASE, 0);
 	}
 	if (c == 'd' || c == 'i')
-		len += ft_putnbr_fd(va_arg(*args, int), 1);
+		len += ft_putnbr(va_arg(*args, int), 0);
 	if (c == 'u')
-		len += ft_putunbr_fd(va_arg(*args, unsigned int), 1);
+		len += ft_putunbr(va_arg(*args, unsigned int), 0);
 	if (c == 'x')
-		len += ft_putnbr_base(va_arg(*args, long int), EX_LOW_BASE);
+		len += ft_putnbr_base(va_arg(*args, long int), EX_LOW_BASE, 0);
 	if (c == 'X')
-		len += ft_putnbr_base(va_arg(*args, long int), EX_UP_BASE);
+		len += ft_putnbr_base(va_arg(*args, long int), EX_UP_BASE, 0);
 	if (c == '%')
 		len += write(1, "%", 1);
 	return (len);

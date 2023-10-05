@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 08:20:14 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/04 19:41:29 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/05 00:43:13 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,8 @@
 # include <stdarg.h>
 
 int	ft_printf(const char *str, ...);
+int	ft_putnbr_base(long int nbr, char *base, int total);
+int	ft_putnbr(int n, int total);
+int	ft_putunbr(unsigned int n, int total);
 
 #endif
