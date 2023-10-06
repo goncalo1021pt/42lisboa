@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 14:02:19 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/06 15:10:53 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/10/05 11:05:34 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/10/06 10:21:08 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-size_t	ft_strlen(const char *str)
-{
-	size_t	ctd;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2
+# endif
 
-	ctd = 0;
-	while (str[ctd])
-		ctd++;
-	return (ctd);
-}
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+
+char	*get_next_line(int fd);
+char	*ft_strjoin(char *s1, char *s2);
+int		ft_linelen(char *str);
+void	buffer_clean(char *str);
+
+#endif

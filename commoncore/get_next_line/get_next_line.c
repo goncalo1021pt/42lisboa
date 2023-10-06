@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 14:02:19 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/06 15:10:53 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/10/05 11:05:26 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/10/06 11:24:08 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+char	*get_next_line(int fd)
 {
-	size_t	ctd;
+	static char		buffer [BUFFER_SIZE + 1];
+	char			*str;
 
-	ctd = 0;
-	while (str[ctd])
-		ctd++;
-	return (ctd);
+	if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE < 0)
+		return (NULL);
+	str = NULL;
+	while (read(fd, buffer, BUFFER_SIZE) > 0 && buffer[0])
+	{
+		str = ft_strjoin(str, buffer);
+		if (str[ft_linelen(str)] == '\n')
+		{
+			return (str);
+		}
+	}
+	return (str);
 }
