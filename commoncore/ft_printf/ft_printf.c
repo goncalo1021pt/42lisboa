@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:49:31 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/05 10:25:49 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/07 01:22:32 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,20 @@ int	flag_type(char c, va_list *args)
 	return (len);
 }
 
+static int	is_char(const char *str, const char c)
+{
+	int	ctd;
+
+	ctd = 0;
+	while (str[ctd])
+	{
+		if (str[ctd] == c)
+			return (1);
+		ctd++;
+	}
+	return (0);
+}
+
 int	ft_printf(const char *str, ...)
 {
 	int		len;
@@ -73,7 +87,7 @@ int	ft_printf(const char *str, ...)
 	va_start(args, str);
 	while (str[ctd])
 	{
-		if (str[ctd] == '%')
+		if (str[ctd] == '%' && is_char(POSSIBLE_FLAGS, str[ctd + 1]))
 		{
 			ctd++;
 			len += flag_type(str[ctd], &args);

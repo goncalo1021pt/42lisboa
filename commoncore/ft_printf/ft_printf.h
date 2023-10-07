@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 08:20:14 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/05 10:37:02 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:58:06 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define EX_LOW_BASE "0123456789abcdef"
 # define EX_UP_BASE "0123456789ABCDEF"
+# define POSSIBLE_FLAGS "cspdiuxX%"
 
 # include "libft/libft.h"
 # include <stdarg.h>

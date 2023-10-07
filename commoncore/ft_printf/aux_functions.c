@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 00:17:09 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/05 09:33:23 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:52:26 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_putnbr_base(unsigned int nbr, char *base, int total)
 {
-	int			bl;
-	char		c;
+	int		bl;
+	char	c;
 
 	bl = ft_strlen(base);
 	if ((nbr / bl) > 0)
@@ -33,8 +33,8 @@ int	ft_putnbr_base(unsigned int nbr, char *base, int total)
 
 int	ft_putpt(unsigned long int nbr, char *base, int total)
 {
-	int			bl;
-	char		c;
+	int		bl;
+	char	c;
 
 	bl = ft_strlen(base);
 	if ((nbr / bl) > 0)
@@ -52,7 +52,7 @@ int	ft_putpt(unsigned long int nbr, char *base, int total)
 
 int	ft_putnbr(int n, int total)
 {
-	char		c;
+	char	c;
 
 	if (n == -2147483648)
 		total += write(1, "-2147483648", 11);
@@ -79,7 +79,7 @@ int	ft_putnbr(int n, int total)
 
 int	ft_putunbr(unsigned int n, int total)
 {
-	char		c;
+	char	c;
 
 	if ((n / 10) > 0)
 	{
