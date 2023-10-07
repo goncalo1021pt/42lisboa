@@ -3,10 +3,9 @@
 #include <fcntl.h>
 
 int main() {
-	const char *filePath = "/home/goncalo1021pt/42/commoncore/get_next_line/main.c";
+	const char *filePath = "/home/goncalo1021pt/42/commoncore/teste/main.c";
 	int fileFd = open(filePath, O_RDONLY);
 	char *line;
-
 	if (fileFd == -1) {
 		perror("Unable to open file");
 		return 1;
