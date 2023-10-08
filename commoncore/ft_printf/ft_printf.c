@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:49:31 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/07 01:22:32 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/08 16:12:58 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int	ft_printf(const char *str, ...)
 	int		ctd;
 	va_list	args;
 
+	if(!str)
+		return(-1);
 	ctd = 0;
 	len = 0;
 	va_start(args, str);
