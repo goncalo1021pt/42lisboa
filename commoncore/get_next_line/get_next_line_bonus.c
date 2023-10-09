@@ -6,12 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 14:21:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/08 14:25:29 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:51:03 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include "stdio.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
@@ -20,10 +19,11 @@ char	*get_next_line(int fd)
 	int				ctd;
 
 	ctd = 0;
-	if (read(fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
+	if (read(fd, 0, 0) < 0 || FOPEN_MAX <= fd || BUFFER_SIZE <= 0)
 	{
-		while (ctd <= BUFFER_SIZE)
-			buffer[fd][ctd++] = '\0';
+		if (fd > 0 && FOPEN_MAX > fd)
+			while (buffer[fd][ctd])
+				buffer[fd][ctd++] = '\0';
 		return (NULL);
 	}
 	str = NULL;

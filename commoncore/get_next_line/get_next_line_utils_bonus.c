@@ -6,11 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 14:23:24 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/08 14:23:35 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:51:16 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h" 
+#include "get_next_line_bonus.h"
 
 int	ft_linelen(char *str)
 {
