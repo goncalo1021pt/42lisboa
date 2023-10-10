@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 23:18:25 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/10 11:20:07 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/09/27 18:38:33 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/09/29 00:51:31 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_list	*current;
+	char	c;
 
-	current = *lst;
-	if (!(*lst))
-		*lst = new;
-		return
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+	}
 	else
 	{
-		while (current->next != NULL)
-			current = current->next;
-		current->next = new;
+		if (n < 0)
+		{
+			n *= -1;
+			write(fd, "-", 1);
+		}
+		if ((n / 10) > 0)
+		{
+			ft_putnbr_fd(n / 10, fd);
+			ft_putnbr_fd(n % 10, fd);
+		}
+		else
+		{
+			c = n + '0';
+			write(fd, &c, 1);
+		}
 	}
-} */
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	ft_lstadd_back(&((*lst)->next), new);
 }

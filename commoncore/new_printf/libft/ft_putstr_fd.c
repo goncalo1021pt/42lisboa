@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 23:18:25 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/10 11:20:07 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/09/27 18:31:09 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/10/05 00:35:49 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_putstr_fd(char *s, int fd)
 {
-	t_list	*current;
+	int	ctd;
 
-	current = *lst;
-	if (!(*lst))
-		*lst = new;
-		return
-	else
+	ctd = 0;
+	while (s[ctd])
 	{
-		while (current->next != NULL)
-			current = current->next;
-		current->next = new;
+		write(fd, &s[ctd], 1);
+		ctd++;
 	}
-} */
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	ft_lstadd_back(&((*lst)->next), new);
+	return (ctd);
 }

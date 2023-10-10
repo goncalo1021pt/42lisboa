@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 23:18:25 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/10 11:20:07 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/09/27 14:01:08 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/09/27 14:01:09 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*current;
+//This function will set n number of bytes of the string str to \0 character
 
-	current = *lst;
-	if (!(*lst))
-		*lst = new;
-		return
-	else
-	{
-		while (current->next != NULL)
-			current = current->next;
-		current->next = new;
-	}
-} */
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_bzero(void *str, size_t n)
 {
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	ft_lstadd_back(&((*lst)->next), new);
+	unsigned char	*mem;
+	size_t			ctd;
+
+	ctd = 0;
+	mem = str;
+	while (ctd < n)
+		mem[ctd++] = '\0';
 }
+
+/* #include <stdio.h>
+int main(){
+	char test[] = "testing string";
+	
+	printf("before function: %s\n", test);
+	ft_bzero (test, 14);
+	printf("after function: %s\n", test);
+} */

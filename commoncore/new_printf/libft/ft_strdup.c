@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 23:18:25 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/10 11:20:07 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/09/27 14:02:06 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/09/30 20:56:25 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*current;
+//This function duplicates a string and returns the duplicate
 
-	current = *lst;
-	if (!(*lst))
-		*lst = new;
-		return
-	else
-	{
-		while (current->next != NULL)
-			current = current->next;
-		current->next = new;
-	}
-} */
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
+char	*ft_strdup(const char *s)
 {
-	if (*lst == NULL)
+	char	*duplicate;
+
+	duplicate = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (duplicate == NULL)
 	{
-		*lst = new;
-		return ;
+		return (NULL);
 	}
-	ft_lstadd_back(&((*lst)->next), new);
+	ft_memcpy(duplicate, s, ft_strlen(s) + 1);
+	return (duplicate);
 }

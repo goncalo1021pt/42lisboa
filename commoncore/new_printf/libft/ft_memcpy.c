@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 23:18:25 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/10 11:20:07 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/09/27 14:01:45 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/09/30 19:49:18 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*current;
+//This functions copies n bytes from src into dest
+//It doesn't take care of overlaping memory
+//It returns a pointer to n the start of dest
 
-	current = *lst;
-	if (!(*lst))
-		*lst = new;
-		return
-	else
-	{
-		while (current->next != NULL)
-			current = current->next;
-		current->next = new;
-	}
-} */
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (*lst == NULL)
+	unsigned char		*mem;
+	const unsigned char	*old;
+	size_t				ctd;
+
+	ctd = 0;
+	mem = dest;
+	old = src;
+	while (ctd < n && (src || dest))
 	{
-		*lst = new;
-		return ;
+		mem[ctd] = old[ctd];
+		ctd++;
 	}
-	ft_lstadd_back(&((*lst)->next), new);
+	return (dest);
 }

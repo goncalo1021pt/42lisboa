@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 11:24:45 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/07 12:37:51 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/09/27 18:03:54 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/09/30 21:14:22 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-char	*get_next_line(int fd)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	static char	buffer[BUFFER_SIZE + 1];
-	char		*str;
+	int		ctd;
+	char	*str;
 
-	if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE <= 0)
+	ctd = 0;
+	str = (char *)malloc(ft_strlen(s) + 1);
+	if (str == NULL)
 		return (NULL);
-	str = NULL;
-	if (*buffer)
+	while (s[ctd])
 	{
-		str = strjoin(str, buffer);
-		bufferclean(buffer);
+		str[ctd] = f(ctd, s[ctd]);
+		ctd++;
 	}
-	while (read(fd, buffer, BUFFER_SIZE) > 0)
-	{
-		str = strjoin(str, buffer);
-		//printf(":%c\n", str[line_len(str) - 1]);
-		bufferclean(buffer);
-		if (str[line_len(str)] == '\n')
-			return (str);
-	}
+	str[ctd] = '\0';
 	return (str);
 }
