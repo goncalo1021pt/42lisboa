@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 00:17:09 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/10 12:36:43 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:48:23 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	ft_put_any_base(unsigned long int nbr, char *base, int total)
 int int_aux(long int nbr)
 {
 	int total;
-	printf("hello %ld\n", nbr);
 	total = 0;
 	if (nbr < 0)
 	{

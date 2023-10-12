@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:49:31 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/10 12:40:02 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:54:04 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ int	flag_type(char c, va_list *args)
 	if (c == 's')
 		len += straux(va_arg(*args, char *));
 	if (c == 'p')
-		len += ptraux(va_arg(*args, long));
+		len += ptraux((long unsigned int)va_arg(*args, long));
 	if (c == 'd' || c == 'i')
-		len += int_aux(va_arg(*args, int));
+		len += int_aux((int)va_arg(*args, int));
 	if (c == 'u')
-		len += ft_put_any_base(va_arg(*args, unsigned int), DEC_BASE, 0);
+		len += ft_put_any_base((unsigned int)va_arg(*args, unsigned int), DEC_BASE, 0);
 	if (c == 'x')
-		len += ft_put_any_base(va_arg(*args, long), EX_LOW_BASE, 0);
+		len += ft_put_any_base((long int)va_arg(*args, long), EX_LOW_BASE, 0);
 	if (c == 'X')
-		len += ft_put_any_base(va_arg(*args, long), EX_UP_BASE, 0);
+		len += ft_put_any_base((long int)va_arg(*args, long), EX_UP_BASE, 0);
 	if (c == '%')
 		len += write(1, "%", 1);
 	return (len);
