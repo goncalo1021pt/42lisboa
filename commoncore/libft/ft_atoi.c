@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:01:04 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/04 11:40:59 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/10 23:51:40 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,12 @@ int	ft_atoi(const char *nptr)
 	while (nptr[ctd] == ' ' || (nptr[ctd] >= 9 && nptr[ctd] <= 13))
 		ctd++;
 	if (nptr[ctd] == '+' || nptr[ctd] == '-')
-	{
-		if (nptr[ctd] == '-')
+		if (nptr[ctd++] == '-')
 			signal = -signal;
-		ctd++;
-	}
 	while (nptr[ctd] <= '9' && nptr[ctd] >= '0')
 	{
 		result *= 10;
-		result += nptr[ctd] - '0';
-		ctd++;
+		result += nptr[ctd++] - '0';
 	}
 	return (signal * result);
 }
-
-/* int main()
-{
-	printf("%d", ft_atoi("-124"));
-} */
