@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/02 22:54:32 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/14 18:31:48 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
+int					ft_printf(const char *str, ...);
+int					ft_putnbr_base(unsigned int nbr, char *base, int total);
+int					ft_putpt(unsigned long int nbr, char *base, int total);
+int					ft_putnbr(int n, int total);
+int					ft_putunbr(unsigned int n, int total);
 int					ft_atoi(const char *nptr);
 void				ft_bzero(void *str, size_t n);
 void				*ft_calloc(size_t nmemb, size_t size);
