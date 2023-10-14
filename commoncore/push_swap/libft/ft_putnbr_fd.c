@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 14:02:24 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/13 18:09:06 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/09/27 18:38:33 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/09/29 00:51:31 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	c;
+	char	c;
 
-	c = 0;
-	if (n == 0)
-		return (0);
-	while (s1[c] == s2[c] && (s1[c] && s2[c]) && c < n - 1)
-		c++;
-	return ((unsigned char)s1[c] - (unsigned char)s2[c]);
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+	}
+	else
+	{
+		if (n < 0)
+		{
+			n *= -1;
+			write(fd, "-", 1);
+		}
+		if ((n / 10) > 0)
+		{
+			ft_putnbr_fd(n / 10, fd);
+			ft_putnbr_fd(n % 10, fd);
+		}
+		else
+		{
+			c = n + '0';
+			write(fd, &c, 1);
+		}
+	}
 }

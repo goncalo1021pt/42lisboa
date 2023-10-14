@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 14:02:24 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/13 18:09:06 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/09/14 21:49:23 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/10/13 10:21:06 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	size_t	c;
+	unsigned int	ctd;
+	unsigned int	sstr;
+	unsigned int	sdest;
 
-	c = 0;
-	if (n == 0)
-		return (0);
-	while (s1[c] == s2[c] && (s1[c] && s2[c]) && c < n - 1)
-		c++;
-	return ((unsigned char)s1[c] - (unsigned char)s2[c]);
+	ctd = 0;
+	sdest = ft_strlen(dest);
+	sstr = ft_strlen(src);
+	if (size < 1)
+		return (sstr + size);
+	while (src[ctd] && (ctd + sdest) < size -1)
+	{
+		dest[ctd + sdest] = src[ctd];
+		ctd++;
+	}
+	dest[ctd + sdest] = '\0';
+	if (size < sdest)
+		return (sstr + size);
+	else
+		return (sdest + sstr);
 }

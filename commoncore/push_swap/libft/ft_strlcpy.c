@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 14:02:24 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/13 18:09:06 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/09/27 14:02:15 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/10/13 10:21:07 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	size_t	c;
+	size_t	ctd;
+	size_t	src_len;
 
-	c = 0;
-	if (n == 0)
-		return (0);
-	while (s1[c] == s2[c] && (s1[c] && s2[c]) && c < n - 1)
-		c++;
-	return ((unsigned char)s1[c] - (unsigned char)s2[c]);
+	ctd = 0;
+	src_len = ft_strlen(src);
+	if (size <= 0)
+		return (src_len);
+	if (sizeof(dest != 0))
+	{
+		while (ctd < size - 1 && src[ctd])
+		{
+			dest[ctd] = src[ctd];
+			ctd++;
+		}
+		dest[ctd] = '\0';
+	}
+	return (src_len);
 }

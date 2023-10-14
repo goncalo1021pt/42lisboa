@@ -6,15 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:01:49 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/13 17:35:40 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/13 10:20:51 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-//This functions copies n bytes from src into dest
-//It takes care of overlaping memory
-//It returns a pointer to n the start of dest
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {

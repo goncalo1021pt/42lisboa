@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:49:31 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/10 14:54:04 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:22:17 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	flag_type(char c, va_list *args)
 	if (c == 'u')
 		len += ft_put_any_base((unsigned int)va_arg(*args, unsigned int), DEC_BASE, 0);
 	if (c == 'x')
-		len += ft_put_any_base((long int)va_arg(*args, long), EX_LOW_BASE, 0);
+		len += ft_put_any_base((unsigned int)va_arg(*args, long), EX_LOW_BASE, 0);
 	if (c == 'X')
-		len += ft_put_any_base((long int)va_arg(*args, long), EX_UP_BASE, 0);
+		len += ft_put_any_base((unsigned int)va_arg(*args, long), EX_UP_BASE, 0);
 	if (c == '%')
 		len += write(1, "%", 1);
 	return (len);
@@ -43,18 +43,15 @@ int	ft_printf(const char *str, ...)
 	int		ctd;
 	va_list	args;
 
-	if(!str)
-		return(-1);
+	if (!str)
+		return (-1);
 	ctd = 0;
 	len = 0;
 	va_start(args, str);
 	while (str[ctd])
 	{
 		if (str[ctd] == '%' && is_char(POSSIBLE_FLAGS, str[ctd + 1]))
-		{
-			ctd++;
-			len += flag_type(str[ctd], &args);
-		}
+			len += flag_type(str[++ctd], &args);
 		else
 			len += write(1, &str[ctd], 1);
 		ctd++;

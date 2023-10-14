@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 14:02:24 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/13 18:09:06 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/10/14 09:37:27 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include "../libft/libft.h"
+
+typedef struct s_stack
 {
-	size_t	c;
+	int				nbr;
+	struct s_stack	*next;
+	struct s_stack	*prev;
+}	t_stack;
 
-	c = 0;
-	if (n == 0)
-		return (0);
-	while (s1[c] == s2[c] && (s1[c] && s2[c]) && c < n - 1)
-		c++;
-	return ((unsigned char)s1[c] - (unsigned char)s2[c]);
-}
+typedef struct s_list_data
+{
+	t_stack	*head;
+	t_stack	*tail;
+}	t_list_data;
+
+#endif

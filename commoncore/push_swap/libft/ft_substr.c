@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 14:02:24 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/13 18:09:06 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/09/27 14:02:46 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/10/13 10:20:33 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	c;
+	unsigned int	ctd;
+	char			*out;
 
-	c = 0;
-	if (n == 0)
-		return (0);
-	while (s1[c] == s2[c] && (s1[c] && s2[c]) && c < n - 1)
-		c++;
-	return ((unsigned char)s1[c] - (unsigned char)s2[c]);
+	if (start >= ft_strlen(s))
+		len = 0;
+	else if (start + len >= ft_strlen(s))
+		len = ft_strlen(s) - start;
+	out = (char *)malloc(len + 1);
+	if (!out)
+		return (NULL);
+	ctd = 0;
+	while (ctd < len && len != 0)
+	{
+		out[ctd] = s[start + ctd];
+		ctd++;
+	}
+	out[ctd] = '\0';
+	return (out);
 }
