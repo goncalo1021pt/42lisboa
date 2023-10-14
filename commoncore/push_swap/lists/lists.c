@@ -6,13 +6,13 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 13:56:47 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/14 10:05:20 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:49:22 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_stack	*ft_lstnew(int content)
+t_stack	*ft_dbl_new(int content)
 {
 	t_stack	*new_node;
 
@@ -25,7 +25,7 @@ t_stack	*ft_lstnew(int content)
 	return (new_node);
 }
 
-void	ft_dbl_lstadd_front(t_list_data **stack, t_stack *new)
+void	ft_dbl_add_front(t_list_data **stack, t_stack *new)
 {
 	if (!stack)
 	{
@@ -37,7 +37,7 @@ void	ft_dbl_lstadd_front(t_list_data **stack, t_stack *new)
 	(*stack)->head = new;
 }
 
-void	ft_dbl_lstadd_back(t_list_data **stack, t_stack *new)
+void	ft_dbl_add_back(t_list_data **stack, t_stack *new)
 {
 	if (!stack)
 	{
