@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 13:56:47 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/14 16:49:22 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/15 12:14:38 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,71 +25,71 @@ t_stack	*ft_dbl_new(int content)
 	return (new_node);
 }
 
-void	ft_dbl_add_front(t_list_data **stack, t_stack *new)
+void	ft_dbl_add_front(t_list_data *stack, t_stack *new)
 {
-	if (!stack)
+	if (!stack->head)
 	{
-		(*stack)->head = new;
-		(*stack)->tail = new;
+		stack->head = new;
+		stack->tail = new;
 	}
-	new->next = (*stack)->head;
-	(*stack)->head->prev = new;
-	(*stack)->head = new;
+	new->next = stack->head;
+	stack->head->prev = new;
+	stack->head = new;
 }
 
-void	ft_dbl_add_back(t_list_data **stack, t_stack *new)
+void	ft_dbl_add_back(t_list_data *stack, t_stack *new)
 {
-	if (!stack)
+	if (!stack->tail)
 	{
-		(*stack)->head = new;
-		(*stack)->tail = new;
+		stack->head = new;
+		stack->tail = new;
 	}
 	else
 	{
-		(*stack)->tail->next = new;
-		new->prev = (*stack)->tail;
-		(*stack)->tail = new;
+		stack->tail->next = new;
+		new->prev = stack->tail;
+		stack->tail = new;
 	}
 }
 
-t_stack	*ft_dbl_rem_front(t_list_data **stack)
+t_stack	*ft_dbl_rem_front(t_list_data *stack)
 {
 	t_stack	*temp;
 
-	if (!stack || !(*stack) || !(*stack)->head)
+	if (!stack->head || !stack->tail)
 		return (NULL);
-	temp = (*stack)->head;
+	temp = stack->head;
 	if (temp->next)
 	{
-		(*stack)->head = temp->next;
+		stack->head = temp->next;
 		temp->next->prev = NULL;
 	}
 	else
 	{
-		(*stack)->head = NULL;
-		(*stack)->tail = NULL;
+		stack->head = NULL;
+		stack->tail = NULL;
 	}
 	temp->next = NULL;
 	temp->prev = NULL;
 	return (temp);
 }
 
-t_stack	*ft_dbl_rem_back(t_list_data **stack)
+t_stack	*ft_dbl_rem_back(t_list_data *stack)
 {
 	t_stack	*temp;
 
-	if (!stack || !(*stack) || !(*stack)->tail)
+	if (!stack->head || !stack->tail)
 		return (NULL);
-	temp = (*stack)->tail;
+	temp = stack->tail;
 	if (temp->prev)
 	{
-		(*stack)->tail = temp->prev;
+		stack->tail = temp->prev;
 		temp->prev->next = NULL;
 	}
 	else
 	{
-		(*stack)->head = NULL;
-		(*stack)->tail = NULL;
+		stack->head = NULL;
+		stack->tail = NULL;
 	}
 	temp->next = NULL;
 	temp->prev = NULL;

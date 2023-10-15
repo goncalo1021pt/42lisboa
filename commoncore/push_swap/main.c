@@ -5,14 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 15:59:34 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/14 16:00:18 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/10/14 22:13:19 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/10/15 12:46:50 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-int	main(int argc, char **argv)
+int	main(void)
 {
+	t_list_data	stack_a;
+
+	
 	return (0);
 }

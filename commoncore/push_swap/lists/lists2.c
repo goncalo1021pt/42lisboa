@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   lists2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 18:31:14 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/14 17:33:35 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/10/15 12:26:57 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/10/15 12:31:44 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/push_swap.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_dbl_clear(t_list_data *stack)
 {
-	if (fd >= 0)
-		write(fd, &c, 1);
+	t_stack	*temp;
+
+	while (stack->head)
+	{
+		temp = stack->head;
+		stack->head = stack->head->next;
+		free(temp);
+	}
+	stack->head = NULL;
+	stack->tail = NULL;
 }

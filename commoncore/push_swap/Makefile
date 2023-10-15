@@ -1,8 +1,6 @@
-SRCS =	
+SRCS = main.c save_stack.c lists/lists.c lists/swap.c lists/lists2.c
 
-BONUS = 
-
-NAME = 
+NAME = push_swap
 
 COMPRESS = ar rcs
 
@@ -14,23 +12,28 @@ CC = cc
 
 OBJS = $(SRCS:.c=.o)
 
-BONUS_OBJS = $(BONUS:.c=.o)
+LIBFT_DIR = ./includes/libft
+
+LIBFT = $(LIBFT_DIR)/libft.a
 
 all: $(NAME)
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) 
 
-$(NAME): $(OBJS) 
-	@$(COMPRESS) $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
 
-bonus: 
+$(LIBFT):
+	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
 
 clean:
 	@$(RM) $(OBJS) $(BONUS_OBJS)
+	@$(MAKE) -C $(LIBFT_DIR) clean --no-print-directory
 
 fclean: clean
 	@$(RM) $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
 
 re: fclean all
 

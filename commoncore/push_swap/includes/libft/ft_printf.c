@@ -88,7 +88,7 @@ int	ft_printf(const char *str, ...)
 	va_start(args, str);
 	while (str[ctd])
 	{
-		if (str[ctd] == '%' && is_char(POSSIBLE_FLAGS, str[ctd + 1]))
+		if (str[ctd] == '%' && is_char(PRINTF_FLAGS, str[ctd + 1]))
 		{
 			ctd++;
 			len += flag_type(str[ctd], &args);
