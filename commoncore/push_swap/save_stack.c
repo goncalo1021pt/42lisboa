@@ -6,11 +6,33 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:37:21 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/15 14:52:40 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:25:57 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
+
+long	ft_atoi_long(const char *nptr)
+{
+	int		ctd;
+	int		signal;
+	long	result;
+
+	ctd = 0;
+	signal = 1;
+	result = 0;
+	while (nptr[ctd] == ' ' || (nptr[ctd] >= 9 && nptr[ctd] <= 13))
+		ctd++;
+	if (nptr[ctd] == '+' || nptr[ctd] == '-')
+		if (nptr[ctd++] == '-')
+			signal = -signal;
+	while (nptr[ctd] <= '9' && nptr[ctd] >= '0')
+	{
+		result *= 10;
+		result += nptr[ctd++] - '0';
+	}
+	return (signal * result);
+}
 
 int	valid_input(char *input)
 {
@@ -30,6 +52,13 @@ int	valid_input(char *input)
 	}
 	if (len > 11)
 		flag = 0;
+	else
+	{
+		if (flag == 1)
+			if (INT_MAX < ft_atoi_long(*input) || INT_MIN
+				> ft_atoi_long(*input))
+				flag = 0;
+	}
 	return (flag);
 }
 
