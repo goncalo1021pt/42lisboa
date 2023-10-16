@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:37:21 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/15 13:13:35 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/15 14:52:40 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	valid_input(char *input)
 		else if (!ft_isdigit(input[ctd]))
 			flag = 0;
 	}
+	if (len > 11)
+		flag = 0;
 	return (flag);
 }
 
@@ -40,7 +42,6 @@ int	save_stack(char **input, t_stack *stack_a)
 	{
 		while ((*input)[ctd])
 		{
-			
 		}
 		if (!new)
 			ft_dbl_lstadd_back(stack_a);
