@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 10:16:26 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/15 12:26:19 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:44:00 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_dlb_print(t_list_data *stack)
 	temp = stack->head;
 	while (temp)
 	{
-		ft_printf("%d", temp->nbr);
+		ft_printf("%d\n", temp->nbr);
 		temp = temp->next;
 	}
 }

@@ -1,4 +1,4 @@
-SRCS = main.c save_stack.c lists/lists.c lists/swap.c lists/lists2.c
+SRCS = push_swap.c save_stack.c lists/lists.c lists/swap.c lists/lists2.c
 
 NAME = push_swap
 

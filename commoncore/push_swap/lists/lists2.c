@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 12:26:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/16 17:46:26 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:41:39 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ void	ft_dbl_clear(t_list_data *stack)
 	stack->tail = NULL;
 }
 
-int ft_dbl_not_equal(t_list_data *stack, int content)
+int	ft_dbl_not_equal(t_list_data *stack, int content)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	temp = stack->head;
 	while (temp)
 	{
 		if (stack->head->nbr == content)
-			return (0);	
+			return (0);
 		temp = temp->next;
 	}
 	return (1);
