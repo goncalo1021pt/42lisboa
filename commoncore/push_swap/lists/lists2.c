@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 12:26:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/17 11:41:39 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:18:34 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_dbl_not_equal(t_list_data *stack, int content)
 	temp = stack->head;
 	while (temp)
 	{
-		if (stack->head->nbr == content)
+		if (temp->nbr == content)
 			return (0);
 		temp = temp->next;
 	}
