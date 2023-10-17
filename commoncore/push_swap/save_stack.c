@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:37:21 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/16 14:47:22 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:59:57 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,18 @@ int	valid_input(char *input)
 int	save_stack(char **input, t_stack *stack_a)
 {
 	int		ctd;
+	int		temp;
 
 	ctd = 0;
-	while (input)
+	while (input[ctd])
 	{
-		while ((*input)[ctd])
-		{
-		}
-		if (!new)
+		if (valid_input(input[ctd]) && ft_dbl_not_equal(stack_a, ft_atoi(input[ctd])))
 			ft_dbl_lstadd_back(stack_a);
+		else
+		{
+			ft_dbl_clear(stack_a);
+			return (0);
+		}
 		input++;
 	}
 	return (1);

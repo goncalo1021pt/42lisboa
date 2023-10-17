@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/16 10:02:34 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:48:26 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void	ft_rev_rotate(t_list_data *stack);
 void	ft_dlb_print(t_list_data *stack);
 void	ft_dbl_clear(t_list_data *stack);
 int		save_stack(char **input, t_stack *stack_a);
+int ft_dbl_not_equal(t_list_data *stack, int content);
 
 #endif
