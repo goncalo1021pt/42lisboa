@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 22:13:19 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/17 12:31:39 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:54:02 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	free_all(char **in)
 		free(in[ctd++]);
 }
 
-void	initialize_stack(t_list_data *stack_a)
+void	initialize_stack(t_stack *stack_a)
 {
 	stack_a->head = NULL;
 	stack_a->tail = NULL;
@@ -29,8 +29,8 @@ void	initialize_stack(t_list_data *stack_a)
 
 int	main(int argc, char **argv)
 {
-	t_list_data	stack_a;
-	char		**read;
+	t_stack	stack_a;
+	char	**read;
 
 	initialize_stack(&stack_a);
 	if (argc == 2)

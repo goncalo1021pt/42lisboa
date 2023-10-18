@@ -6,15 +6,15 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 12:26:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/17 13:18:34 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:14:09 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_dbl_clear(t_list_data *stack)
+void	ft_dbl_clear(t_stack *stack)
 {
-	t_stack	*temp;
+	t_node	*temp;
 
 	while (stack->head)
 	{
@@ -26,9 +26,9 @@ void	ft_dbl_clear(t_list_data *stack)
 	stack->tail = NULL;
 }
 
-int	ft_dbl_not_equal(t_list_data *stack, int content)
+int	ft_dbl_not_equal(t_stack *stack, int content)
 {
-	t_stack	*temp;
+	t_node	*temp;
 
 	temp = stack->head;
 	while (temp)
@@ -39,3 +39,4 @@ int	ft_dbl_not_equal(t_list_data *stack, int content)
 	}
 	return (1);
 }
+

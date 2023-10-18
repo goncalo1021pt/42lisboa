@@ -6,16 +6,16 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 10:16:26 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/17 11:44:00 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:14:09 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_swap_01(t_list_data *stack)
+void	ft_swap_01(t_stack *stack)
 {
-	t_stack	*temp;
-	t_stack	*temp2;
+	t_node	*temp;
+	t_node	*temp2;
 
 	if (!stack->head || !stack->head->next)
 		return ;
@@ -25,9 +25,9 @@ void	ft_swap_01(t_list_data *stack)
 	ft_dbl_add_front(stack, temp2);
 }
 
-void	ft_rotate(t_list_data *stack)
+void	ft_rotate(t_stack *stack)
 {
-	t_stack	*temp;
+	t_node	*temp;
 
 	if (!stack->head || !stack->head->next)
 		return ;
@@ -35,9 +35,9 @@ void	ft_rotate(t_list_data *stack)
 	ft_dbl_add_back(stack, temp);
 }
 
-void	ft_rev_rotate(t_list_data *stack)
+void	ft_rev_rotate(t_stack *stack)
 {
-	t_stack	*temp;
+	t_node	*temp;
 
 	if (!stack->head || !stack->head->next)
 		return ;
@@ -45,9 +45,20 @@ void	ft_rev_rotate(t_list_data *stack)
 	ft_dbl_add_front(stack, temp);
 }
 
-void	ft_dlb_print(t_list_data *stack)
+void	ft_push(t_stack *src, t_stack *dest)
 {
-	t_stack	*temp;
+	t_node	*temp;
+
+	if (!src->head)
+	{
+		temp = ft_dbl_rem_front(src);
+		ft_dbl_add_front(dest, temp);
+	}
+}
+
+void	ft_dlb_print(t_stack *stack)
+{
+	t_node	*temp;
 
 	if (!stack->head)
 		return ;

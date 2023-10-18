@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:37:21 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/17 12:30:16 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:14:09 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ int	valid_input(char *input)
 	return (flag);
 }
 
-int	save_stack(char **input, t_list_data *stack_a)
+int	save_stack(char **input, t_stack *stack_a)
 {
 	int		ctd;
-	t_stack	*node;
+	t_node	*node;
 
 	ctd = 1;
 	while (input[ctd])
