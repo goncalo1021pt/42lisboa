@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/18 13:10:58 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:40:39 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+
+# define TRUE 1
+# define FALSE 0
+
+typedef int	t_bool;
 
 typedef struct s_node
 {
@@ -33,6 +38,12 @@ typedef struct s_stack
 	t_node	*head;
 	t_node	*tail;
 }	t_stack;
+
+typedef struct s_next_elements
+{
+	int	nbr[4];
+	int	cost;
+}	t_next_elements;
 
 t_node	*ft_dbl_new(int content);
 void	ft_dbl_add_front(t_stack *stack, t_node *new);

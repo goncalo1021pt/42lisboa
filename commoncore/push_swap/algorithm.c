@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:26:13 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/18 13:10:58 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:44:48 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	indexer(t_stack *stack)
 	temp2 = stack->head;
 	while (temp)
 	{
-		ctd = 0;
+		ctd = 1;
 		while (temp2)
 		{
 			if (temp2->nbr < temp->nbr)
@@ -35,7 +35,28 @@ void	indexer(t_stack *stack)
 	}
 }
 
-void	sort(t_stack a, t_stack b)
+int	*get_samll_4(t_stack *stack, t_next_elements elements)
+{
+	t_node	*temp;
+	int		ctd;
+
+	temp = stack->head;
+	while (temp)
+	{
+		ctd = 0;
+		if (!elements.nbr || temp->value < elements.nbr[ctd])
+		{
+			while (elements.nbr[ctd])
+			{
+				elements.nbr[ctd] = temp->value;
+				ctd++;
+			}
+		}
+		temp = temp->next;
+	}
+}
+
+/* void	sort(t_stack a, t_stack b)
 {
 	
-}
+} */

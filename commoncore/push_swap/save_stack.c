@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:37:21 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/18 12:14:09 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/19 09:38:58 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,34 +36,34 @@ long	ft_atoi_long(char *nptr)
 
 int	valid_input(char *input)
 {
-	int	len;
-	int	flag;
-	int	ctd;
+	int		len;
+	t_bool	flag;
+	int		ctd;
 
 	ctd = 0;
-	flag = 1;
+	flag = TRUE;
 	len = ft_strlen(input);
 	while (input[ctd])
 	{
 		if (ctd == 0 && (input[ctd] == '+' || input[ctd] == '+'))
-			flag = 1;
+			flag = TRUE;
 		else if (!ft_isdigit(input[ctd]))
-			flag = 0;
+			flag = FALSE;
 		ctd++;
 	}
 	if (len > 11)
-		flag = 0;
+		flag = FALSE;
 	else
 	{
-		if (flag == 1)
+		if (flag == TRUE)
 			if (INT_MAX < ft_atoi_long(input) || INT_MIN
 				> ft_atoi_long(input))
-				flag = 0;
+				flag = FALSE;
 	}
 	return (flag);
 }
 
-int	save_stack(char **input, t_stack *stack_a)
+t_bool	save_stack(char **input, t_stack *stack_a)
 {
 	int		ctd;
 	t_node	*node;
@@ -79,9 +79,9 @@ int	save_stack(char **input, t_stack *stack_a)
 		else
 		{
 			ft_dbl_clear(stack_a);
-			return (0);
+			return (FALSE);
 		}
 		ctd++;
 	}
-	return (1);
+	return (TRUE);
 }
