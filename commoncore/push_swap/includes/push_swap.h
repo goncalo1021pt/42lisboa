@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/19 18:40:48 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:32:12 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ typedef struct s_stack
 typedef struct s_next_elements
 {
 	int	nbr[4];
+	int	nbr_check[4];
 	int	found;
+	int	total_found;
 	int	cost;
 }	t_next_elements;
 

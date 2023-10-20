@@ -6,34 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:26:13 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/19 18:40:28 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:33:00 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
-
-void	indexer(t_stack *stack)
-{
-	t_node	*temp;
-	t_node	*temp2;
-	int		ctd;
-
-	temp = stack->head;
-	temp2 = stack->head;
-	while (temp)
-	{
-		ctd = 1;
-		while (temp2)
-		{
-			if (temp2->nbr < temp->nbr)
-				ctd++;
-			temp2 = temp2->next;
-		}
-		temp->value = ctd;
-		temp2 = stack->head;
-		temp = temp->next;
-	}
-}
 
 t_bool	not_in_array(int nbr, int i, int *array)
 {
@@ -83,6 +60,7 @@ void	get_big_4(t_stack *stack, t_next_elements *elem)
 			tmp = tmp->next;
 		}
 		elem->nbr[ctd] = big;
+		elem->nbr_check[ctd] = big;
 		ctd++;
 	}
 }
@@ -114,4 +92,31 @@ void	one_element_cost(t_stack *stack, t_next_elements *elem)
 		elem->found = temp->value;
 	else
 		elem->cost += cost_head;
+}
+
+int	total_cost(t_stack *stack, t_next_elements *big, t_next_elements *small)
+{
+	int	ctd;
+
+	small->cost = 0;
+	big->cost = 0;
+	ctd = -1;
+	get_small_4(stack, small);
+	get_big_4(stack, big);
+	while (small->total_found > 0)
+	{
+		one_element_cost(stack, small);
+		while (++ctd < 4)
+			if (small->found == small->nbr_check[ctd])
+				small->nbr_check[ctd] = 0;
+		small->total_found--;
+	}
+	while (big->total_found > 0)
+	{
+		one_element_cost(stack, big);
+		while (++ctd < 4)
+			if (big->found == big->nbr_check[ctd])
+				big->nbr_check[ctd] = 0;
+		big->total_found--;
+	}
 }
