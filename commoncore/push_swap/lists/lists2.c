@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 12:26:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/19 10:29:29 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/22 16:18:28 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,17 @@ t_bool	ft_dbl_not_equal(t_stack *stack, int content)
 		temp = temp->next;
 	}
 	return (TRUE);
+}
+
+t_node	*find_node(t_stack stack, int value)
+{
+	while (stack.head->value != value)
+	{
+		if (stack.head == stack.tail)
+			return (NULL);
+		stack.head = stack.head->next;
+	}
+	return (stack.head);
 }
 
 t_bool	is_sorted(t_stack *stack)
