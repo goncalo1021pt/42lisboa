@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 13:56:47 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/18 12:14:09 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:37:02 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ void	ft_dbl_add_front(t_stack *stack, t_node *new)
 		stack->head = new;
 		stack->tail = new;
 	}
+	else
+	{
 	new->next = stack->head;
 	stack->head->prev = new;
 	stack->head = new;
+	}
 }
 
 void	ft_dbl_add_back(t_stack *stack, t_node *new)

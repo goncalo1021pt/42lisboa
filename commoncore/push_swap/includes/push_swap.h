@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/27 11:17:37 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:08:53 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,16 @@ void	ft_swap_01(t_stack *stack);
 void	ft_rotate(t_stack *stack);
 void	ft_rev_rotate(t_stack *stack);
 void	ft_push(t_stack *src, t_stack *dest);
-void	ft_dlb_print(t_stack *stack);
+void	ft_dbl_print(t_stack *stack);
 
 //costs
-int		head_cost(t_node *temp, t_node *pivot);
-int		tail_cost(t_node *temp, t_node *pivot);
+int		head_cost(t_stack *stack, t_node *pivot);
+int		tail_cost(t_stack *stack, t_node *pivot);
 int		medium(t_node *low, t_node *high);
 t_node	*find_last_not_sorted(t_stack *stack);
 
-long	ft_atoi_long(char *nptr);
 int		save_stack(char **input, t_stack *stack_a);
+
+void	quick_sort(t_stack *stack_a, t_stack *stack_b);
 
 #endif

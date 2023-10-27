@@ -6,34 +6,38 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 08:39:16 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/27 11:16:52 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:08:26 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	head_cost(t_node *temp, t_node *pivot)
+int	head_cost(t_stack *stack, t_node *pivot)
 {
-	int	cost_head;
+	int		cost_head;
+	t_node	*current;
 
+	current = stack->head;
 	cost_head = 0;
-	while (temp != pivot)
+	while (current != pivot)
 	{
 		cost_head++;
-		temp = temp->next;
+		current = current->next;
 	}
 	return (cost_head);
 }
 
-int	tail_cost(t_node *temp, t_node *pivot)
+int	tail_cost(t_stack *stack, t_node *pivot)
 {
 	int		cost_tail;
+	t_node	*current;
 
+	current = stack->tail;
 	cost_tail = 1;
-	while (temp != pivot)
+	while (current != pivot)
 	{
 		cost_tail++;
-		temp = temp->prev;
+		current = current->prev;
 	}
 	return (cost_tail);
 }
@@ -61,12 +65,12 @@ int	medium(t_node *low, t_node *high)
 t_node	*find_last_not_sorted(t_stack *stack)
 {
 	t_node	*current;
-	t_node	*small;
 
 	current = stack->tail;
-	while (current->prev->value < current->value)
+	ft_dlb_print();
+	/* while (current->prev->value < current->value)
 	{
 		current = current->prev;
-	}
+	} */
 	return (current->prev);
 }

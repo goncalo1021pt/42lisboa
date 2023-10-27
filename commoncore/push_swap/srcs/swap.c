@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 10:16:26 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/27 11:28:47 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:08:44 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ void	ft_push(t_stack *src, t_stack *dest)
 {
 	t_node	*temp;
 
-	if (!src->head)
+	if (src->head)
 	{
 		temp = ft_dbl_rem_front(src);
 		ft_dbl_add_front(dest, temp);
 	}
 }
 
-void	ft_dlb_print(t_stack *stack)
+void	ft_dbl_print(t_stack *stack)
 {
 	t_node	*temp;
 
@@ -65,7 +65,7 @@ void	ft_dlb_print(t_stack *stack)
 	temp = stack->head;
 	while (temp)
 	{
-		ft_printf("%d\n", temp->nbr);
+		ft_printf("%d\n", temp->value);
 		temp = temp->next;
 	}
 }

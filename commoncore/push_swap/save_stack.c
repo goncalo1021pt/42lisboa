@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:37:21 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/27 11:28:51 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:27:18 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	valid_input(char *input)
 	len = ft_strlen(input);
 	while (input[ctd])
 	{
-		if (ctd == 0 && (input[ctd] == '+' || input[ctd] == '+'))
+		if (ctd == 0 && (input[ctd] == '+' || input[ctd] == '-'))
 			flag = TRUE;
 		else if (!ft_isdigit(input[ctd]))
 			flag = FALSE;
@@ -85,12 +85,6 @@ void	indexer(t_stack *stack)
 	}
 }
 
-void	initialize_stack(t_stack *stack_a)
-{
-	stack_a->head = NULL;
-	stack_a->tail = NULL;
-}
-
 t_bool	save_stack(char **input, t_stack *stack_a)
 {
 	int		ctd;
@@ -111,6 +105,7 @@ t_bool	save_stack(char **input, t_stack *stack_a)
 		}
 		ctd++;
 	}
+	indexer(stack_a);
 	stack_a->size = ctd - 1;
 	return (TRUE);
 }
