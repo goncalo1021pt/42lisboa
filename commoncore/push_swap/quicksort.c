@@ -6,29 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:04:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/23 09:23:28 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:11:08 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
-
-int	medium(t_stack stack, t_node *high)
-{
-	int	max;
-	int	min;
-
-	max = stack.head->value;
-	min = stack.head->value;
-	while (stack.head != high)
-	{
-		if (max < stack.head->value)
-			max = stack.head->value;
-		if (min > stack.head->value)
-			min = stack.head->value;
-		stack.head = stack.head->next;
-	}
-	return ((max + min) / 2);
-}
 
 void	send_pivot(t_stack *stack_a, t_stack *stack_b, t_node *pivot)
 {
@@ -60,20 +42,37 @@ void	restore(t_stack *stack_a, t_stack *stack_b, t_node *top)
 	}
 }
 
-void	recursive_quicksort(int low, int high, t_stack *src, t_stack *dest)
+t_stack *find_stack(t_stack *stack_a, t_stack *stack_b, t_node *find)
 {
-	
+	t_node	*current;
+
+	while (current)
+	{
+		if (current == find)
+			return (stack_a);
+		current = current->next;
+	}
+	return (stack_b);
+}
+
+void	recursive_quicksort(t_node *low, t_node *high, t_stack *stack_a, t_stack *stack_b)
+{
+	t_node	*pivot;
+	t_stack	*current;
+
+	current = find_stack(stack_a, stack_b, low);
+	pivot = find_node(*stack_a, medium(stack_a->head, stack_a->tail));
 }
 
 void	quick_sort(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node	*pivot;
-	t_node	*temp;
 	t_node	*tail;
+	t_node	*temp;
+	t_node	*pivot;
 
 	temp = stack_a->head;
 	tail = stack_a->tail;
-	pivot = find_node(*stack_a, medium(*stack_a, stack_a->tail));
+	pivot = find_node(*stack_a, medium(stack_a->head, stack_a->tail));
 	send_pivot(stack_a, stack_b, pivot);
 	while (temp)
 	{
@@ -85,4 +84,7 @@ void	quick_sort(t_stack *stack_a, t_stack *stack_b)
 			break ;
 		temp = temp->next;
 	}
+	//recursive_quicksort(stack_b->head, stack_b->tail, stack_a, stack_b);
+	pivot = find_last_not_sorted(stack_a);
+	//recursive_quicksort(stack_a->head, pivot, stack_a, stack_b);
 }

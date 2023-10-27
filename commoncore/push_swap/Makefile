@@ -1,4 +1,5 @@
-SRCS = push_swap.c save_stack.c cost.c lists/lists.c lists/swap.c lists/lists2.c
+SRCS =	push_swap.c save_stack.c  quicksort.c \
+		srcs/costs.c srcs/lists.c srcs/swap.c srcs/lists2.c \
 
 NAME = push_swap
 

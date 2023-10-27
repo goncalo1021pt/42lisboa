@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/23 08:57:33 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:17:37 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,31 @@ typedef struct s_next_elements
 	int	cost;
 }	t_next_elements;
 
+//lists
 t_node	*ft_dbl_new(int content);
 void	ft_dbl_add_front(t_stack *stack, t_node *new);
 void	ft_dbl_add_back(t_stack *stack, t_node *new);
 t_node	*ft_dbl_rem_front(t_stack *stack);
 t_node	*ft_dbl_rem_back(t_stack *stack);
 
+//lists2
+void	ft_dbl_clear(t_stack *stack);
+int		ft_dbl_not_equal(t_stack *stack, int content);
+t_node	*find_node(t_stack stack, int value);
+t_bool	is_sorted(t_node *low);
+
+//swap
 void	ft_swap_01(t_stack *stack);
 void	ft_rotate(t_stack *stack);
 void	ft_rev_rotate(t_stack *stack);
 void	ft_push(t_stack *src, t_stack *dest);
 void	ft_dlb_print(t_stack *stack);
 
-void	ft_dbl_clear(t_stack *stack);
-int		ft_dbl_not_equal(t_stack *stack, int content);
-t_node	*find_node(t_stack stack, int value);
-t_bool	is_sorted(t_stack *stack);
-
+//costs
 int		head_cost(t_node *temp, t_node *pivot);
 int		tail_cost(t_node *temp, t_node *pivot);
+int		medium(t_node *low, t_node *high);
+t_node	*find_last_not_sorted(t_stack *stack);
 
 long	ft_atoi_long(char *nptr);
 int		save_stack(char **input, t_stack *stack_a);

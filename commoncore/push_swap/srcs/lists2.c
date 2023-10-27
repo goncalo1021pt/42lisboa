@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 12:26:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/22 16:18:28 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:14:14 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ t_node	*find_node(t_stack stack, int value)
 	return (stack.head);
 }
 
-t_bool	is_sorted(t_stack *stack)
+t_bool	is_sorted(t_node *low)
 {
 	t_node	*temp;
 
-	temp = stack->head;
+	temp = low;
 	while (temp)
 	{
 		if (temp->prev && temp->value < temp->prev->value)

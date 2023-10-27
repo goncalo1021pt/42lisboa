@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:37:21 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/22 16:10:44 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:28:51 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,34 @@ int	valid_input(char *input)
 				flag = FALSE;
 	}
 	return (flag);
+}
+
+void	indexer(t_stack *stack)
+{
+	t_node	*temp;
+	t_node	*temp2;
+	int		ctd;
+
+	temp = stack->head;
+	while (temp)
+	{
+		ctd = 1;
+		temp2 = stack->head;
+		while (temp2)
+		{
+			if (temp2->nbr < temp->nbr)
+				ctd++;
+			temp2 = temp2->next;
+		}
+		temp->value = ctd;
+		temp = temp->next;
+	}
+}
+
+void	initialize_stack(t_stack *stack_a)
+{
+	stack_a->head = NULL;
+	stack_a->tail = NULL;
 }
 
 t_bool	save_stack(char **input, t_stack *stack_a)
