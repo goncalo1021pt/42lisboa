@@ -6,11 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 10:16:26 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/27 17:08:44 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/28 12:52:04 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	ft_swap_01(t_stack *stack)
 {

@@ -1,5 +1,8 @@
-SRCS =	push_swap.c save_stack.c  quicksort.c \
-		srcs/costs.c srcs/lists.c srcs/swap.c srcs/lists2.c \
+S = push_swap save_stack quicksort \
+	lists/costs lists/lists lists/swap \
+	lists/lists2
+
+SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 
 NAME = push_swap
 
@@ -11,7 +14,9 @@ CFLAGS = -Wall -Wextra -Werror
 
 CC = cc
 
-OBJS = $(SRCS:.c=.o)
+OBJS_DIR = objs
+
+OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:srcs/%.c=%.o))
 
 LIBFT_DIR = ./includes/libft
 
@@ -19,17 +24,19 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 all: $(NAME)
 
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) 
+$(OBJS_DIR)/%.o: srcs/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
+	@echo $(NAME) ready!
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
 
 clean:
-	@$(RM) $(OBJS) $(BONUS_OBJS)
+	@$(RM) -r $(OBJS_DIR)
 	@$(MAKE) -C $(LIBFT_DIR) clean --no-print-directory
 
 fclean: clean

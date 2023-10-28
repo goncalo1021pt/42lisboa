@@ -6,11 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 22:13:19 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/27 16:56:42 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/28 13:03:05 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 void	free_all(char **in)
 {
@@ -48,10 +48,12 @@ int	main(int argc, char **argv)
 	{
 		if (!save_stack(argv, &stack_a))
 			write(2, "Error\n", 6);
-		ft_dlb_print(&stack_a);
-		ft_printf("\n");
-		quick_sort(&stack_a, &stack_b);
-		ft_dlb_print(&stack_b);
+		ft_dbl_print(&stack_a);
+		printf("stack a:\n");
+		quicksort_ab(&stack_a, &stack_b);
+		ft_dbl_print(&stack_a);
+		printf("stack b:\n");
+		ft_dbl_print(&stack_b);
 	}
 	ft_dbl_clear(&stack_a);
 	return (0);

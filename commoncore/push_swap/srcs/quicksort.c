@@ -6,11 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:04:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/27 17:06:58 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/28 13:03:12 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 void	send_pivot(t_stack *src, t_stack *dest, t_node *pivot)
 {
@@ -65,28 +65,45 @@ t_stack *find_stack(t_stack *stack_a, t_stack *stack_b, t_node *find)
 	pivot = find_node(*stack_a, medium(stack_a->head, stack_a->tail));
 } */
 
-void	quick_sort(t_stack *stack_a, t_stack *stack_b)
+void	quicksort_ab(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*tail;
-	t_node	*pivot;
+	int		med;
+	int		quarter;
 
-	pivot = find_node(*stack_a, medium(stack_a->head, stack_a->tail));
-	send_pivot(stack_a, stack_b, pivot);
-	tail = stack_a->tail;
-	while (stack_a)
+	while (!is_sorted(stack_a))
 	{
-		if (stack_a->head->value < pivot->value)
-			ft_push(stack_a, stack_b);
-		else
-			ft_rotate(stack_a);
-		if (stack_a->head == tail)
+		med = medium(stack_a->head, stack_a->tail, &quarter);
+		tail = stack_a->tail;
+		while (stack_a->head != tail || stack_a->head->value <= med)
 		{
-			if (stack_a->head->value < pivot->value)
+			if (is_sorted(stack_a))
+				break ;
+			if (stack_a->head->value > med)
+				ft_rotate(stack_a);
+			if (stack_a->head->value <= med)
+			{
+				ft_push(stack_a, stack_b);
+				if (stack_b->head->value <= quarter && stack_b->head->next && stack_b->head->next->value > quarter)
+					ft_rotate(stack_b);
+			}
+		}
+	}	
+}
+
+/* void quicksort_ba(t_stack *stack_a, t_stack *stack_b)
+{
+	while (stack_b->head != NULL)
+	{
+		
+	}
+	
+} */
+
+/* 		if (stack_a->head == tail)
+		{
+			if (stack_a->head->value <= med)
 				ft_push(stack_a, stack_b);
 			break ;
 		}
-	}
-	//recursive_quicksort(stack_b->head, stack_b->tail, stack_a, stack_b);
-	pivot = find_last_not_sorted(stack_a);
-	//recursive_quicksort(stack_a->head, pivot, stack_a, stack_b);
-}
+ */

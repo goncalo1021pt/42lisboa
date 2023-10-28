@@ -6,11 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 08:39:16 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/27 17:08:26 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/28 12:51:49 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	head_cost(t_stack *stack, t_node *pivot)
 {
@@ -42,10 +42,11 @@ int	tail_cost(t_stack *stack, t_node *pivot)
 	return (cost_tail);
 }
 
-int	medium(t_node *low, t_node *high)
+int	medium(t_node *low, t_node *high, int *quarter)
 {
 	int		max;
 	int		min;
+	int		med;
 	t_node	*current;
 
 	current = low;
@@ -59,7 +60,9 @@ int	medium(t_node *low, t_node *high)
 			min = current->value;
 		current = current->next;
 	}
-	return ((max + min) / 2);
+	med = (max + min) / 2;
+	*quarter = med + min / 2;
+	return (med);
 }
 
 t_node	*find_last_not_sorted(t_stack *stack)
@@ -67,7 +70,6 @@ t_node	*find_last_not_sorted(t_stack *stack)
 	t_node	*current;
 
 	current = stack->tail;
-	ft_dlb_print();
 	/* while (current->prev->value < current->value)
 	{
 		current = current->prev;

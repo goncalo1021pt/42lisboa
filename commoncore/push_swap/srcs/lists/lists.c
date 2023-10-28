@@ -6,11 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 13:56:47 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/27 16:37:02 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/28 12:52:09 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 t_node	*ft_dbl_new(int content)
 {

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/27 17:08:53 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/28 12:42:44 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_node	*ft_dbl_rem_back(t_stack *stack);
 void	ft_dbl_clear(t_stack *stack);
 int		ft_dbl_not_equal(t_stack *stack, int content);
 t_node	*find_node(t_stack stack, int value);
-t_bool	is_sorted(t_node *low);
+t_bool	is_sorted(t_stack *stack);
 
 //swap
 void	ft_swap_01(t_stack *stack);
@@ -68,11 +68,11 @@ void	ft_dbl_print(t_stack *stack);
 //costs
 int		head_cost(t_stack *stack, t_node *pivot);
 int		tail_cost(t_stack *stack, t_node *pivot);
-int		medium(t_node *low, t_node *high);
+int		medium(t_node *low, t_node *high, int *quarter);
 t_node	*find_last_not_sorted(t_stack *stack);
 
 int		save_stack(char **input, t_stack *stack_a);
 
-void	quick_sort(t_stack *stack_a, t_stack *stack_b);
+void	quicksort_ab(t_stack *stack_a, t_stack *stack_b);
 
 #endif

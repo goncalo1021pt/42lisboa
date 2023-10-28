@@ -6,11 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 12:26:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/27 11:14:14 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/28 12:52:19 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	ft_dbl_clear(t_stack *stack)
 {
@@ -51,16 +51,39 @@ t_node	*find_node(t_stack stack, int value)
 	return (stack.head);
 }
 
-t_bool	is_sorted(t_node *low)
+t_bool	is_sorted(t_stack *stack)
 {
 	t_node	*temp;
 
-	temp = low;
+	temp = stack->head;
 	while (temp)
 	{
 		if (temp->prev && temp->value < temp->prev->value)
 			return (FALSE);
 		temp = temp->next;
+	}
+	return (TRUE);
+}
+
+t_bool	is_partial_sorted(t_stack *stack)
+{
+	t_node	*temp;
+
+	temp = stack->head;
+	while (temp)
+	{
+		if (temp->prev && temp->value < temp->prev->value)
+		{
+			temp = temp->next;
+			while (temp)
+			{
+				if (temp->value < temp->prev->value)
+					return (FALSE);
+				temp = temp->next;
+			}
+		}
+		else
+			temp = temp->next;
 	}
 	return (TRUE);
 }

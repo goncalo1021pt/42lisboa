@@ -22,10 +22,11 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) 
+	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) 
 
 $(NAME): $(OBJS) 
 	@$(COMPRESS) $(NAME) $(OBJS)
+	@echo libft compiled and ready!
 
 clean:
 	@$(RM) $(OBJS)
