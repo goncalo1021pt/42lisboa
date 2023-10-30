@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:37:21 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/28 13:03:16 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:43:20 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ t_bool	save_stack(char **input, t_stack *stack_a)
 		{
 			node = ft_dbl_new(ft_atoi(input[ctd]));
 			ft_dbl_add_back(stack_a, node);
+			stack_a->size++;
 		}
 		else
 		{

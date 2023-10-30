@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 10:16:26 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/28 12:52:04 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:41:57 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	ft_push(t_stack *src, t_stack *dest)
 	{
 		temp = ft_dbl_rem_front(src);
 		ft_dbl_add_front(dest, temp);
+		src->size--;
+		dest->size++;
 	}
 }
 

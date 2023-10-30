@@ -1,4 +1,4 @@
-S = push_swap save_stack quicksort \
+S = push_swap save_stack quicksort small_sort \
 	lists/costs lists/lists lists/swap \
 	lists/lists2
 

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 12:26:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/28 12:52:19 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/29 17:29:51 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_bool	is_sorted(t_stack *stack)
 	temp = stack->head;
 	while (temp)
 	{
-		if (temp->prev && temp->value < temp->prev->value)
+		if (temp->prev && temp->value != temp->prev->value + 1)
 			return (FALSE);
 		temp = temp->next;
 	}

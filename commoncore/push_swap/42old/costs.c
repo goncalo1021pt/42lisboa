@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:26:13 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/20 13:00:30 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:57:53 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_bool	not_in_array(int nbr, int i, int *array)
 	return (TRUE);
 }
 
-void	get_small_4(t_stack stack, t_next_elements *elem)
+void	get_small(t_stack stack, t_next_elements *elem)
 {
 	int		ctd;
 	int		small;
