@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 22:13:19 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/30 10:42:43 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:43:19 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@ void	initialize_stack(t_stack *stack_a, t_stack *stack_b)
 	stack_b->size = 0;
 }
 
+void	sort(t_stack *stack_a, t_stack *stack_b)
+{
+	int	min;
+	int	max;
+
+	min_max(stack_a, &min, &max);
+	quicksort_ab(stack_a, stack_b, min, max);
+	printf("stack a:\n");
+	ft_dbl_print(stack_a);
+	//ft_dbl_clear(stack_a);
+	//ft_dbl_clear(stack_b);
+
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
@@ -41,22 +55,18 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		read = ft_split(argv[1], ' ');
-		if (!read && !save_stack(argv, &stack_a))
+		printf("teste\n");
+		if (!read && !save_stack(read, &stack_a, 0))
 			write(2, "Error\n", 6);
 		if (read)
 			free_all(read);
 	}
 	else if (argc > 2)
 	{
-		if (!save_stack(argv, &stack_a))
+		if (!save_stack(argv, &stack_a, 1))
 			write(2, "Error\n", 6);
-		ft_dbl_print(&stack_a);
-		printf("stack a:\n");
-		quicksort_ab(&stack_a, &stack_b);
-		ft_dbl_print(&stack_a);
-		printf("stack b:\n");
-		ft_dbl_print(&stack_b);
+		else
+			sort(&stack_a, &stack_b);
 	}
-	ft_dbl_clear(&stack_a);
 	return (0);
 }

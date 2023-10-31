@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/30 14:59:41 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:40:49 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define TRUE 1
 # define FALSE 0
 # define MAX_MED 31
+# define ASCENDING 1
+# define DESCENDING 0 
 
 typedef int	t_bool;
 
@@ -36,6 +38,7 @@ typedef struct s_node
 typedef struct s_stack
 {
 	int		size;
+	int		order;
 	t_node	*head;
 	t_node	*tail;
 }	t_stack;
@@ -43,7 +46,7 @@ typedef struct s_stack
 typedef struct s_val
 {
 	int	med[MAX_MED];
-	int	qurter[MAX_MED];
+	int	quarter[MAX_MED];
 	int	mc;
 }	t_val;
 
@@ -70,14 +73,17 @@ void	ft_dbl_print(t_stack *stack);
 //costs
 int		head_cost(t_stack *stack, t_node *small);
 int		tail_cost(t_stack *stack, t_node *pivot);
-void	medium(t_node *low, t_node *high, t_val *val);
+void	medium(int min, int max, t_val *val);
+void	min_max(t_stack *stack, int *min, int *max);
 t_node	*find_last_not_sorted(t_stack *stack);
 
-int		save_stack(char **input, t_stack *stack_a);
+int		save_stack(char **input, t_stack *stack_a, int flag);
 
 //small sort
 void	small_sort(t_stack *stack_a, t_stack *stack_b);
 
-void	quicksort_ab(t_stack *stack_a, t_stack *stack_b);
+//quick sort
+void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max);
+void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val);
 
 #endif

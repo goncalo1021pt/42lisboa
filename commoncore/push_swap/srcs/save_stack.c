@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:37:21 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/30 10:43:20 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:40:29 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ void	indexer(t_stack *stack)
 	}
 }
 
-t_bool	save_stack(char **input, t_stack *stack_a)
+t_bool	save_stack(char **input, t_stack *stack_a, int flag)
 {
 	int		ctd;
 	t_node	*node;
 
-	ctd = 1;
+	ctd = flag;
 	while (input[ctd])
 	{
 		if (valid_input(input[ctd]) && ft_dbl_not_equal(stack_a, ft_atoi(input[ctd])))

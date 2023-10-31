@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 08:39:16 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/30 15:00:45 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:51:37 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,29 @@ int	tail_cost(t_stack *stack, t_node *pivot)
 	return (cost_tail);
 }
 
-void	medium(t_node *low, t_node *high, t_val *val)
+void	medium(int min, int max, t_val *val)
 {
-	int		max;
-	int		min;
-	t_node	*current;
 
 	val->mc++;
-	current = low;
-	max = low->value;
-	min = low->value;
-	while (current != high)
+	val->med[val->mc] = (max + min) / 2;
+	val->quarter[val->mc] = (val->med[val->mc] + min) / 2;
+}
+
+void	min_max(t_stack *stack, int *min, int *max)
+{
+	t_node	*current;
+
+	current = stack->head;
+	*min = stack->head->value;
+	*max = stack->head->value;
+	while (current)
 	{
-		if (max < current->value)
-			max = current->value;
-		if (min > current->value)
-			min = current->value;
+		if (*min > current->value)
+			*min = current->value;
+		else if (*max < current->value)
+			*max = current->value;
 		current = current->next;
 	}
-	val->med[val->mc] = (max + min) / 2;
-	val->qurter[val->mc] = (val->med[val->mc] + min) / 2;
 }
 
 t_node	*find_last_not_sorted(t_stack *stack)
