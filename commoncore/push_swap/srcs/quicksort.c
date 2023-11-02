@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:04:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/31 17:53:14 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/02 12:32:24 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max)
 			if (is_sorted(stack_a))
 				break ;
 			if (stack_a->head->value > val.med[val.mc])
-				ft_rotate(stack_a);
+				interpreter(stack_a, stack_b, "ra");
 			if (stack_a->head->value <= val.med[val.mc])
 			{
-				ft_push(stack_a, stack_b);
+				interpreter(stack_a, stack_b, "pb");
 				if (stack_b->head->value < val.quarter[val.mc] && stack_b->size > 1)
-					ft_rotate(stack_b);				
+					interpreter(stack_a, stack_b, "rb");
 			}
 		}
 		min_max(stack_a, &min, &max);
@@ -105,7 +105,7 @@ void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val)
 	while (val->mc > -1)
 	{ 
 		while (stack_b->size && stack_b->head->value >= val->quarter[val->mc])
-			ft_push(stack_b, stack_a);
+			interpreter(stack_a, stack_b, "pa");
 		quicksort_ab(stack_a, stack_b, val->quarter[val->mc], val->med[val->mc]);
 		if (val->mc - 1 < 0)
 			temp = 1;
@@ -114,8 +114,8 @@ void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val)
 		while (stack_b->size && stack_b->tail->value >= temp)
 		{
 			if (val->mc > 0)
-				ft_rev_rotate(stack_b);
-			ft_push(stack_b, stack_a);
+				interpreter(stack_a, stack_b, "rrb");
+			interpreter(stack_a, stack_b, "pa");
 		}
 		quicksort_ab(stack_a, stack_b, temp, val->quarter[val->mc] - 1);
 		val->mc--;

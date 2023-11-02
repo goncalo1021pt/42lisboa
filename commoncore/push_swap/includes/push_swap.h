@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/31 18:40:49 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/02 12:11:35 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int		save_stack(char **input, t_stack *stack_a, int flag);
 void	small_sort(t_stack *stack_a, t_stack *stack_b);
 
 //quick sort
+void	interpreter(t_stack *stack_a, t_stack *stack_b, char *str);
 void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max);
 void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val);
 

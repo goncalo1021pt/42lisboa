@@ -6,26 +6,26 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:44:07 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/30 13:04:08 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/02 12:23:19 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sort_3(t_stack *stack)
+void	sort_3(t_stack *stack_a, t_stack *stack_b)
 {
-	if (stack->head->value > stack->head->next->value)
+	if (stack_a->head->value > stack_a->head->next->value)
 	{
-		if (stack->head->value > stack->tail->value)
-			ft_rotate(stack);
-		if (stack->head->value > stack->head->next->value)
-			ft_swap_01(stack);
+		if (stack_a->head->value > stack_a->tail->value)
+			interpreter(stack_a, stack_b, "ra");
+		if (stack_a->head->value > stack_a->head->next->value)
+			interpreter(stack_a, stack_b, "sa");
 	}
-	else if (stack->tail->value < stack->tail->prev->value)
+	else if (stack_a->tail->value < stack_a->tail->prev->value)
 	{
-		ft_rev_rotate(stack);
-		if (stack->head->value > stack->head->next->value)
-			ft_swap_01(stack);
+		interpreter(stack_a, stack_b, "rra");
+		if (stack_a->head->value > stack_a->head->next->value)
+			interpreter(stack_a, stack_b, "sa");
 	}
 }
 
@@ -56,13 +56,13 @@ void	small_sort(t_stack *stack_a, t_stack *stack_b)
 		small = get_small(stack_a);
 		if (stack_a->size / 2 > head_cost(stack_a, small))
 			while (stack_a->head != small)
-				ft_rotate(stack_a);
+				interpreter(stack_a, stack_b, "ra");
 		else
 			while (stack_a->head != small)
-				ft_rev_rotate(stack_a);
-		ft_push(stack_a, stack_b);
+				interpreter(stack_a, stack_b, "rra");
+		interpreter(stack_a, stack_b, "pb");
 	}
-	sort_3(stack_a);
+	sort_3(stack_a, stack_b);
 	while (stack_a->head != first)
-		ft_push(stack_b, stack_a);
+		interpreter(stack_a, stack_b, "pa");
 }
