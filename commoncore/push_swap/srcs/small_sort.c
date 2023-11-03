@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:44:07 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/02 12:23:19 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:18:09 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,40 +29,28 @@ void	sort_3(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-t_node	*get_small(t_stack *stack)
-{
-	t_node	*small;
-	t_node	*current;
-
-	small = stack->head;
-	current = stack->head;
-	while (current != NULL)
-	{
-		if (small->value > current->value)
-			small = current;
-		current = current->next;
-	}
-	return (small);
-}
-
 void	small_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*small;
 	t_node	*first;
 
+	ft_putendl_fd("start", 1);
+	if (stack_a->size == 3 && stack_b->size == 0)
+		sort_3(stack_a, stack_b);
 	first = get_small(stack_a);
-	while (!is_sorted(stack_a) && stack_a->size > 3)
+	while (!is_sorted(stack_a))
 	{
 		small = get_small(stack_a);
 		if (stack_a->size / 2 > head_cost(stack_a, small))
-			while (stack_a->head != small)
+			while (!is_sorted(stack_a) && stack_a->head != small)
 				interpreter(stack_a, stack_b, "ra");
 		else
-			while (stack_a->head != small)
+			while (!is_sorted(stack_a) && stack_a->head != small)
 				interpreter(stack_a, stack_b, "rra");
-		interpreter(stack_a, stack_b, "pb");
+		if (!is_sorted(stack_a))
+			interpreter(stack_a, stack_b, "pb");
 	}
-	sort_3(stack_a, stack_b);
 	while (stack_a->head != first)
 		interpreter(stack_a, stack_b, "pa");
+	ft_putendl_fd("end", 1);
 }

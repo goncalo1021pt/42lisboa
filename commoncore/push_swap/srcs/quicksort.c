@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:04:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/02 12:32:24 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:44:56 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,33 +46,25 @@ void	interpreter(t_stack *stack_a, t_stack *stack_b, char *str)
 		ft_rev_rotate(stack_b);
 }
 
-/* void	restore(t_stack *stack, t_node *top)
+void	medium(int min, int max, t_val *val)
 {
-	if (head_cost(stack, top) < tail_cost(stack, top))
-	{
-		while (stack->head != top)
-			ft_rotate(stack);
-	}
-	else
-	{
-		while (stack->head != top)
-			ft_rev_rotate(stack);
-	}
-} */
+
+	val->mc++;
+	val->med[val->mc] = (max + min) / 2;
+	val->quarter[val->mc] = (val->med[val->mc] + min) / 2;
+}
 
 void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max)
 {
 	t_node	*tail;
 	t_val	val;
-	int init_min;
-	int init_max;
+	int		big;
 
-	init_max = max;
-	init_min = min;
 	val.mc = -1;
 	while (!is_sorted(stack_a))
 	{
-		if (stack_a->size <= 10 || init_max - init_min < 10)
+		ft_printf("max = %d, min = %d\n", max, min);
+		if (stack_a->size <= 10 || max - min < 10)
 		{
 			small_sort(stack_a, stack_b);
 			break ;
@@ -81,7 +73,7 @@ void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max)
 		tail = stack_a->tail;
 		while ((stack_a->head != tail && stack_b->head != tail && stack_b->tail != tail) || stack_a->head->value < val.med[val.mc])
 		{
-			if (is_sorted(stack_a))
+			if (is_sorted(stack_a) || stack_a->head->value > max)
 				break ;
 			if (stack_a->head->value > val.med[val.mc])
 				interpreter(stack_a, stack_b, "ra");
@@ -91,14 +83,18 @@ void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max)
 				if (stack_b->head->value < val.quarter[val.mc] && stack_b->size > 1)
 					interpreter(stack_a, stack_b, "rb");
 			}
+		 	big = get_big(stack_a)->value;
 		}
-		min_max(stack_a, &min, &max);
+		if (max != big)
+			while (stack_a->tail->value != big)
+				interpreter(stack_a, stack_b, "rra");
+		min = get_small(stack_a)->value;
 	}
-	if (val.mc != -1)
-		quicksort_ba(stack_a, stack_b, &val);
+	/*if (val.mc != -1)
+		quicksort_ba(stack_a, stack_b, &val);*/
 }
 
-void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val)
+/* void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val)
 {
 	int	temp;
 
@@ -108,16 +104,19 @@ void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val)
 			interpreter(stack_a, stack_b, "pa");
 		quicksort_ab(stack_a, stack_b, val->quarter[val->mc], val->med[val->mc]);
 		if (val->mc - 1 < 0)
-			temp = 1;
+			temp = stack_b->head->nbr;
 		else
 			temp = val->med[val->mc - 1];
 		while (stack_b->size && stack_b->tail->value >= temp)
 		{
-			if (val->mc > 0)
+			ft_printf("%d\n", temp);
+			if (stack_b->tail->value > temp)
+			{
 				interpreter(stack_a, stack_b, "rrb");
-			interpreter(stack_a, stack_b, "pa");
+				interpreter(stack_a, stack_b, "pa");
+			}
 		}
 		quicksort_ab(stack_a, stack_b, temp, val->quarter[val->mc] - 1);
 		val->mc--;
 	}
-}
+} */

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 08:39:16 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/31 16:51:37 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:24:26 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,6 @@ int	tail_cost(t_stack *stack, t_node *pivot)
 	return (cost_tail);
 }
 
-void	medium(int min, int max, t_val *val)
-{
-
-	val->mc++;
-	val->med[val->mc] = (max + min) / 2;
-	val->quarter[val->mc] = (val->med[val->mc] + min) / 2;
-}
-
 void	min_max(t_stack *stack, int *min, int *max)
 {
 	t_node	*current;
@@ -67,14 +59,34 @@ void	min_max(t_stack *stack, int *min, int *max)
 	}
 }
 
-t_node	*find_last_not_sorted(t_stack *stack)
+t_node	*get_small(t_stack *stack)
 {
+	t_node	*small;
 	t_node	*current;
 
-	current = stack->tail;
-	/* while (current->prev->value < current->value)
+	small = stack->head;
+	current = stack->head;
+	while (current != NULL)
 	{
-		current = current->prev;
-	} */
-	return (current->prev);
+		if (small->value > current->value)
+			small = current;
+		current = current->next;
+	}
+	return (small);
+}
+
+t_node	*get_big(t_stack *stack)
+{
+	t_node	*big;
+	t_node	*current;
+
+	big = stack->head;
+	current = stack->head;
+	while (current != NULL)
+	{
+		if (big->value < current->value)
+			big = current;
+		current = current->next;
+	}
+	return (big);
 }

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 22:13:19 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/02 12:33:22 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/03 10:33:58 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	initialize_stack(t_stack *stack_a, t_stack *stack_b)
 	stack_a->tail = NULL;
 	stack_b->head = NULL;
 	stack_b->tail = NULL;
+	stack_a->order = ASCENDING;
+	stack_b->order = DESCENDING;
 	stack_a->size = 0;
 	stack_b->size = 0;
 }

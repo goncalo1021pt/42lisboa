@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/02 12:11:35 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:26:56 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void	ft_dbl_print(t_stack *stack);
 //costs
 int		head_cost(t_stack *stack, t_node *small);
 int		tail_cost(t_stack *stack, t_node *pivot);
-void	medium(int min, int max, t_val *val);
 void	min_max(t_stack *stack, int *min, int *max);
-t_node	*find_last_not_sorted(t_stack *stack);
+t_node	*get_small(t_stack *stack);
+t_node	*get_big(t_stack *stack);
 
 int		save_stack(char **input, t_stack *stack_a, int flag);
 
@@ -84,6 +84,7 @@ void	small_sort(t_stack *stack_a, t_stack *stack_b);
 
 //quick sort
 void	interpreter(t_stack *stack_a, t_stack *stack_b, char *str);
+void	medium(int min, int max, t_val *val);
 void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max);
 void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val);
 
