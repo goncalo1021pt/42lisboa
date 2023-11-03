@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/03 11:26:56 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:43:37 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ typedef struct s_stack
 
 typedef struct s_val
 {
-	int	med[MAX_MED];
-	int	quarter[MAX_MED];
-	int	mc;
+	int	med;
+	int	quarter;
 }	t_val;
 
 //lists
@@ -86,6 +85,6 @@ void	small_sort(t_stack *stack_a, t_stack *stack_b);
 void	interpreter(t_stack *stack_a, t_stack *stack_b, char *str);
 void	medium(int min, int max, t_val *val);
 void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max);
-void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val);
-
+void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, int quarter);
+//void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val);
 #endif

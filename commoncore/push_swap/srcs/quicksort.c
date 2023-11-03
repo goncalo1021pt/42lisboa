@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:04:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/03 13:44:56 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:20:28 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,8 @@ void	interpreter(t_stack *stack_a, t_stack *stack_b, char *str)
 void	medium(int min, int max, t_val *val)
 {
 
-	val->mc++;
-	val->med[val->mc] = (max + min) / 2;
-	val->quarter[val->mc] = (val->med[val->mc] + min) / 2;
+	val->med = (max + min) / 2;
+	val->quarter = (val->med + min) / 2;
 }
 
 void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max)
@@ -60,7 +59,6 @@ void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max)
 	t_val	val;
 	int		big;
 
-	val.mc = -1;
 	while (!is_sorted(stack_a))
 	{
 		ft_printf("max = %d, min = %d\n", max, min);
@@ -71,27 +69,85 @@ void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max)
 		}
 		medium(min, max, &val);
 		tail = stack_a->tail;
-		while ((stack_a->head != tail && stack_b->head != tail && stack_b->tail != tail) || stack_a->head->value < val.med[val.mc])
+		while ((stack_a->head != tail && stack_b->head != tail && stack_b->tail != tail) || stack_a->head->value < val.med)
 		{
 			if (is_sorted(stack_a) || stack_a->head->value > max)
 				break ;
-			if (stack_a->head->value > val.med[val.mc])
+			if (stack_a->head->value > val.med)
 				interpreter(stack_a, stack_b, "ra");
-			if (stack_a->head->value <= val.med[val.mc])
+			if (stack_a->head->value <= val.med)
 			{
 				interpreter(stack_a, stack_b, "pb");
-				if (stack_b->head->value < val.quarter[val.mc] && stack_b->size > 1)
+				if (stack_b->head->value < val.quarter && stack_b->size > 1)
 					interpreter(stack_a, stack_b, "rb");
 			}
-		 	big = get_big(stack_a)->value;
+			big = get_big(stack_a)->value;
 		}
 		if (max != big)
 			while (stack_a->tail->value != big)
 				interpreter(stack_a, stack_b, "rra");
 		min = get_small(stack_a)->value;
 	}
+	if (stack_b->size > 0)
+		quicksort_ba(stack_a, stack_b, val.quarter);
 	/*if (val.mc != -1)
 		quicksort_ba(stack_a, stack_b, &val);*/
+}
+
+void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, int quarter)
+{
+	int		max;
+	int		min;
+	t_node	*current;
+	while (quarter > stack_b->head->value || stack_b->tail->value < quarter)
+	{
+		min = stack_b->head->value;
+		max = stack_b->head->value;
+		current = stack_b->head;
+		while (current && current->value > stack_b->tail->value)
+		{
+			ft_printf("teste")
+			if (current->value > max)
+				max = current->value;
+			if (current->value < min)
+				min = current->value;
+			current = current->next;
+		}
+		while (stack_b->head->value > stack_b->tail->value)
+			interpreter(stack_a, stack_b, "pa");
+		quicksort_ab(stack_a, stack_b, min, max);
+		min = stack_b->tail->value;
+		max = stack_b->tail->value;
+		current = stack_b->tail;
+		while (current && stack_b->tail->value > stack_b->head->value)
+		{
+			if (current->value > max)
+				max = current->value;
+			if (current->value < min)
+				min = current->value;
+			current = current->prev;
+		}
+		while (stack_b->tail->value > stack_b->head->value)
+		{
+			interpreter(stack_a, stack_b, "rrb");
+			interpreter(stack_a, stack_b, "pa");
+		}
+		quicksort_ab(stack_a, stack_b, min, max);
+	}
+	min = stack_b->head->value;
+	max = stack_b->head->value;
+	current = stack_b->head;
+	while (current && stack_b->head->value > stack_b->tail->value)
+	{
+		if (current->value > max)
+			max = current->value;
+		if (current->value < min)
+			min = current->value;
+		current = current->next;
+	}
+	while (stack_b->size > 0)
+		interpreter(stack_a, stack_b, "pa");
+	quicksort_ab(stack_a, stack_b, min, max);
 }
 
 /* void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val)
