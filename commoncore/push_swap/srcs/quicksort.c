@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:04:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/03 15:20:28 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/05 13:44:35 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,47 +94,72 @@ void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max)
 		quicksort_ba(stack_a, stack_b, &val);*/
 }
 
+void	big_quarter(t_stack *stack_a, t_stack *stack_b)
+{
+	int		min;
+	int		max;
+	t_node	*current;
+
+	min = stack_b->head->value;
+	max = stack_b->head->value;
+	current = stack_b->head;
+	while (current && current->value > stack_b->tail->value)
+	{
+		if (current->value > max)
+			max = current->value;
+		if (current->value < min)
+			min = current->value;
+		current = current->next;
+	}
+	while (stack_b->head->value > stack_b->tail->value)
+		interpreter(stack_a, stack_b, "pa");
+	if (!is_sorted(stack_a))
+		quicksort_ab(stack_a, stack_b, min, max);
+}
+
+void	small_qurter(t_stack *stack_a, t_stack *stack_b)
+{
+	int		min;
+	int		max;
+	int		flag;
+	t_node	*current;
+
+	min = stack_b->tail->value;
+	max = stack_b->tail->value;
+	current = stack_b->tail;
+	flag = 0;
+	ft_printf("tail max = %d tail = %d\n", max, min);
+	ft_printf("head = %d\n", stack_b->head->value);
+	while (current && stack_b->tail->value > stack_b->head->value)
+	{
+		if (current->value > max)
+			max = current->value;
+		if (current->value < min)
+			min = current->value;
+		current = current->prev;
+	}
+	while (stack_b->tail->value > stack_b->head->value)
+	{
+		interpreter(stack_a, stack_b, "rrb");
+		interpreter(stack_a, stack_b, "pa");
+		flag = 1;
+	}
+	ft_printf("max = %d\nmin = %d\n", max, min);
+	if (flag == 1)
+		quicksort_ab(stack_a, stack_b, min, max);
+}
+
 void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, int quarter)
 {
-	int		max;
-	int		min;
-	t_node	*current;
-	while (quarter > stack_b->head->value || stack_b->tail->value < quarter)
-	{
-		min = stack_b->head->value;
-		max = stack_b->head->value;
-		current = stack_b->head;
-		while (current && current->value > stack_b->tail->value)
-		{
-			ft_printf("teste")
-			if (current->value > max)
-				max = current->value;
-			if (current->value < min)
-				min = current->value;
-			current = current->next;
-		}
-		while (stack_b->head->value > stack_b->tail->value)
-			interpreter(stack_a, stack_b, "pa");
-		quicksort_ab(stack_a, stack_b, min, max);
-		min = stack_b->tail->value;
-		max = stack_b->tail->value;
-		current = stack_b->tail;
-		while (current && stack_b->tail->value > stack_b->head->value)
-		{
-			if (current->value > max)
-				max = current->value;
-			if (current->value < min)
-				min = current->value;
-			current = current->prev;
-		}
-		while (stack_b->tail->value > stack_b->head->value)
-		{
-			interpreter(stack_a, stack_b, "rrb");
-			interpreter(stack_a, stack_b, "pa");
-		}
-		quicksort_ab(stack_a, stack_b, min, max);
-	}
-	min = stack_b->head->value;
+	(void)quarter;
+	//while (quarter > stack_b->head->value || stack_b->tail->value < quarter)
+	//{
+		big_quarter(stack_a, stack_b);
+		if(stack_b->head->value < quarter)
+			small_qurter(stack_a, stack_b);
+		else
+	//}
+	/*min = stack_b->head->value;
 	max = stack_b->head->value;
 	current = stack_b->head;
 	while (current && stack_b->head->value > stack_b->tail->value)
@@ -147,7 +172,7 @@ void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, int quarter)
 	}
 	while (stack_b->size > 0)
 		interpreter(stack_a, stack_b, "pa");
-	quicksort_ab(stack_a, stack_b, min, max);
+	quicksort_ab(stack_a, stack_b, min, max);*/
 }
 
 /* void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val)
