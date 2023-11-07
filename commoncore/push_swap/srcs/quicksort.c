@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:04:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/03 15:20:28 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:49:51 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,13 @@ void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max)
 				interpreter(stack_a, stack_b, "rra");
 		min = get_small(stack_a)->value;
 	}
-	if (stack_b->size > 0)
-		quicksort_ba(stack_a, stack_b, val.quarter);
+	/*if (stack_b->size > 0)
+		quicksort_ba(stack_a, stack_b, val.quarter);*/
 	/*if (val.mc != -1)
 		quicksort_ba(stack_a, stack_b, &val);*/
 }
 
-void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, int quarter)
+/*void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, int quarter)
 {
 	int		max;
 	int		min;
@@ -106,7 +106,7 @@ void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, int quarter)
 		current = stack_b->head;
 		while (current && current->value > stack_b->tail->value)
 		{
-			ft_printf("teste")
+			ft_printf("teste");
 			if (current->value > max)
 				max = current->value;
 			if (current->value < min)
@@ -148,14 +148,117 @@ void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, int quarter)
 	while (stack_b->size > 0)
 		interpreter(stack_a, stack_b, "pa");
 	quicksort_ab(stack_a, stack_b, min, max);
+}*/
+
+/* void	all_costs(t_stack *stack_a, t_stack *stack_b)
+{
+	t_node	*temp;
+	int		head;
+
+	temp = stack_a->head;
+	while (temp)
+	{
+		temp->cost.head = head_cost(stack_a, temp);
+		temp->cost.tail = tail_cost(stack_a, temp);
+		temp = temp->next;
+	}
+	temp = stack_b->head;
+	while (temp)
+	{
+		temp->cost.head = head_cost(stack_b, temp);
+		temp->cost.head = tail_cost(stack_b, temp);
+		temp->cost.best = best_friend(stack_a, temp);
+		temp = temp->next;
+	}
 }
+
+t_node *best_friend(t_stack *stack_a, t_node *node)
+{
+	t_node	*temp;
+	t_node	*best;
+
+	temp = stack_a->head;
+	best = temp;
+	while (temp)
+	{
+		if (temp->value > node->value && temp->value < best->value)
+			best = temp;
+		temp = temp->next;
+	}
+	return (best);
+}
+
+t_node	*total_cost(t_stack *stack_a, t_stack *stack_b)
+{
+	t_node	*current;
+	t_node	*lowest;
+	int head_cost;
+	int tail_cost;
+	int diff_cost;
+
+	current = stack_b->head;
+	lowest = current;
+	while (current != NULL)
+	{
+		if (current->cost.head > current->cost.best->cost.head)
+			head_cost = current->cost.head;
+		else
+			head_cost = current->cost.best->cost.head;
+		if (current->cost.tail > current->cost.best->cost.tail)
+			tail_cost = current->cost.tail;
+		else
+			tail_cost = current->cost.best->cost.tail;
+
+
+		if (current->cost.head < current->cost.tail)
+			diff_cost = current->cost.head;
+		else
+			diff_cost = current->cost.tail;
+		if(current->cost.best->cost.head < current->cost.best->cost.tail)
+			diff_cost += current->cost.best->cost.head;
+		else
+			diff_cost += current->cost.best->cost.tail;
+
+
+		if (head_cost < diff_cost)
+		{
+				current->cost.direction = 'h';
+				current->cost.total = head_cost;
+		}
+		else if(tail_cost < diff_cost)
+		{
+				current->cost.direction = 't';
+				current->cost.total = tail_cost;
+		}
+		else
+		{
+			current->cost.direction = 'd';
+			current->cost.total = diff_cost;
+		}
+		if (lowest->cost.total > current->cost.total)
+			lowest = current;
+		current = current->next;
+	}
+	return (lowest);
+}
+
+void	push_b(t_stack *stack_a, t_stack *stack_b)
+{
+	t_node	*lowest;
+	while (stack_b->size > 0)
+	{
+		lowest = total_cost(stack_a, stack_b);
+
+	}
+
+} */
 
 /* void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val)
 {
 	int	temp;
 
 	while (val->mc > -1)
-	{ 
+	{
 		while (stack_b->size && stack_b->head->value >= val->quarter[val->mc])
 			interpreter(stack_a, stack_b, "pa");
 		quicksort_ab(stack_a, stack_b, val->quarter[val->mc], val->med[val->mc]);

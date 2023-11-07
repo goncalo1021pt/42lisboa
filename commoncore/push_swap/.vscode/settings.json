@@ -3,5 +3,6 @@
 		"push_swap.h": "c",
 		"limits": "c",
 		"type_traits": "c"
-	}
+	},
+	"cmake.configureOnOpen": true
 }
