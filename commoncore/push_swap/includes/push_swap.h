@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/03 14:43:37 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:54:47 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,24 @@
 # define FALSE 0
 # define MAX_MED 31
 # define ASCENDING 1
-# define DESCENDING 0 
+# define DESCENDING 0
 
 typedef int	t_bool;
+
+typedef struct s_cost
+{
+	int		head;
+	int		tail;
+	int		total;
+	char	direction;
+	struct s_node *best;
+}	t_cost;
 
 typedef struct s_node
 {
 	int				value;
 	int				nbr;
+	t_cost			cost;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
