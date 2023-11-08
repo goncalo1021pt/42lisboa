@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/07 23:14:00 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:37:55 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,14 @@ void	small_sort(t_stack *stack_a, t_stack *stack_b);
 
 //quick sort
 void	interpreter(t_stack *stack_a, t_stack *stack_b, char *str);
+void	mutual_interpreter(t_stack *stack_a, t_stack *stack_b, char *str);
 void	medium(int min, int max, t_val *val);
 void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max);
-void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, int quarter);
+
+//send cost
 void	sort_ba(t_stack *stack_a, t_stack *stack_b);
-//void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val);
+void	head_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest);
+void	tail_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest);
+void	diff_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest);
+
 #endif
