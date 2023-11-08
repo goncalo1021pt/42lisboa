@@ -6,13 +6,13 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:37:21 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/31 18:40:29 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:50:02 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-long	ft_atoi_long(char *nptr)
+static long	ft_atoi_long(char *nptr)
 {
 	int		ctd;
 	int		signal;
@@ -34,7 +34,7 @@ long	ft_atoi_long(char *nptr)
 	return (signal * result);
 }
 
-int	valid_input(char *input)
+static int	valid_input(char *input)
 {
 	int		len;
 	t_bool	flag;
@@ -63,7 +63,7 @@ int	valid_input(char *input)
 	return (flag);
 }
 
-void	indexer(t_stack *stack)
+static void	indexer(t_stack *stack)
 {
 	t_node	*temp;
 	t_node	*temp2;

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:04:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/07 21:11:45 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/08 00:11:27 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ void	interpreter(t_stack *stack_a, t_stack *stack_b, char *str)
 		ft_rotate(stack_b);
 	else if (!ft_strncmp(str, "rrb", 3) && ft_printf("rrb\n"))
 		ft_rev_rotate(stack_b);
+	else if (!ft_strncmp(str, "rrr", 3) && ft_printf("rrr\n"))
+	{
+		ft_rev_rotate(stack_a);
+		ft_rev_rotate(stack_b);
+	}
+	else if (!ft_strncmp(str, "rr", 2) && ft_printf("rr\n"))
+	{
+		ft_rotate(stack_a);
+		ft_rotate(stack_b);
+	}
 }
 
 void	medium(int min, int max, t_val *val)
@@ -61,7 +71,6 @@ void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max)
 
 	while (!is_sorted(stack_a))
 	{
-		ft_printf("max = %d, min = %d\n", max, min);
 		if (stack_a->size <= 10 || max - min < 10)
 		{
 			small_sort(stack_a, stack_b);
@@ -88,6 +97,8 @@ void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max)
 				interpreter(stack_a, stack_b, "rra");
 		min = get_small(stack_a)->value;
 	}
+	if(stack_b->size > 0)
+		sort_ba(stack_a, stack_b);
 	/*if (stack_b->size > 0)
 		quicksort_ba(stack_a, stack_b, val.quarter);*/
 	/*if (val.mc != -1)
@@ -165,108 +176,57 @@ void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max)
 	quicksort_ab(stack_a, stack_b, min, max);
 }*/
 
-/* void	all_costs(t_stack *stack_a, t_stack *stack_b)
-{
-	t_node	*temp;
-	int		head;
-
-	temp = stack_a->head;
-	while (temp)
-	{
-		temp->cost.head = head_cost(stack_a, temp);
-		temp->cost.tail = tail_cost(stack_a, temp);
-		temp = temp->next;
-	}
-	temp = stack_b->head;
-	while (temp)
-	{
-		temp->cost.head = head_cost(stack_b, temp);
-		temp->cost.head = tail_cost(stack_b, temp);
-		temp->cost.best = best_friend(stack_a, temp);
-		temp = temp->next;
-	}
-}
-
-t_node *best_friend(t_stack *stack_a, t_node *node)
-{
-	t_node	*temp;
-	t_node	*best;
-
-	temp = stack_a->head;
-	best = temp;
-	while (temp)
-	{
-		if (temp->value > node->value && temp->value < best->value)
-			best = temp;
-		temp = temp->next;
-	}
-	return (best);
-}
-
-t_node	*total_cost(t_stack *stack_a, t_stack *stack_b)
-{
-	t_node	*current;
-	t_node	*lowest;
-	int head_cost;
-	int tail_cost;
-	int diff_cost;
-
-	current = stack_b->head;
-	lowest = current;
-	while (current != NULL)
-	{
-		if (current->cost.head > current->cost.best->cost.head)
-			head_cost = current->cost.head;
-		else
-			head_cost = current->cost.best->cost.head;
-		if (current->cost.tail > current->cost.best->cost.tail)
-			tail_cost = current->cost.tail;
-		else
-			tail_cost = current->cost.best->cost.tail;
-
-
-		if (current->cost.head < current->cost.tail)
-			diff_cost = current->cost.head;
-		else
-			diff_cost = current->cost.tail;
-		if(current->cost.best->cost.head < current->cost.best->cost.tail)
-			diff_cost += current->cost.best->cost.head;
-		else
-			diff_cost += current->cost.best->cost.tail;
-
-
-		if (head_cost < diff_cost)
-		{
-				current->cost.direction = 'h';
-				current->cost.total = head_cost;
-		}
-		else if(tail_cost < diff_cost)
-		{
-				current->cost.direction = 't';
-				current->cost.total = tail_cost;
-		}
-		else
-		{
-			current->cost.direction = 'd';
-			current->cost.total = diff_cost;
-		}
-		if (lowest->cost.total > current->cost.total)
-			lowest = current;
-		current = current->next;
-	}
-	return (lowest);
-}
-
-void	push_b(t_stack *stack_a, t_stack *stack_b)
+void	sort_ba(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*lowest;
+	ft_printf("test\n");
 	while (stack_b->size > 0)
 	{
 		lowest = total_cost(stack_a, stack_b);
-
+		//ft_printf("lowest = %c\n", lowest->cost.direction);
+		//ft_printf("lowest = %d\n", lowest->value);
+		//ft_printf("best friend = %d\n", lowest->cost.best->value);
+		if (lowest->cost.direction == 'h')
+		{
+			while (stack_a->head != lowest->cost.best && stack_b->head != lowest)
+				interpreter(stack_a, stack_b, "rr");
+			if (stack_a->head != lowest->cost.best)
+				interpreter(stack_a, stack_b, "ra");
+			else if (stack_b->head != lowest)
+				interpreter(stack_a, stack_b, "rb");
+			interpreter(stack_a, stack_b, "pa");
+		}
+		else if (lowest->cost.direction == 't')
+		{
+			while (stack_a->head != lowest->cost.best && stack_b->head != lowest)
+				interpreter(stack_a, stack_b, "rrr");
+			if (stack_a->head != lowest->cost.best)
+				interpreter(stack_a, stack_b, "rra");
+			else if (stack_b->head != lowest)
+				interpreter(stack_a, stack_b, "rrb");
+			interpreter(stack_a, stack_b, "pa");
+		}
+		else if (lowest->cost.direction == 'd')
+		{
+			while (stack_a->head != lowest->cost.best)
+			{
+				if (lowest->cost.best->cost.head < lowest->cost.best->cost.tail)
+					interpreter(stack_a, stack_b, "ra");
+				else if (lowest->cost.best->cost.head > lowest->cost.best->cost.tail)
+					interpreter(stack_a, stack_b, "rra");
+			}
+			while (stack_b->head != lowest)
+			{
+				if (lowest->cost.head < lowest->cost.tail)
+					interpreter(stack_a, stack_b, "rb");
+				else if (lowest->cost.head > lowest->cost.tail)
+					interpreter(stack_a, stack_b, "rrb");
+			}
+			interpreter(stack_a, stack_b, "pa");
+		}
 	}
+}
 
-} */
 
 /* void	quicksort_ba(t_stack *stack_a, t_stack *stack_b, t_val *val)
 {

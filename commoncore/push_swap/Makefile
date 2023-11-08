@@ -1,6 +1,6 @@
 S = push_swap save_stack quicksort small_sort \
-	lists/costs lists/lists lists/swap \
-	lists/lists2
+	lists/costs lists/costs2 lists/lists lists/swap \
+	lists/lists2 
 
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 
