@@ -2,6 +2,8 @@ S = push_swap save_stack quicksort small_sort \
 	send_cost lists/costs lists/costs2 lists/lists \
 	lists/swap lists/lists2
 
+BONUS = 
+
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 
 NAME = push_swap

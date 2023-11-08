@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/08 11:37:55 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:58:15 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ typedef int	t_bool;
 
 typedef struct s_cost
 {
-	int		head;
-	int		tail;
-	int		total;
-	char	direction;
-	struct s_node *best;
+	int				head;
+	int				tail;
+	int				total;
+	char			direction;
+	struct s_node	*best;
 }	t_cost;
 
 typedef struct s_node

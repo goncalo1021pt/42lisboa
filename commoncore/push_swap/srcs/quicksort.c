@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:04:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/08 11:43:15 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:58:48 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	interpreter(t_stack *stack_a, t_stack *stack_b, char *str)
 		mutual_interpreter(stack_a, stack_b, str);
 }
 
-void mutual_interpreter(t_stack *stack_a, t_stack *stack_b, char *str)
+void	mutual_interpreter(t_stack *stack_a, t_stack *stack_b, char *str)
 {
 	if (!ft_strncmp(str, "rrr", 3) && ft_printf("rrr\n"))
 	{
@@ -54,7 +54,7 @@ void	medium(int min, int max, t_val *val)
 	val->quarter = (val->med + min) / 2;
 }
 
-int send_b(t_stack *stack_a, t_stack *stack_b, t_val val, int max)
+int	send_b(t_stack *stack_a, t_stack *stack_b, t_val val, int max)
 {
 	if (is_sorted(stack_a) || stack_a->head->value > max)
 		return (get_big(stack_a)->value);
@@ -84,13 +84,14 @@ void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max)
 		}
 		medium(min, max, &val);
 		tail = stack_a->tail;
-		while ((stack_a->head != tail && stack_b->head != tail && stack_b->tail != tail) || stack_a->head->value < val.med)
+		while ((stack_a->head != tail && stack_b->head != tail 
+				&& stack_b->tail != tail) || stack_a->head->value < val.med)
 			big = send_b(stack_a, stack_b, val, max);
 		if (max != big)
 			while (stack_a->tail->value != big)
 				interpreter(stack_a, stack_b, "rra");
 		min = get_small(stack_a)->value;
 	}
-	if(stack_b->size > 0)
+	if (stack_b->size > 0)
 		sort_ba(stack_a, stack_b);
 }

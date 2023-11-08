@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 22:13:19 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/03 10:33:58 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:41:42 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	quicksort_ab(stack_a, stack_b, min, max);
 	ft_dbl_clear(stack_a);
 	ft_dbl_clear(stack_b);
-
 }
 
 int	main(int argc, char **argv)
@@ -55,7 +54,6 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		read = ft_split(argv[1], ' ');
-		printf("teste\n");
 		if (!read || !save_stack(read, &stack_a, 0))
 			write(2, "Error\n", 6);
 		else

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:37:21 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/07 22:50:02 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:59:12 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ t_bool	save_stack(char **input, t_stack *stack_a, int flag)
 	ctd = flag;
 	while (input[ctd])
 	{
-		if (valid_input(input[ctd]) && ft_dbl_not_equal(stack_a, ft_atoi(input[ctd])))
+		if (valid_input(input[ctd])
+			&& ft_dbl_not_equal(stack_a, ft_atoi(input[ctd])))
 		{
 			node = ft_dbl_new(ft_atoi(input[ctd]));
 			ft_dbl_add_back(stack_a, node);

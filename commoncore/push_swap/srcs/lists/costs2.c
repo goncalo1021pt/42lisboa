@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 22:07:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/08 00:03:22 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:55:17 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,47 @@ t_node	*best_friend(t_stack *stack_a, t_node *node)
 	return (best);
 }
 
+void	small_cost(t_node *current, int 
+	*head_cost, int *tail_cost, int *diff_cost)
+{
+	if (current->cost.head > current->cost.best->cost.head)
+		*head_cost = current->cost.head;
+	else
+		*head_cost = current->cost.best->cost.head;
+	if (current->cost.tail > current->cost.best->cost.tail)
+		*tail_cost = current->cost.tail;
+	else
+		*tail_cost = current->cost.best->cost.tail;
+	if (current->cost.head < current->cost.tail)
+		*diff_cost = current->cost.head;
+	else
+		*diff_cost = current->cost.tail;
+	if (current->cost.best->cost.head < current->cost.best->cost.tail)
+		*diff_cost += current->cost.best->cost.head;
+	else
+		*diff_cost += current->cost.best->cost.tail;
+}
+
+void	select_low(int *head_cost, int 
+	*tail_cost, int *diff_cost, t_node *current)
+{
+	if (*head_cost < *diff_cost)
+	{
+		current->cost.direction = 'h';
+		current->cost.total = *head_cost;
+	}
+	else if (*tail_cost < *diff_cost)
+	{
+		current->cost.direction = 't';
+		current->cost.total = *tail_cost;
+	}
+	else
+	{
+		current->cost.direction = 'd';
+		current->cost.total = *diff_cost;
+	}
+}
+
 t_node	*total_cost(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*current;
@@ -66,40 +107,8 @@ t_node	*total_cost(t_stack *stack_a, t_stack *stack_b)
 	lowest = current;
 	while (current != NULL)
 	{
-		if (current->cost.head > current->cost.best->cost.head)
-			head_cost = current->cost.head;
-		else
-			head_cost = current->cost.best->cost.head;
-		if (current->cost.tail > current->cost.best->cost.tail)
-			tail_cost = current->cost.tail;
-		else
-			tail_cost = current->cost.best->cost.tail;
-
-
-		if (current->cost.head < current->cost.tail)
-			diff_cost = current->cost.head;	
-		else
-			diff_cost = current->cost.tail;
-		if (current->cost.best->cost.head < current->cost.best->cost.tail)
-			diff_cost += current->cost.best->cost.head;
-		else
-			diff_cost += current->cost.best->cost.tail;
-
-		if (head_cost < diff_cost)
-		{
-			current->cost.direction = 'h';
-			current->cost.total = head_cost;
-		}
-		else if (tail_cost < diff_cost)
-		{
-			current->cost.direction = 't';
-			current->cost.total = tail_cost;
-		}
-		else
-		{
-			current->cost.direction = 'd';
-			current->cost.total = diff_cost;
-		}
+		small_cost(current, &head_cost, &tail_cost, &diff_cost);
+		select_low(&head_cost, &tail_cost, &diff_cost, current);
 		if (lowest->cost.total > current->cost.total)
 			lowest = current;
 		current = current->next;

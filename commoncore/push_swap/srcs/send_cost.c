@@ -6,13 +6,13 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 10:59:29 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/08 11:10:33 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:59:55 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void head_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest)
+void	head_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest)
 {
 	while (stack_a->head != lowest->cost.best && stack_b->head != lowest)
 		interpreter(stack_a, stack_b, "rr");
@@ -25,7 +25,7 @@ void head_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest)
 	interpreter(stack_a, stack_b, "pa");
 }
 
-void tail_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest)
+void	tail_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest)
 {
 	while (stack_a->head != lowest->cost.best && stack_b->head != lowest)
 		interpreter(stack_a, stack_b, "rrr");
@@ -38,7 +38,7 @@ void tail_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest)
 	interpreter(stack_a, stack_b, "pa");
 }
 
-void diff_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest)
+void	diff_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest)
 {
 	while (stack_a->head != lowest->cost.best)
 	{
@@ -60,6 +60,7 @@ void diff_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest)
 void	sort_ba(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*lowest;
+
 	while (stack_b->size > 0)
 	{
 		lowest = total_cost(stack_a, stack_b);
@@ -74,9 +75,9 @@ void	sort_ba(t_stack *stack_a, t_stack *stack_b)
 	all_costs(stack_a, stack_b);
 	while (stack_a->head != lowest)
 	{
-	if (lowest->cost.head < lowest->cost.tail)
-		interpreter(stack_a, stack_b, "ra");
-	else if (lowest->cost.head > lowest->cost.tail)
-		interpreter(stack_a, stack_b, "rra");
+		if (lowest->cost.head < lowest->cost.tail)
+			interpreter(stack_a, stack_b, "ra");
+		else if (lowest->cost.head > lowest->cost.tail)
+			interpreter(stack_a, stack_b, "rra");
 	}
 }
