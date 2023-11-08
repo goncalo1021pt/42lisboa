@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:16:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/08 12:58:15 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:30:06 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,10 @@ void	sort_ba(t_stack *stack_a, t_stack *stack_b);
 void	head_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest);
 void	tail_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest);
 void	diff_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest);
+
+//srcs_aux
+void	free_all(char **in);
+void	initialize_stack(t_stack *stack_a, t_stack *stack_b);
+void	sort(t_stack *stack_a, t_stack *stack_b);
 
 #endif

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 22:13:19 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/08 17:30:18 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/11/08 15:45:40 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/11/08 18:30:38 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
 int	main(int argc, char **argv)
 {
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 			write(2, "Error\n", 6);
 		else
 		{
-			sort(&stack_a, &stack_b);
+			checker(&stack_a, &stack_b);
 			free_all(read);
 		}
 	}
@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 		if (!save_stack(argv, &stack_a, 1))
 			write(2, "Error\n", 6);
 		else
-			sort(&stack_a, &stack_b);
+			checker(&stack_a, &stack_b);
 	}
 	return (0);
 }

@@ -2,7 +2,9 @@
 	"files.associations": {
 		"push_swap.h": "c",
 		"limits": "c",
-		"type_traits": "c"
+		"type_traits": "c",
+		"libft.h": "c",
+		"checker.h": "c"
 	},
 	"cmake.configureOnOpen": true
 }
