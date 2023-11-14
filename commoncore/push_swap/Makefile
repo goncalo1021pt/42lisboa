@@ -10,6 +10,8 @@ SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 
 NAME = push_swap
 
+BONUS_NAME = checker
+
 COMPRESS = ar rcs
 
 RM = rm -f
@@ -20,6 +22,8 @@ CC = cc
 
 OBJS_DIR = objs
 
+BONUS_OBJ = $(addprefix $(OBJS_DIR)/,$(BONUS:bonus/%.c=%.o))
+
 MAIN_OBS = $(addprefix $(OBJS_DIR)/,$(MAIN_SRC:srcs/%.c=%.o))
 
 OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:srcs/%.c=%.o))
@@ -29,6 +33,10 @@ LIBFT_DIR = ./includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 all: $(NAME)
+
+$(OBJS_DIR)/%.o: bonus/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJS_DIR)/%.o: srcs/%.c
 	@mkdir -p $(dir $@)
@@ -42,14 +50,18 @@ $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
 	@echo libft compiled and ready!
 
+bonus: all $(BONUS_OBJ)
+	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(MAIN_OBS) $(OBJS) $(LIBFT)
+
 clean:
 	@$(RM) -r $(OBJS_DIR)
 	@$(MAKE) -C $(LIBFT_DIR) clean --no-print-directory
 
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) $(BONUS_NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
 
 re: fclean all
 
-.PHONY: all fclean clean re
+.PHONY: all bonus fclean clean re
