@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:28:55 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/08 18:01:11 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:07:17 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	int	min;
 	int	max;
 
+	if (is_sorted(stack_a))
+		return ;
 	min_max(stack_a, &min, &max);
 	quicksort_ab(stack_a, stack_b, min, max);
 	ft_dbl_clear(stack_a);

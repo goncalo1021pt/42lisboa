@@ -4,7 +4,7 @@ S = save_stack quicksort small_sort \
 
 MAIN_SRC = srcs/push_swap.c
 
-BONUS = bonus/main.c bonus/checker_aux.c
+BONUS = bonus/checker.c bonus/checker_aux.c
 
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 
@@ -34,6 +34,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 all: $(NAME)
 
+bonus: $(BONUS_NAME)
+
 $(OBJS_DIR)/%.o: bonus/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -50,8 +52,9 @@ $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
 	@echo libft compiled and ready!
 
-bonus: all $(BONUS_OBJ)
-	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(MAIN_OBS) $(OBJS) $(LIBFT)
+$(BONUS_NAME): $(OBJS) $(BONUS_OBJ)
+	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(OBJS) $(BONUS_OBJ) $(LIBFT)
+	@echo $(BONUS_NAME) ready!
 
 clean:
 	@$(RM) -r $(OBJS_DIR)

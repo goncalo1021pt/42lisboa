@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/08 16:52:16 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:07:50 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int				ft_linelen(char *str);
 char			*ft_join_line(char *s1, char *s2);
 void			line_buffer_clean(char *str);
 char			*get_next_line(int fd);
-
 
 typedef struct s_list
 {
