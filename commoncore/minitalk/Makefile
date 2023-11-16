@@ -1,6 +1,6 @@
 S_client = client
 
-S_server = server server_aux
+S_server = server
 
 BONUS =
 
