@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 14:21:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/09 18:51:03 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:58:47 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	*get_next_line(int fd)
 	while (buffer[fd][0] || read(fd, buffer[fd], BUFFER_SIZE) > 0)
 	{
 		str = ft_strjoin(str, buffer[fd]);
+		if (!str)
+			return (NULL);
 		buffer_clean(buffer[fd]);
 		if (str[ft_linelen(str) - 1] == '\n')
 			return (str);

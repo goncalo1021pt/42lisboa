@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client_aux.c                                       :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 15:50:17 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/15 16:38:47 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/11/15 15:45:18 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/11/16 10:24:32 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/client.h"
+#include "../../includes/minitalk.h"
 
-t_bool check_input(char *input, int *pid)
+void recive_message()
 {
-	int i;
 
-	i = 0;
-	while (input[i])
-	{
-		if (!ft_isdigit(input[i]))
-			return (FALSE);
-		i++;
-	}
-	*pid = ft_atoi(input);
-	if (*pid < 0)
-		return (FALSE);
-	return (TRUE);
 }
 
-void send_signal(pid_t pid, char *str)
+int main()
 {
+	pid_t pid;
+
+	pid = getpid();
+	ft_printf("PID: %d\n", pid);
+
+	return (0);
 }

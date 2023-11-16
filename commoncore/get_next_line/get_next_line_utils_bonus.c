@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 14:23:24 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/09 18:51:16 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:59:19 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	ctd = 0;
 	str = (char *)malloc(ft_linelen(s1) + ft_linelen(s2) + 1);
 	if (!str)
-		return (NULL);
+		return (free(str), NULL);
 	while (s1 && s1[ctd])
 	{
 		str[ctd] = s1[ctd];

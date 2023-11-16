@@ -1,12 +1,12 @@
-S_client = client client_aux
+S_client = client
 
 S_server = server server_aux
 
 BONUS =
 
-SRCS_client = $(addprefix srcs/,$(addsuffix .c, $(S_client)))
+SRCS_client = $(addprefix srcs/client/,$(addsuffix .c, $(S_client)))
 
-SRCS_server = $(addprefix srcs/,$(addsuffix .c, $(S_server)))
+SRCS_server = $(addprefix srcs/server/,$(addsuffix .c, $(S_server)))
 
 NAME_client = client
 

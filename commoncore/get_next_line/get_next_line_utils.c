@@ -6,11 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:53:31 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/08 13:41:03 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:57:02 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h" 
+#include "get_next_line.h"
 
 int	ft_linelen(char *str)
 {
@@ -33,7 +33,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	ctd = 0;
 	str = (char *)malloc(ft_linelen(s1) + ft_linelen(s2) + 1);
 	if (!str)
-		return (NULL);
+		return (free(s1), NULL);
 	while (s1 && s1[ctd])
 	{
 		str[ctd] = s1[ctd];
