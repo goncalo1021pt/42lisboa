@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:04:57 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/08 11:58:48 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:12:01 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	quicksort_ab(t_stack *stack_a, t_stack *stack_b, int min, int max)
 		}
 		medium(min, max, &val);
 		tail = stack_a->tail;
-		while ((stack_a->head != tail && stack_b->head != tail 
+		while ((stack_a->head != tail && stack_b->head != tail
 				&& stack_b->tail != tail) || stack_a->head->value < val.med)
 			big = send_b(stack_a, stack_b, val, max);
 		if (max != big)

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 22:07:51 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/08 12:55:17 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:12:27 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_node	*best_friend(t_stack *stack_a, t_node *node)
 	return (best);
 }
 
-void	small_cost(t_node *current, int 
+void	small_cost(t_node *current, int
 	*head_cost, int *tail_cost, int *diff_cost)
 {
 	if (current->cost.head > current->cost.best->cost.head)
@@ -74,7 +74,7 @@ void	small_cost(t_node *current, int
 		*diff_cost += current->cost.best->cost.tail;
 }
 
-void	select_low(int *head_cost, int 
+void	select_low(int *head_cost, int
 	*tail_cost, int *diff_cost, t_node *current)
 {
 	if (*head_cost < *diff_cost)
