@@ -6,15 +6,15 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:45:18 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/15 15:47:18 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:45:24 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
-int main()
+int	main(void)
 {
-	pid_t pid;
+	pid_t	pid;
 
 	pid = getpid();
 	ft_printf("PID: %d\n", pid);
