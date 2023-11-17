@@ -6,14 +6,14 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:41:20 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/15 16:06:50 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/16 13:35:46 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 # define MINITALK_H
 
-#include "libft/libft.h"
+# include "libft/libft.h"
 # include <sys/types.h>
 # include <signal.h>
 

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:30:50 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/15 22:25:29 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/16 23:06:11 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	checker(t_stack *stack_a, t_stack *stack_b)
 			ft_lstclear(&list, free);
 			return ;
 		}
-		list = list->next;
 	}
+	list = list->next;
 	ft_lstclear(&list, free);
 	if (is_sorted(stack_a) && stack_b->size == 0)
 		ft_putendl_fd("OK", 1);

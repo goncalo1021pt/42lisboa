@@ -52,7 +52,7 @@ $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
 	@echo libft compiled and ready!
 
-$(BONUS_NAME): $(OBJS) $(BONUS_OBJ)
+$(BONUS_NAME): all $(BONUS_OBJ)
 	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(OBJS) $(BONUS_OBJ) $(LIBFT)
 	@echo $(BONUS_NAME) ready!
 
