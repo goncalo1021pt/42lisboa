@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:49:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/17 13:22:14 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:19:02 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,44 +29,39 @@ void	check_pid(char *pid)
 			error_message("Error: PID must be a number");
 		i++;
 	}
+	if (ft_atoi(pid) == 0)
+		error_message("Error: PID cannot be 0");
 }
 
 void	convert_to_binary(char *str, pid_t pid, int delay)
 {
 	int	ctd;
-	int	ctd2;
 
 	ctd = 0;
-	while (str[ctd])
+	while (ctd < 8)
 	{
-		ctd2 = 0;
-		while (ctd2 < 8)
+		if ((*str >> ctd) & 1)
 		{
-			if ((str[ctd] >> ctd2) & 1)
-			{
-				if (kill(pid, SIGUSR1) == -1)
-					error_message("Error: Invalid PID");
-			}
-			else
-			{
-				if (kill(pid, SIGUSR2) == -1)
-					error_message("Error: Invalid PID");
-			}
-			ctd2++;
-			usleep(delay);
+			if (kill(pid, SIGUSR1) == -1)
+				error_message("Error: Invalid PID");
+		}
+		else
+		{
+			if (kill(pid, SIGUSR2) == -1)
+				error_message("Error: Invalid PID");
 		}
 		ctd++;
+		usleep(delay);
 	}
 }
 
 void	send_signal(char *str, pid_t pid)
 {
-	int	delay;
+	const int	delay = 100;
 
-	delay = 1000; //(ft_strlen(str) / 2) * 100;
-	convert_to_binary(str, pid, delay);
+	while (*str)
+		convert_to_binary(str++, pid, delay);
 	convert_to_binary("\n", pid, delay);
-	//usleep(500000);
 }
 
 int	main(int argc, char **argv)
