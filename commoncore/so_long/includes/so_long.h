@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/06 16:25:44 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:18:41 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,16 @@ typedef struct s_map
 {
 	char	**map;
 }	t_map;
+
+typedef struct s_params
+{
+	t_map	*map;
+	void	*mlx;
+	void	*mlx_win;
+	t_mlx_data	img;
+	size_t	x;
+	size_t	y;
+}	t_params;
 
 
 void	testmlx(void);

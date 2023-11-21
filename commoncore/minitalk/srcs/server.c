@@ -6,11 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:45:18 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/21 08:56:51 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:58:50 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minitalk.h"
+#include "../includes/minitalk.h"
 
 void	signal_handler(int signal, siginfo_t *info, void *context)
 {
@@ -28,9 +28,12 @@ void	signal_handler(int signal, siginfo_t *info, void *context)
 		write(1, &c, 1);
 		i = 0;
 		c = 0;
-		kill(getpid(), SIGUSR1);
 	}
-	kill(client_pid, SIGUSR1);
+	if (kill(client_pid, SIGUSR1) == -1)
+	{
+		ft_putendl_fd("Error: kill", 2);
+		exit(1);
+	}
 }
 
 int	main(void)

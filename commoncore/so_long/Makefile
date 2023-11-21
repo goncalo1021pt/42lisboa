@@ -1,8 +1,6 @@
-NAME = so_long 
+NAME = so_long
 S = so_long test_mlx
-
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
-
 
 COMPRESS = ar rcs
 RM = rm -f
@@ -19,12 +17,15 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 all: $(NAME)
 
+debug: CFLAGS += -g3 -fPIE
+debug: re
+
 $(OBJS_DIR)/%.o: srcs/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(MLX) $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX)
 	@echo $(NAME) ready!
 
 $(LIBFT):

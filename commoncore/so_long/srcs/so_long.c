@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:35:24 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/06 16:27:11 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:00:41 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* t_bool	read_input(int argc, char **argv, t_map *map)
 {
 	int	input_len;
-	
+
 	if (argc != 2)
 	{
 		perror("Invalid number of arguments");
