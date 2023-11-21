@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:49:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/17 13:22:14 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:58:06 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,9 @@ void	send_signal(char *str, pid_t pid)
 {
 	int	delay;
 
-	delay = 1000; //(ft_strlen(str) / 2) * 100;
+	delay = 100;
 	convert_to_binary(str, pid, delay);
 	convert_to_binary("\n", pid, delay);
-	//usleep(500000);
 }
 
 int	main(int argc, char **argv)

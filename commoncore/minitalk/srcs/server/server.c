@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:45:18 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/17 00:31:31 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:59:22 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ void signal_handler(int signal)
 	static char c = 0;
 
 	if (signal == SIGUSR1)
-		c |= (1 << i);
+		c = c | (1 << i);
 	i++;
 	if (i == 8)
 	{
 		write(1, &c, 1);
 		i = 0;
 		c = 0;
+		kill(getpid(), SIGUSR1);
 	}
 }
 
