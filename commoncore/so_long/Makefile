@@ -1,5 +1,5 @@
 NAME = so_long
-S = so_long test_mlx
+S = so_long read_input
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 
 COMPRESS = ar rcs
@@ -25,7 +25,7 @@ $(OBJS_DIR)/%.o: srcs/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(MLX) $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX)
 	@echo $(NAME) ready!
 
 $(LIBFT):

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/10/16 11:24:09 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:47:16 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 # define EX_LOW_BASE "0123456789abcdef"
 # define EX_UP_BASE "0123456789ABCDEF"
 # define PRINTF_FLAGS "cspdiuxX%"
+# define BUFFER_SIZE 32
 
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <stdio.h>
 
 int				ft_printf(const char *str, ...);
 int				ft_putnbr_base(unsigned int nbr, char *base, int total);

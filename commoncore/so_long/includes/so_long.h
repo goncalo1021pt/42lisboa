@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/21 17:18:41 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:50:45 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
-#include <stdio.h>
+# include <stdio.h>
+# include <fcntl.h>
 
+# define LEGAL_CHARS "01CEP"
 # define TRUE 1
 # define FALSE 0
 
@@ -45,7 +47,9 @@ typedef struct s_params
 	size_t	y;
 }	t_params;
 
-
-void	testmlx(void);
+void	read_input(int argc, char **argv, t_map *map);
+void	print_map(t_map *map);
+void	freemap(t_map *map, char *str, int status);
+void	error_message(char *str);
 
 #endif

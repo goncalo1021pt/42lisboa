@@ -6,40 +6,25 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:35:24 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/21 18:00:41 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/22 18:33:43 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-/* t_bool	read_input(int argc, char **argv, t_map *map)
+void error_message(char *str)
 {
-	int	input_len;
+	ft_putendl_fd(str, 2);
+	exit(1);
+}
 
-	if (argc != 2)
-	{
-		perror("Invalid number of arguments");
-		exit(1);
-	}
-	else
-	{
-		input_len = ft_strlen(argv[1]);
-		if (input_len < 4)
-		{
-			perror("Invalid Filename");
-			exit(1);
-		}
-		if(strcmp())
-	}
-
-	return (TRUE);
-} */
-
-
-int	main(int argc, char **argv)
+int	main(int argc,char **argv)
 {
-	(void)argc;
-	(void)argv;
-	testmlx();
+	t_map	map;
+
+	read_input(argc, argv, &map);
+	print_map(&map);
+
+	freemap(&map, NULL, 0);
 	return (0);
 }
