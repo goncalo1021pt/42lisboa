@@ -6,25 +6,42 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:35:24 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/22 18:33:43 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/24 12:59:51 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void error_message(char *str)
+void	error_message(char *str)
 {
 	ft_putendl_fd(str, 2);
 	exit(1);
 }
 
-int	main(int argc,char **argv)
+void	print_map(t_map *map)
+{
+	int	ctd;
+	int	ctd2;
+
+	ctd = 0;
+	while (map->map[ctd])
+	{
+		ctd2 = 0;
+		while (map->map[ctd][ctd2])
+		{
+			ft_printf("%c", map->map[ctd][ctd2]);
+			ctd2++;
+		}
+		ft_printf("\n");
+		ctd++;
+	}
+}
+
+int	main(int argc, char **argv)
 {
 	t_map	map;
 
 	read_input(argc, argv, &map);
-	print_map(&map);
-
 	freemap(&map, NULL, 0);
 	return (0);
 }

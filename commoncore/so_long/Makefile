@@ -1,5 +1,5 @@
 NAME = so_long
-S = so_long read_input
+S = so_long read_input verify_map
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 
 COMPRESS = ar rcs
