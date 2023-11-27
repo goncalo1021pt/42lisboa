@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/22 16:50:45 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/23 13:49:09 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ void	read_input(int argc, char **argv, t_map *map);
 void	print_map(t_map *map);
 void	freemap(t_map *map, char *str, int status);
 void	error_message(char *str);
+void mlx_test();
 
 #endif
