@@ -6,31 +6,23 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 11:15:39 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/27 17:42:01 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/27 18:59:43 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-/* t_bool	check_line(char *line)
+t_bool	check_line(t_map *map)
 {
-	int			ctd;
-	static int	player;
-	static int	exit;
-
-	ctd = 0;
-	while (line[ctd])
+	map->cols = ft_strlen(map->map[0]);
+	while (map->map[map->rows])
 	{
-		if (ft_strchr(LEGAL_CHARS, line[ctd]) == NULL)
+		if (ft_strlen(map->map[map->rows]) != (size_t)map->cols)
 			return (FALSE);
-		if (line[ctd] == 'P')
-			player++;
-		else if (line[ctd] == 'E')
-			exit++;
-		ctd++;
+		map->rows++;
 	}
-	return ((player != 1 || exit != 1));
-} */
+	return (TRUE);
+}
 
 t_bool check_map(t_map *map)
 {
@@ -45,9 +37,10 @@ t_bool check_map(t_map *map)
 	exit = 0;
 	while (map->map[ctd])
 	{
+		ctd2 = 0;
 		while (map->map[ctd][ctd2])
 		{
-			if (ft_strchr(LEGAL_CHARS, map->map[][ctd]) == NULL)
+			if (ft_strchr(LEGAL_CHARS, map->map[ctd][ctd2]) == NULL)
 				return (FALSE);
 			if (map->map[ctd][ctd2] == 'P')
 				player++;
@@ -74,6 +67,7 @@ void	read_map(t_map *map, int count, int fd)
 		map->map = malloc(sizeof(char *) * (count + 1));
 		if (map->map == NULL)
 			error_message("Error allocating memory");
+		map->rows = count;
 	}
 	if (line)
 	{

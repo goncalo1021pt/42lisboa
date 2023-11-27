@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:49:04 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/27 15:52:12 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/27 19:03:01 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,29 @@ void	validate_map(t_map *map)
 	unsigned int	line_len;
 
 	line_len = ft_strlen(map->map[0]);
+	if (check_map(map))
+		freemap(map, "Map is not valid", 1);
 	ctd = 0;
-	check_map(map);
-	while (map->map[ctd])
+	check_line(map);
+	printf("cols: %d\n", map->cols);
+	while (ctd < map->cols)
 	{
-		if ((ft_strlen(map->map[ctd]) != line_len) || line_len < 3)
-			freemap(map, "Map must be rectangular", 1);
-		if (check_line(map->map[ctd]) == FALSE)
-			freemap(map, "Invalid character in map", 1);
+		ctd2 = 0;
+		printf("rows: %d\n", map->rows);
+		while (ctd2 < map->rows)
+		{
+			ft_printf("%c", map->map[ctd][ctd2]);
+			if (ctd == 0 || ctd2 == 0 || ctd == map->cols || ctd2 == map->rows)
+			{
+				if(map->map[ctd][ctd2] != '1')
+					freemap(map, "Map must be surrounded by walls", 1);
+			}
+			ctd2++;
+		}
 		ctd++;
 	}
-	ctd2 = 0;
-	(void)ctd2;
-	while (map->map[0][ctd2])
+
+	/* while (map->map[0][ctd2])
 	{
 		if (map->map[0][ctd2] != '1')
 			freemap(map, "Map must be surrounded by walls", 1);
@@ -103,6 +113,6 @@ void	validate_map(t_map *map)
 		if (map->map[ctd2][line_len - 1] != '1')
 			freemap(map, "Map must be surrounded by walls", 1);
 		ctd2++;
-	}
+	} */
 	ft_printf("Map validated\n");
 }
