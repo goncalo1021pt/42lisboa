@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:49:04 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/24 13:16:10 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/27 15:52:12 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	validate_map(t_map *map)
 
 	line_len = ft_strlen(map->map[0]);
 	ctd = 0;
+	check_map(map);
 	while (map->map[ctd])
 	{
 		if ((ft_strlen(map->map[ctd]) != line_len) || line_len < 3)

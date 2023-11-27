@@ -6,13 +6,13 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 11:15:39 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/27 13:27:11 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:42:01 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-t_bool	check_line(char *line)
+/* t_bool	check_line(char *line)
 {
 	int			ctd;
 	static int	player;
@@ -27,11 +27,37 @@ t_bool	check_line(char *line)
 			player++;
 		else if (line[ctd] == 'E')
 			exit++;
-		if (player > 1 || exit > 1)
-			return (FALSE);
 		ctd++;
 	}
-	return (TRUE);
+	return ((player != 1 || exit != 1));
+} */
+
+t_bool check_map(t_map *map)
+{
+	int	ctd;
+	int ctd2;
+	int	player;
+	int	exit;
+
+	ctd = 0;
+	ctd2 = 0;
+	player = 0;
+	exit = 0;
+	while (map->map[ctd])
+	{
+		while (map->map[ctd][ctd2])
+		{
+			if (ft_strchr(LEGAL_CHARS, map->map[][ctd]) == NULL)
+				return (FALSE);
+			if (map->map[ctd][ctd2] == 'P')
+				player++;
+			else if (map->map[ctd][ctd2] == 'E')
+				exit++;
+			ctd2++;
+		}
+		ctd++;
+	}
+	return ((player != 1 || exit != 1));
 }
 
 void	read_map(t_map *map, int count, int fd)

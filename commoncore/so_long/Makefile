@@ -1,9 +1,5 @@
 NAME = so_long
-<<<<<<< HEAD
 S = so_long read_input test_mlx
-=======
-S = so_long read_input verify_map
->>>>>>> refs/remotes/origin/main
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 
 COMPRESS = ar rcs
