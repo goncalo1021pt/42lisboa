@@ -1,5 +1,7 @@
 NAME = so_long
 S = so_long read_input verify_map test_mlx
+G
+
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 
 COMPRESS = ar rcs
