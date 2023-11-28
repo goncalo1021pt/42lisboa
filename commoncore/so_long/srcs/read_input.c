@@ -6,51 +6,50 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 11:15:39 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/27 18:59:43 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:15:34 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-t_bool	check_line(t_map *map)
-{
-	map->cols = ft_strlen(map->map[0]);
-	while (map->map[map->rows])
-	{
-		if (ft_strlen(map->map[map->rows]) != (size_t)map->cols)
-			return (FALSE);
-		map->rows++;
-	}
-	return (TRUE);
-}
-
-t_bool check_map(t_map *map)
+void	check_line(t_map *map)
 {
 	int	ctd;
-	int ctd2;
+
+	map->cols = ft_strlen(map->map[0]);
+	ctd = 0;
+	while (ctd < map->rows)
+		if (ft_strlen(map->map[ctd++]) != (size_t)map->cols)
+			freemap(map, "Map must be rectangular", 1);
+}
+
+void	check_map(t_map *map)
+{
+	int	ctd;
+	int	ctd2;
 	int	player;
 	int	exit;
 
-	ctd = 0;
-	ctd2 = 0;
+	ctd = -1;
 	player = 0;
 	exit = 0;
-	while (map->map[ctd])
+	while (map->map[++ctd])
 	{
-		ctd2 = 0;
-		while (map->map[ctd][ctd2])
+		ctd2 = -1;
+		while (map->map[ctd][++ctd2])
 		{
 			if (ft_strchr(LEGAL_CHARS, map->map[ctd][ctd2]) == NULL)
-				return (FALSE);
+				freemap(map, "Invalid character in map", 1);
 			if (map->map[ctd][ctd2] == 'P')
 				player++;
 			else if (map->map[ctd][ctd2] == 'E')
 				exit++;
-			ctd2++;
 		}
-		ctd++;
 	}
-	return ((player != 1 || exit != 1));
+	if (player != 1)
+		freemap(map, "Invalid number of players", 1);
+	if (exit != 1)
+		freemap(map, "Invalid number of exits", 1);
 }
 
 void	read_map(t_map *map, int count, int fd)

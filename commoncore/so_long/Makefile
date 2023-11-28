@@ -46,7 +46,7 @@ fclean: clean
 	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
 
 run: all
-	./$(NAME)
+	./$(NAME) map.ber
 
 re: fclean all
 

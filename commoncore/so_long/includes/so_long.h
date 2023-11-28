@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/27 18:59:24 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:15:48 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ typedef struct s_params
 
 // so_long
 void	error_message(char *str);
-void print_map(t_map *map);
+void	print_map(t_map *map);
 
 // read_input
-t_bool	check_line(t_map *map);
-t_bool	check_map(t_map *map);
+void	check_line(t_map *map);
+void	check_map(t_map *map);
 void	read_map(t_map *map, int count, int fd);
 void	freemap(t_map *map, char *str, int status);
 void	read_input(int argc, char **argv, t_map *map);

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:49:04 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/27 19:03:01 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:16:33 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_bool	allocate_matrix(t_map *map)
 {
 	int	ctd;
 
-	map->rows = sizeof(map->map[0]);
-	map->cols = sizeof(map->map) / sizeof(char *);
+	/* map->rows = sizeof(map->map[0]);
+	map->cols = sizeof(map->map) / sizeof(char *); */
 	map->visited = malloc(sizeof(t_bool *) * map->rows);
 	if (map->visited == NULL)
 		return (FALSE);
@@ -62,57 +62,23 @@ void	validate_map(t_map *map)
 {
 	int				ctd;
 	int				ctd2;
-	unsigned int	line_len;
 
-	line_len = ft_strlen(map->map[0]);
-	if (check_map(map))
-		freemap(map, "Map is not valid", 1);
-	ctd = 0;
+	check_map(map);
 	check_line(map);
-	printf("cols: %d\n", map->cols);
-	while (ctd < map->cols)
+	ctd = 0;
+	while (ctd < map->rows)
 	{
 		ctd2 = 0;
-		printf("rows: %d\n", map->rows);
-		while (ctd2 < map->rows)
+		while (ctd2 < map->cols)
 		{
-			ft_printf("%c", map->map[ctd][ctd2]);
-			if (ctd == 0 || ctd2 == 0 || ctd == map->cols || ctd2 == map->rows)
+			if (ctd == 0 || ctd == map->rows - 1 || ctd2 == 0 || ctd2 == map->cols - 1)
 			{
-				if(map->map[ctd][ctd2] != '1')
+				if (map->map[ctd][ctd2] != '1')
 					freemap(map, "Map must be surrounded by walls", 1);
 			}
 			ctd2++;
 		}
 		ctd++;
 	}
-
-	/* while (map->map[0][ctd2])
-	{
-		if (map->map[0][ctd2] != '1')
-			freemap(map, "Map must be surrounded by walls", 1);
-		ctd2++;
-	}
-	ctd2 = 0;
-	while (map->map[ctd - 1][ctd2])
-	{
-		if (map->map[ctd - 1][ctd2] != '1')
-			freemap(map, "Map must be surrounded by walls", 1);
-		ctd2++;
-	}
-	ctd2 = 0;
-	while (ctd2 < ctd && map->map[ctd2][0])
-	{
-		if (map->map[ctd2][0] != '1')
-			freemap(map, "Map must be surrounded by walls", 1);
-		ctd2++;
-	}
-	ctd2 = 0;
-	while (ctd2 < ctd && map->map[ctd2][line_len - 1])
-	{
-		if (map->map[ctd2][line_len - 1] != '1')
-			freemap(map, "Map must be surrounded by walls", 1);
-		ctd2++;
-	} */
 	ft_printf("Map validated\n");
 }
