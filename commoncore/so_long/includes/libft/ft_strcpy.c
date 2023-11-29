@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_program.c                                    :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 11:42:08 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/29 14:33:24 by gfontao-         ###   ########.fr       */
+/*   Created: 2023/11/29 13:17:12 by gfontao-          #+#    #+#             */
+/*   Updated: 2023/11/29 13:19:31 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-void	error_message(char *str)
-{
-	ft_putendl_fd(str, 2);
-	exit(1);
-}
-
-void	freemap(t_map *map, char *str, int status)
+char	*ft_strcpy(char *dest, const char *src)
 {
 	int	ctd;
 
-	ctd = 0;
-	while (map->map[ctd])
-		free(map->map[ctd++]);
-	free(map->map);
-	if (status == 1)
-		error_message(str);
-	else
-		exit(0);
+	ctd = -1;
+	while (src[++ctd])
+		dest[ctd] = src[ctd];
+	dest[ctd] = '\0';
+	return (dest);
 }
