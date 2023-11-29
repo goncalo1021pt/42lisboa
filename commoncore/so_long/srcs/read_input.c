@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 11:15:39 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/28 14:54:28 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:42:42 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,6 @@ void	read_map(t_map *map, int count, int fd)
 	}
 	else
 		map->map[count] = NULL;
-}
-
-void	freemap(t_map *map, char *str, int status)
-{
-	int	ctd;
-
-	ctd = 0;
-	while (map->map[ctd])
-		free(map->map[ctd++]);
-	free(map->map);
-	if (status == 1)
-		error_message(str);
 }
 
 void	read_input(int argc, char **argv, t_map *map)

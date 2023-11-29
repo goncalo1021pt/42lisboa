@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/28 11:15:48 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:59:39 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_mlx_data {
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
-	int		endian;
 }	t_mlx_data;
 
 typedef struct s_map
@@ -40,25 +39,36 @@ typedef struct s_map
 	t_bool	**visited;
 }	t_map;
 
-typedef struct s_params
+typedef struct s_packman
 {
-	t_map		*map;
+	void	*img;
+	char	*path;
+	int		width;
+	int		height;
+}	t_packman;
+
+typedef struct s_mlx_start
+{
 	void		*mlx;
 	void		*mlx_win;
-	t_mlx_data	img;
-	size_t		x;
-	size_t		y;
-}	t_params;
+	t_packman	*packman;
+	t_map		*map;
+	int			img_width;
+	int			img_height;
+}	t_mlx_start;
+
 
 // so_long
-void	error_message(char *str);
 void	print_map(t_map *map);
+
+// close_program
+void	error_message(char *str);
+void	freemap(t_map *map, char *str, int status);
 
 // read_input
 void	check_line(t_map *map);
 void	check_map(t_map *map);
 void	read_map(t_map *map, int count, int fd);
-void	freemap(t_map *map, char *str, int status);
 void	read_input(int argc, char **argv, t_map *map);
 
 // verify_map
@@ -66,5 +76,17 @@ t_bool	allocate_matrix(t_map *map);
 void	free_matrix(t_map *map, int i, int max);
 t_bool	flood_fill(t_map *map, int x, int y);
 void	validate_map(t_map *map);
+
+// graphics
+
+// mlx_start
+void	mlx_start(t_map *map);
+
+// hooks
+int		key_hook(int keycode, t_mlx_start *par);
+int		close_window(t_mlx_start *par);
+
+//packman
+void	packman_init(t_mlx_start *par, t_packman *packman);
 
 #endif

@@ -1,6 +1,5 @@
 NAME = so_long
-S = so_long read_input verify_map test_mlx
-G
+S = so_long read_input verify_map close_program graphics/hooks graphics/mlx_start  graphics/packman
 
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 

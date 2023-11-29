@@ -6,17 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:35:24 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/27 18:01:05 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:08:58 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void	error_message(char *str)
-{
-	ft_putendl_fd(str, 2);
-	exit(1);
-}
 
 void	print_map(t_map *map)
 {
@@ -42,6 +36,7 @@ int	main(int argc, char **argv)
 	t_map	map;
 
 	read_input(argc, argv, &map);
+	mlx_start(&map);
 	freemap(&map, NULL, 0);
 	return (0);
 }
