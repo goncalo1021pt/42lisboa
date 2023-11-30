@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/29 22:50:11 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:04:59 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define LEGAL_CHARS "01CEP"
 # define TRUE 1
 # define FALSE 0
+# define SCALE 50
+# define BORDER 50
 
 typedef unsigned char	t_bool;
 
@@ -56,7 +58,10 @@ typedef struct s_packman
 typedef struct s_mlx_start
 {
 	void		*mlx;
+	void 		*img;
 	void		*mlx_win;
+	char		*addr;
+	int			*bits_per_pixel;
 	t_map		*map;
 	t_packman	*packman;
 }	t_mlx_start;
@@ -84,6 +89,7 @@ void	validate_map(t_map *map);
 // graphics
 
 // mlx_start
+void	put_image(t_mlx_start *par);
 void	mlx_start(t_map *map);
 
 // hooks
@@ -91,6 +97,13 @@ int		key_hook(int keycode, t_mlx_start *par);
 int		close_window(t_mlx_start *par);
 
 //packman
-void	packman_init(t_mlx_start *par, t_packman *packman, int x, int y);
+void	packman_init(t_mlx_start *par, t_packman *packman);
+
+// render_map
+void	wall_init(t_mlx_start *par);
+void	floor_init(t_mlx_start *par);
+void	exit_init(t_mlx_start *par);
+void	render_map(t_mlx_start *par);
+
 
 #endif

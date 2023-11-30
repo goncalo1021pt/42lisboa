@@ -1,7 +1,9 @@
 NAME = so_long
-S = so_long read_input verify_map close_program graphics/hooks graphics/mlx_start  graphics/packman
 
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
+S = so_long read_input verify_map close_program \
+	graphics/hooks graphics/mlx_start  graphics/packman graphics/render_map \
+
 
 COMPRESS = ar rcs
 RM = rm -f
@@ -11,8 +13,8 @@ CC = cc
 MLX_DIR = ./includes/minilibx-linux
 MLX = $(MLX_DIR)/libmlx_Linux.a -lXext -lX11 -lm -lz
 
-OBJS_DIR = objs
 OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:srcs/%.c=%.o))
+OBJS_DIR = objs
 LIBFT_DIR = ./includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 

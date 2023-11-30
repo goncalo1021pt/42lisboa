@@ -6,11 +6,18 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:56:17 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/29 16:33:37 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:28:42 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
+
+void put_image(t_mlx_start *par)
+{
+	mlx_clear_window(par->mlx, par->mlx_win);
+	render_map(par);
+	mlx_put_image_to_window(par->mlx, par->mlx_win, par->packman->img, par->packman->x, par->packman->y);
+}
 
 void	mlx_start(t_map *map)
 {
@@ -20,9 +27,10 @@ void	mlx_start(t_map *map)
 	par.map = map;
 	par.mlx = mlx_init();
 	par.mlx_win = mlx_new_window(par.mlx, 1280, 720, "So_Long");
-	packman_init(&par, &packman, 200, 200);
+	par.img = mlx_new_image(par.mlx, 1280, 720);
+	par.addr = mlx_get_data_addr(par.img, &par.bits_per_pixel, &par.line_length, &par.endian);
+	packman_init(&par, &packman);
 	par.packman = &packman;
-	mlx_put_image_to_window(par.mlx, par.mlx_win, packman.img, 200, 200);
 	mlx_key_hook(par.mlx_win, key_hook, &par);
 	mlx_hook(par.mlx_win, 17, 0, close_window, &par);
 	mlx_loop(par.mlx);

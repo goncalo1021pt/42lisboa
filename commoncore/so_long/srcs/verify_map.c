@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:49:04 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/28 11:16:33 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:10:13 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ void	validate_map(t_map *map)
 		ctd2 = 0;
 		while (ctd2 < map->cols)
 		{
+			if (map->map[ctd][ctd2] == 'P')
+			{
+			}
 			if (ctd == 0 || ctd == map->rows - 1 || ctd2 == 0 || ctd2 == map->cols - 1)
 			{
 				if (map->map[ctd][ctd2] != '1')
