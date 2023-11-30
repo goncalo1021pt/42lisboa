@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:50:54 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/29 12:04:44 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:02:14 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	key_hook(int keycode, t_params *params)
 		params->y -= 10;
 	if (keycode == 's')
 		params->y += 10;
+	
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/29 13:30:10 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/29 22:50:11 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ typedef struct s_mlx_data {
 typedef struct s_map
 {
 	char	**map;
+	void	*wall;
+	void	*floor;
+	void	*collectible;
+	void	*exit;
 	int		rows;
 	int		cols;
 	t_bool	**visited;
@@ -43,6 +47,8 @@ typedef struct s_packman
 {
 	void	*img;
 	char	*path;
+	int		x;
+	int		y;
 	int		width;
 	int		height;
 }	t_packman;
@@ -52,8 +58,7 @@ typedef struct s_mlx_start
 	void		*mlx;
 	void		*mlx_win;
 	t_map		*map;
-	int			img_width;
-	int			img_height;
+	t_packman	*packman;
 }	t_mlx_start;
 
 
@@ -86,6 +91,6 @@ int		key_hook(int keycode, t_mlx_start *par);
 int		close_window(t_mlx_start *par);
 
 //packman
-void	packman_init(t_mlx_start *par, t_packman *packman);
+void	packman_init(t_mlx_start *par, t_packman *packman, int x, int y);
 
 #endif
