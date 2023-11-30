@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:54:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/30 19:34:15 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/30 19:50:40 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,14 @@ int	close_window(t_mlx_start *par)
 
 void move_packman(t_mlx_start *par, char direction)
 {
-	ft_printf("x: %i\ny: %i\n", par->packman->x, par->packman->y);
-	if (direction == 'a' && par->map->map[par->packman->y][par->packman->x - 10] != '1')
+	if (direction == 'a' && par->map->map[par->packman->y / SCALE][(par->packman->x - 10) / SCALE] != '1')
 		par->packman->x -= 10;
-	if (direction == 'd' && par->map->map[par->packman->y][par->packman->x + 10] != '1')
+	if (direction == 'd' && par->map->map[par->packman->y / SCALE][(par->packman->x + 10) / SCALE] != '1')
 		par->packman->x += 10;
-	if (direction == 'w' && par->map->map[par->packman->y - 10][par->packman->x] != '1')
+	if (direction == 'w' && par->map->map[(par->packman->y - 10) / SCALE][par->packman->x / SCALE] != '1')
 		par->packman->y -= 10;
-	if (direction == 's' && par->map->map[par->packman->y + 10][par->packman->x] != '1')
+	if (direction == 's' && par->map->map[(par->packman->y + 10) / SCALE][par->packman->x / SCALE] != '1')
 		par->packman->y += 10;
-	ft_printf("x: %i\ny: %i\n", par->packman->x, par->packman->y);
 }
 
 int	key_hook(int keycode, t_mlx_start *par)
