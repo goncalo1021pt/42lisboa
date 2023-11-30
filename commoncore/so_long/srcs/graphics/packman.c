@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 10:36:37 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/30 15:09:48 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/30 18:54:44 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ void find_start(t_mlx_start *par, t_packman *packman)
 void	packman_init(t_mlx_start *par, t_packman *packman)
 {
 	find_start(par, packman);
-	packman->path = ft_strdup("./textures/packman_1.xpm");
-	packman->img = mlx_xpm_file_to_image(par->mlx, packman->path, &packman->width, &packman->height);
+	packman->img = mlx_xpm_file_to_image(par->mlx, "./textures/packman_1.xpm", &packman->width, &packman->height);
 	if (packman->img == NULL)
 		error_message("Error\nInvalid packman texture\n");
 }

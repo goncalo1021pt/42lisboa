@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:46:44 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/30 15:10:00 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/30 19:15:40 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ void exit_init(t_mlx_start *par)
 		error_message("Error\nInvalid exit texture\n");
 }
 
+void collectible_init(t_mlx_start *par)
+{
+	par->map->collectible = mlx_xpm_file_to_image(par->mlx, "./textures/collectible.xpm", &par->map->rows, &par->map->cols);
+	if (par->map->collectible == NULL)
+		error_message("Error\nInvalid collectible texture\n");
+}
+
 void	render_map(t_mlx_start *par)
 {
 	int	x;
@@ -43,6 +50,7 @@ void	render_map(t_mlx_start *par)
 	wall_init(par);
 	floor_init(par);
 	exit_init(par);
+	collectible_init(par);
 	while (par->map->map[y])
 	{
 		while (par->map->map[y][x])

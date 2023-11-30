@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:54:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/30 15:14:12 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/30 19:34:15 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,18 @@ int	close_window(t_mlx_start *par)
 	return (0);
 }
 
-void move_packman()
+void move_packman(t_mlx_start *par, char direction)
 {
-	
+	ft_printf("x: %i\ny: %i\n", par->packman->x, par->packman->y);
+	if (direction == 'a' && par->map->map[par->packman->y][par->packman->x - 10] != '1')
+		par->packman->x -= 10;
+	if (direction == 'd' && par->map->map[par->packman->y][par->packman->x + 10] != '1')
+		par->packman->x += 10;
+	if (direction == 'w' && par->map->map[par->packman->y - 10][par->packman->x] != '1')
+		par->packman->y -= 10;
+	if (direction == 's' && par->map->map[par->packman->y + 10][par->packman->x] != '1')
+		par->packman->y += 10;
+	ft_printf("x: %i\ny: %i\n", par->packman->x, par->packman->y);
 }
 
 int	key_hook(int keycode, t_mlx_start *par)
@@ -32,15 +41,16 @@ int	key_hook(int keycode, t_mlx_start *par)
 		freemap(par->map, NULL, 0);
 	}
 	if (keycode == 'a')
-		par->packman->x -= 10;
+		move_packman(par, 'a');
 	if (keycode == 'd')
-		par->packman->x += 10;
+		move_packman(par, 'd');
 	if (keycode == 'w')
-		par->packman->y -= 10;
+		move_packman(par, 'w');
 	if (keycode == 's')
-		par->packman->y += 10;
+		move_packman(par, 's');
 	else
 		ft_printf("%i\n", keycode);
+	printf("x: %i\ny: %i\n", par->packman->x, par->packman->y);
 	put_image(par);
 	return (0);
 }

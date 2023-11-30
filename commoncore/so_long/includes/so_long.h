@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/30 15:04:59 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/11/30 18:50:54 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ typedef struct s_mlx_start
 	void 		*img;
 	void		*mlx_win;
 	char		*addr;
-	int			*bits_per_pixel;
+	int			line_length;
+	int			endian;
+	int			bits_per_pixel;
 	t_map		*map;
 	t_packman	*packman;
 }	t_mlx_start;
