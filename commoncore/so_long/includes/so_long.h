@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/04 10:48:35 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/04 14:13:07 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_mlx_data {
 typedef struct s_check
 {
 	int		player;
+	int		player_x;
+	int		player_y;
 	int		exit;
 	int		collectibles;
 }	t_check;

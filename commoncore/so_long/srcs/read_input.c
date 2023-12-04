@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 11:15:39 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/04 10:33:37 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:52:32 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,19 @@ void	read_map(t_map *map, int count, int fd)
 		map->map[count] = NULL;
 }
 
+void initiate_flood(t_map *map)
+{
+	if (map->map[map->check.player_x][map->check.player_y] == 'P')
+	{
+		allocate_visited(map);
+		map->check.collectibles = map->collectibles_count;
+		flood_fill(map, map->check.player_x, map->check.player_y);
+		free_matrix(map, 0, map->rows - 1);
+		if (map->check.collectibles != 0 || map->check.exit != 0)
+			freemap(map, "Exit or collectibles not reachable", 1);
+	}
+}
+
 void	read_input(int argc, char **argv, t_map *map)
 {
 	int	input_len;
@@ -94,4 +107,5 @@ void	read_input(int argc, char **argv, t_map *map)
 	read_map(map, 0, fd);
 	close(fd);
 	validate_map(map);
+	initiate_flood(map);
 }

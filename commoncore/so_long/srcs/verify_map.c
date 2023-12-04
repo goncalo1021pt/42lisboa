@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:49:04 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/04 10:57:35 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:49:36 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,8 @@ void	validate_map(t_map *map)
 		{
 			if (map->map[ctd][ctd2] == 'P')
 			{
-				allocate_visited(map);
-				map->check.collectibles = map->collectibles_count;
-				flood_fill(map, ctd, ctd2);
-				free_matrix(map, 0, map->rows - 1);
-				if (map->check.collectibles != 0 || map->check.exit != 0)
-					freemap(map, "Exit or collectibles not reachable", 1);
+				map->check.player_x = ctd;
+				map->check.player_y = ctd2;
 			}
 			if (ctd == 0 || ctd == map->rows - 1 || ctd2 == 0 || ctd2 == map->cols - 1)
 			{
