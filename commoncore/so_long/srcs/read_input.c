@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 11:15:39 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/30 15:10:30 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/04 10:33:37 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,13 @@ void	check_line(t_map *map)
 
 void	check_map(t_map *map)
 {
-	int	ctd;
-	int	ctd2;
-	int	player;
-	int	exit;
+	int			ctd;
+	int			ctd2;
 
 	ctd = -1;
-	player = 0;
-	exit = 0;
+	map->check.player = 0;
+	map->check.exit = 0;
+	map->collectibles_count = 0;
 	while (map->map[++ctd])
 	{
 		ctd2 = -1;
@@ -41,14 +40,16 @@ void	check_map(t_map *map)
 			if (ft_strchr(LEGAL_CHARS, map->map[ctd][ctd2]) == NULL)
 				freemap(map, "Invalid character in map", 1);
 			if (map->map[ctd][ctd2] == 'P')
-				player++;
+				map->check.player++;
 			else if (map->map[ctd][ctd2] == 'E')
-				exit++;
+				map->check.exit++;
+			else if (map->map[ctd][ctd2] == 'C')
+				map->collectibles_count++;
 		}
 	}
-	if (player != 1)
+	if (map->check.player != 1)
 		freemap(map, "Invalid number of players", 1);
-	if (exit != 1)
+	if (map->check.exit != 1)
 		freemap(map, "Invalid number of exits", 1);
 }
 

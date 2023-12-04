@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/30 18:50:54 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/04 10:48:35 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ typedef struct s_mlx_data {
 	int		line_length;
 }	t_mlx_data;
 
+typedef struct s_check
+{
+	int		player;
+	int		exit;
+	int		collectibles;
+}	t_check;
+
 typedef struct s_map
 {
 	char	**map;
@@ -42,6 +49,8 @@ typedef struct s_map
 	void	*exit;
 	int		rows;
 	int		cols;
+	int		collectibles_count;
+	t_check	check;
 	t_bool	**visited;
 }	t_map;
 
@@ -58,7 +67,7 @@ typedef struct s_packman
 typedef struct s_mlx_start
 {
 	void		*mlx;
-	void 		*img;
+	void		*img;
 	void		*mlx_win;
 	char		*addr;
 	int			line_length;
@@ -83,7 +92,8 @@ void	read_map(t_map *map, int count, int fd);
 void	read_input(int argc, char **argv, t_map *map);
 
 // verify_map
-t_bool	allocate_matrix(t_map *map);
+t_bool	allocate_visited(t_map *map);
+void	initialize_visited(t_map *map);
 void	free_matrix(t_map *map, int i, int max);
 t_bool	flood_fill(t_map *map, int x, int y);
 void	validate_map(t_map *map);
@@ -97,6 +107,8 @@ void	mlx_start(t_map *map);
 // hooks
 int		key_hook(int keycode, t_mlx_start *par);
 int		close_window(t_mlx_start *par);
+void	move_packman(t_mlx_start *par, char direction);
+void	check_collectables(t_mlx_start *par);
 
 //packman
 void	packman_init(t_mlx_start *par, t_packman *packman);
@@ -106,6 +118,5 @@ void	wall_init(t_mlx_start *par);
 void	floor_init(t_mlx_start *par);
 void	exit_init(t_mlx_start *par);
 void	render_map(t_mlx_start *par);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:46:44 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/30 19:15:40 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/04 10:06:41 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ void	floor_init(t_mlx_start *par)
 		error_message("Error\nInvalid floor texture\n");
 }
 
-void exit_init(t_mlx_start *par)
+void	exit_init(t_mlx_start *par)
 {
 	par->map->exit = mlx_xpm_file_to_image(par->mlx, "./textures/exit.xpm", &par->map->rows, &par->map->cols);
 	if (par->map->exit == NULL)
 		error_message("Error\nInvalid exit texture\n");
 }
 
-void collectible_init(t_mlx_start *par)
+void	collectible_init(t_mlx_start *par)
 {
 	par->map->collectible = mlx_xpm_file_to_image(par->mlx, "./textures/collectible.xpm", &par->map->rows, &par->map->cols);
 	if (par->map->collectible == NULL)
@@ -45,7 +45,6 @@ void	render_map(t_mlx_start *par)
 	int	x;
 	int	y;
 
-	x = 0;
 	y = 0;
 	wall_init(par);
 	floor_init(par);
@@ -53,6 +52,7 @@ void	render_map(t_mlx_start *par)
 	collectible_init(par);
 	while (par->map->map[y])
 	{
+		x = 0;
 		while (par->map->map[y][x])
 		{
 			if (par->map->map[y][x] == '1')
@@ -61,11 +61,12 @@ void	render_map(t_mlx_start *par)
 				mlx_put_image_to_window(par->mlx, par->mlx_win, par->map->floor, (x * SCALE) + BORDER, (y * SCALE) + BORDER);
 			else if (par->map->map[y][x] == 'C')
 				mlx_put_image_to_window(par->mlx, par->mlx_win, par->map->collectible, (x * SCALE) + BORDER, (y * SCALE) + BORDER);
-			else if (par->map->map[y][x] == 'E')
+			else if (par->map->map[y][x] == 'E' && par->map->collectibles_count == 0)
 				mlx_put_image_to_window(par->mlx, par->mlx_win, par->map->exit, (x * SCALE) + BORDER, (y * SCALE) + BORDER);
+			else if (par->map->map[y][x] == 'E')
+				mlx_put_image_to_window(par->mlx, par->mlx_win, par->map->floor, (x * SCALE) + BORDER, (y * SCALE) + BORDER);
 			x++;
 		}
-		x = 0;
 		y++;
 	}
 }

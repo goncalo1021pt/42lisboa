@@ -6,18 +6,15 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:49:04 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/30 15:10:13 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/04 10:57:35 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-t_bool	allocate_matrix(t_map *map)
+t_bool	allocate_visited(t_map *map)
 {
 	int	ctd;
-
-	/* map->rows = sizeof(map->map[0]);
-	map->cols = sizeof(map->map) / sizeof(char *); */
 	map->visited = malloc(sizeof(t_bool *) * map->rows);
 	if (map->visited == NULL)
 		return (FALSE);
@@ -33,9 +30,25 @@ t_bool	allocate_matrix(t_map *map)
 			freemap(map, "Error allocating memory", 1);
 		}
 	}
-	while (ctd++ < map->rows)
-		ft_memset(map->visited[ctd], FALSE, map->cols);
+	initialize_visited(map);
 	return (TRUE);
+}
+void initialize_visited(t_map *map)
+{
+	int	ctd;
+	int	ctd2;
+
+	ctd = 0;
+	while (ctd < map->rows)
+	{
+		ctd2 = 0;
+		while (ctd2 < map->cols)
+		{
+			map->visited[ctd][ctd2] = FALSE;
+			ctd2++;
+		}
+		ctd++;
+	}
 }
 
 void	free_matrix(t_map *map, int i, int max)
@@ -51,6 +64,10 @@ t_bool	flood_fill(t_map *map, int x, int y)
 		return (FALSE);
 	else
 		map->visited[x][y] = TRUE;
+	if (map->map[x][y] == 'E')
+		map->check.exit--;
+	if (map->map[x][y] == 'C')
+		map->check.collectibles--;
 	flood_fill(map, x + 1, y);
 	flood_fill(map, x - 1, y);
 	flood_fill(map, x, y + 1);
@@ -73,6 +90,12 @@ void	validate_map(t_map *map)
 		{
 			if (map->map[ctd][ctd2] == 'P')
 			{
+				allocate_visited(map);
+				map->check.collectibles = map->collectibles_count;
+				flood_fill(map, ctd, ctd2);
+				free_matrix(map, 0, map->rows - 1);
+				if (map->check.collectibles != 0 || map->check.exit != 0)
+					freemap(map, "Exit or collectibles not reachable", 1);
 			}
 			if (ctd == 0 || ctd == map->rows - 1 || ctd2 == 0 || ctd2 == map->cols - 1)
 			{
@@ -83,5 +106,4 @@ void	validate_map(t_map *map)
 		}
 		ctd++;
 	}
-	ft_printf("Map validated\n");
 }
