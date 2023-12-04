@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:54:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/04 11:00:35 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:52:15 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ void	check_collectables(t_mlx_start *par)
 	if (par->map->collectibles_count == 0 && par->map->map[y][x] == 'E')
 	{
 		ft_printf("You win!\n");
-		mlx_destroy_window(par->mlx, par->mlx_win);
-		freemap(par->map, NULL, 0);
+		mlx_exit(par, NULL, 0);
 	}
 }
 
@@ -62,8 +61,7 @@ int	key_hook(int keycode, t_mlx_start *par)
 {
 	if (keycode == 65307)
 	{
-		mlx_destroy_window(par->mlx, par->mlx_win);
-		freemap(par->map, NULL, 0);
+		mlx_exit(par, NULL, 0);
 	}
 	if (keycode == 'a')
 		move_packman(par, 'a');

@@ -48,6 +48,10 @@ fclean: clean
 	@$(RM) $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
 
+fcount:
+	@echo "you wrote quite some lines of code"
+	@cat $(SRCS) | wc -l
+
 run: all
 	./$(NAME) map.ber
 

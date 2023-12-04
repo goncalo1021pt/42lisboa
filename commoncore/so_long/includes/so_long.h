@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/04 14:13:07 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:50:55 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ void	validate_map(t_map *map);
 // mlx_start
 void	put_image(t_mlx_start *par);
 void	mlx_start(t_map *map);
+int		mlx_exit(t_mlx_start *par, char *message , int status);
 
 // hooks
 int		key_hook(int keycode, t_mlx_start *par);

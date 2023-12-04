@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:56:17 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/04 13:47:17 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:55:34 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@ void put_image(t_mlx_start *par)
 	mlx_put_image_to_window(par->mlx, par->mlx_win, par->packman->img, par->packman->x, par->packman->y);
 }
 
+
+
+int mlx_exit(t_mlx_start *par, char *message , int status)
+{
+	mlx_destroy_image(par->mlx, par->img);
+	mlx_destroy_window(par->mlx, par->mlx_win);
+	mlx_destroy_display(par->mlx);
+	freemap(par->map, message, status);
+	return (0);
+}
+
 void	mlx_start(t_map *map)
 {
 	t_mlx_start	par;
@@ -26,8 +37,8 @@ void	mlx_start(t_map *map)
 
 	par.map = map;
 	par.mlx = mlx_init();
-	par.mlx_win = mlx_new_window(par.mlx, 2560, 1500, "So_Long");
-	// par.img = mlx_new_image(par.mlx, 1280, 720);
+	par.mlx_win = mlx_new_window(par.mlx, 1920, 1080, "So_Long");
+	// par.img = mlx_new_image(par.mlx, 1920, 1080);
 	// par.addr = mlx_get_data_addr(par.img, &par.bits_per_pixel, &par.line_length, &par.endian);
 	packman_init(&par, &packman);
 	par.packman = &packman;
