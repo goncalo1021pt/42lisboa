@@ -6,6 +6,7 @@
 		"xkblib.h": "c",
 		"xshm.h": "c",
 		"xlib.h": "c",
-		"xutil.h": "c"
+		"xutil.h": "c",
+		"fcntl.h": "c"
 	}
 }

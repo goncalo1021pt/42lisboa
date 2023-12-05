@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/05 12:08:13 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/05 18:04:42 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define FALSE 0
 # define SCALE 50
 # define BORDER 50
-# define TRANSPARENT 0x00000000
+# define TRANSPARENT 0xFF000000
 
 typedef unsigned char	t_bool;
 
@@ -62,12 +62,12 @@ typedef struct s_map
 
 typedef struct s_packman
 {
-	void	*img;
+	t_img	img;
 	char	*path;
 	int		x;
 	int		y;
-	int		width;
-	int		height;
+	// int		width;
+	// int		height;
 }	t_packman;
 
 typedef struct s_mlx_start
@@ -136,6 +136,10 @@ void	put_pixel(t_img *img, int x, int y, int color);
 int		get_pixel(t_img *img, int x, int y);
 int		put_screen(t_mlx_start *par, t_img *img);
 void	initialize_image(t_mlx_start *par, t_img *img);
+void	create_img(t_img *img, t_img src, int x, int y);
 
+// packman_init
+void	find_start(t_mlx_start *par, t_packman *packman);
+void	packman_init(t_mlx_start *par);
 
 #endif

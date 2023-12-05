@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:56:17 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/05 11:14:15 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/05 16:26:00 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void	mlx_start(t_map *map)
 	par.map = map;
 	par.mlx = mlx_init();
 	par.mlx_win = mlx_new_window(par.mlx, 1920, 1080, "So_Long");
-	// par.img = mlx_new_image(par.mlx, 1920, 1080);
-	// par.addr = mlx_get_data_addr(par.img, &par.bits_per_pixel, &par.line_length, &par.endian);
 	packman_init(&par, &packman);
 	par.packman = &packman;
 	mlx_key_hook(par.mlx_win, key_hook, &par);
