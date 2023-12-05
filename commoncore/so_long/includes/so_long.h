@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/04 17:50:55 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:08:13 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,19 @@
 # define FALSE 0
 # define SCALE 50
 # define BORDER 50
+# define TRANSPARENT 0x00000000
 
 typedef unsigned char	t_bool;
 
-typedef struct s_mlx_data {
+typedef struct s_img {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
-}	t_mlx_data;
+	int		endian;
+	int		width;
+	int		height;
+}	t_img;
 
 typedef struct s_check
 {
@@ -69,12 +73,12 @@ typedef struct s_packman
 typedef struct s_mlx_start
 {
 	void		*mlx;
-	void		*img;
+	// void		*img;
 	void		*mlx_win;
-	char		*addr;
-	int			line_length;
-	int			endian;
-	int			bits_per_pixel;
+	// char		*addr;
+	// int			line_length;
+	// int			endian;
+	// int			bits_per_pixel;
 	t_map		*map;
 	t_packman	*packman;
 }	t_mlx_start;
@@ -103,23 +107,35 @@ void	validate_map(t_map *map);
 // graphics
 
 // mlx_start
-void	put_image(t_mlx_start *par);
-void	mlx_start(t_map *map);
-int		mlx_exit(t_mlx_start *par, char *message , int status);
+// void	put_image(t_mlx_start *par);
+// void	mlx_start(t_map *map);
+// int		mlx_exit(t_mlx_start *par, char *message , int status);
 
 // hooks
-int		key_hook(int keycode, t_mlx_start *par);
-int		close_window(t_mlx_start *par);
-void	move_packman(t_mlx_start *par, char direction);
-void	check_collectables(t_mlx_start *par);
+// int		key_hook(int keycode, t_mlx_start *par);
+// int		close_window(t_mlx_start *par);
+// void	move_packman(t_mlx_start *par, char direction);
+// void	check_collectables(t_mlx_start *par);
 
 //packman
-void	packman_init(t_mlx_start *par, t_packman *packman);
+// void	packman_init(t_mlx_start *par, t_packman *packman);
 
 // render_map
-void	wall_init(t_mlx_start *par);
-void	floor_init(t_mlx_start *par);
-void	exit_init(t_mlx_start *par);
-void	render_map(t_mlx_start *par);
+// void	wall_init(t_mlx_start *par);
+// void	floor_init(t_mlx_start *par);
+// void	exit_init(t_mlx_start *par);
+// void	render_map(t_mlx_start *par);
+
+// graphics_new
+// mlx_start
+void	mlx_start(t_map *map);
+int		mlx_exit(t_mlx_start *par, char *message, int status);
+
+// img
+void	put_pixel(t_img *img, int x, int y, int color);
+int		get_pixel(t_img *img, int x, int y);
+int		put_screen(t_mlx_start *par, t_img *img);
+void	initialize_image(t_mlx_start *par, t_img *img);
+
 
 #endif

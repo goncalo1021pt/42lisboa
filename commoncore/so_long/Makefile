@@ -2,8 +2,10 @@ NAME = so_long
 
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 S = so_long read_input verify_map close_program \
-	graphics/hooks graphics/mlx_start  graphics/packman graphics/render_map \
+	$(GRAPHICS) 
 
+G = hooks mlx_start packman render_map img
+GRAPHICS = $(addprefix graphics/,$(G))
 
 COMPRESS = ar rcs
 RM = rm -f
