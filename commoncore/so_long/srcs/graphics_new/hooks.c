@@ -6,18 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:54:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/04 17:52:15 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:02:09 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
-
-int	close_window(t_mlx_start *par)
-{
-	mlx_destroy_window(par->mlx, par->mlx_win);
-	freemap(par->map, NULL, 0);
-	return (0);
-}
 
 void move_packman(t_mlx_start *par, char direction)
 {
@@ -57,12 +50,10 @@ void	check_collectables(t_mlx_start *par)
 	}
 }
 
-int	key_hook(int keycode, t_mlx_start *par)
+int	key_hook(int keycode, t_mlx_start *par, t_img *img)
 {
 	if (keycode == 65307)
-	{
 		mlx_exit(par, NULL, 0);
-	}
 	if (keycode == 'a')
 		move_packman(par, 'a');
 	if (keycode == 'd')
@@ -73,7 +64,8 @@ int	key_hook(int keycode, t_mlx_start *par)
 		move_packman(par, 's');
 	else
 		ft_printf("%i\n", keycode);
-	printf("x: %i\ny: %i\n", par->packman->x, par->packman->y);
-	put_image(par);
+	ft_printf("x: %i\ny: %i\n", par->packman->x, par->packman->y);
+	ft_printf("collectibles: %i\n", par->map->collectibles_count);
+	create_all(par, img);
 	return (0);
 }

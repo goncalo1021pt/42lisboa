@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/05 18:04:42 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:00:04 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ typedef struct s_check
 typedef struct s_map
 {
 	char	**map;
-	void	*wall;
-	void	*floor;
-	void	*collectible;
-	void	*exit;
+	t_img	wall;
+	t_img	floor;
+	t_img	collectible;
+	t_img	exit;
 	int		rows;
 	int		cols;
 	int		collectibles_count;
@@ -130,6 +130,7 @@ void	validate_map(t_map *map);
 // mlx_start
 void	mlx_start(t_map *map);
 int		mlx_exit(t_mlx_start *par, char *message, int status);
+void	create_all(t_mlx_start *par, t_img *img);
 
 // img
 void	put_pixel(t_img *img, int x, int y, int color);
@@ -138,8 +139,23 @@ int		put_screen(t_mlx_start *par, t_img *img);
 void	initialize_image(t_mlx_start *par, t_img *img);
 void	create_img(t_img *img, t_img src, int x, int y);
 
-// packman_init
-void	find_start(t_mlx_start *par, t_packman *packman);
+// packman
+void	find_start(t_mlx_start *par);
 void	packman_init(t_mlx_start *par);
+void	render_packman(t_mlx_start *par, t_img *img);
+
+// map
+void	wall_init(t_mlx_start *par);
+void	floor_init(t_mlx_start *par);
+void	exit_init(t_mlx_start *par);
+void	collectible_init(t_mlx_start *par);
+void	render_map(t_mlx_start *par, t_img *img);
+void	map_init(t_mlx_start *par);
+
+// hooks
+int		key_hook(int keycode, t_mlx_start *par, t_img *img);
+void	move_packman(t_mlx_start *par, char direction);
+void	check_collectables(t_mlx_start *par);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:20:25 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/05 17:26:57 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:21:03 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int	put_screen(t_mlx_start *par, t_img *img)
 	return (0);
 }
 
-void create_img (t_img *img, t_img src, int x, int y)
+void	create_img(t_img *img, t_img src, int x, int y)
 {
-	int			i;
-	int			j;
-	int			color;
+	int				i;
+	int				j;
+	unsigned int	color;
 
 	i = 0;
 	while (i < src.width)

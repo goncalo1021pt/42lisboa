@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 11:15:39 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/04 13:52:32 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:26:35 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	read_map(t_map *map, int count, int fd)
 		map->map[count] = NULL;
 }
 
-void initiate_flood(t_map *map)
+void	initiate_flood(t_map *map)
 {
 	if (map->map[map->check.player_x][map->check.player_y] == 'P')
 	{

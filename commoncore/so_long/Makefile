@@ -4,7 +4,7 @@ SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 S = so_long read_input verify_map close_program \
 	$(GRAPHICS)
 
-G = mlx_start packman render_map img
+G = mlx_start packman map img hooks
 GRAPHICS = $(addprefix graphics_new/,$(G))
 
 COMPRESS = ar rcs
