@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:46:44 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/06 12:22:12 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:07:32 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,12 @@ void	render_map(t_mlx_start *par, t_img *img)
 	int	y;
 
 	y = 0;
-	ft_printf("test 2-1\n");
 	while (par->map->map[y])
 	{
 		x = 0;
-		ft_printf("test 2-2\n");
 		while (par->map->map[y][x])
 		{
-			ft_printf("test 2-3\n");
 			if (par->map->map[y][x] == '1'){
-				ft_printf("test 2-3-1\n");
 				create_img(img, par->map->wall, (x * SCALE) + BORDER, (y * SCALE) + BORDER);
 			}
 			else if (par->map->map[y][x] == '0')
@@ -71,7 +67,6 @@ void	render_map(t_mlx_start *par, t_img *img)
 			else if (par->map->map[y][x] == 'E')
 				create_img(img, par->map->floor, (x * SCALE) + BORDER, (y * SCALE) + BORDER);
 			x++;
-			ft_printf("test 2-4\n");
 		}
 		y++;
 	}

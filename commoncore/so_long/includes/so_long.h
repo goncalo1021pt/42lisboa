@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/06 12:00:04 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:47:10 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define FALSE 0
 # define SCALE 50
 # define BORDER 50
+# define MOVE_SPEED 10
 # define TRANSPARENT 0xFF000000
 
 typedef unsigned char	t_bool;
@@ -73,7 +74,7 @@ typedef struct s_packman
 typedef struct s_mlx_start
 {
 	void		*mlx;
-	// void		*img;
+	t_img		*load_img;
 	void		*mlx_win;
 	// char		*addr;
 	// int			line_length;
@@ -136,7 +137,7 @@ void	create_all(t_mlx_start *par, t_img *img);
 void	put_pixel(t_img *img, int x, int y, int color);
 int		get_pixel(t_img *img, int x, int y);
 int		put_screen(t_mlx_start *par, t_img *img);
-void	initialize_image(t_mlx_start *par, t_img *img);
+void	initialize_image(t_mlx_start *par, t_img *img, int width, int height);
 void	create_img(t_img *img, t_img src, int x, int y);
 
 // packman
@@ -153,7 +154,7 @@ void	render_map(t_mlx_start *par, t_img *img);
 void	map_init(t_mlx_start *par);
 
 // hooks
-int		key_hook(int keycode, t_mlx_start *par, t_img *img);
+int		key_hook(int keycode, t_mlx_start *par);
 void	move_packman(t_mlx_start *par, char direction);
 void	check_collectables(t_mlx_start *par);
 

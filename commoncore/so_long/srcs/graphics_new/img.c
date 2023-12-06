@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:20:25 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/06 12:21:03 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/06 17:33:07 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	put_screen(t_mlx_start *par, t_img *img)
 	return (0);
 }
 
-void	create_img(t_img *img, t_img src, int x, int y)
+void create_img (t_img *img, t_img src, int x, int y)
 {
 	int				i;
 	int				j;
@@ -56,8 +56,9 @@ void	create_img(t_img *img, t_img src, int x, int y)
 	}
 }
 
-void	initialize_image(t_mlx_start *par, t_img *img)
+void	initialize_image(t_mlx_start *par, t_img *img, int width, int height)
 {
-	img->img = mlx_new_image(par->mlx, 1920, 1080);
+	img->img = mlx_new_image(par->mlx, width, height);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
+	par->load_img = img;
 }
