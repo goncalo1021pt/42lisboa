@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/06 16:47:10 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/07 01:43:08 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define BORDER 50
 # define MOVE_SPEED 10
 # define TRANSPARENT 0xFF000000
+# define WALL_COLOR 0x1100FE
 
 typedef unsigned char	t_bool;
 
@@ -54,6 +55,8 @@ typedef struct s_map
 	t_img	floor;
 	t_img	collectible;
 	t_img	exit;
+	t_img	boarder_vertical;
+	t_img	boarder_horizontal;
 	int		rows;
 	int		cols;
 	int		collectibles_count;
@@ -150,7 +153,9 @@ void	wall_init(t_mlx_start *par);
 void	floor_init(t_mlx_start *par);
 void	exit_init(t_mlx_start *par);
 void	collectible_init(t_mlx_start *par);
+void	boarder_init(t_mlx_start *par);
 void	render_map(t_mlx_start *par, t_img *img);
+void	create_boarder(t_mlx_start *par, t_img *img, int x, int y);
 void	map_init(t_mlx_start *par);
 
 // hooks

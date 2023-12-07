@@ -6,13 +6,13 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 10:36:37 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/06 11:37:57 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/07 11:56:43 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-void	find_start(t_mlx_start *par)
+void find_start(t_mlx_start *par, t_packman *packman)
 {
 	int	x;
 	int	y;
@@ -25,8 +25,8 @@ void	find_start(t_mlx_start *par)
 		{
 			if (par->map->map[y][x] == 'P')
 			{
-				par->packman->x = x * SCALE + BORDER;
-				par->packman->y = y * SCALE + BORDER;
+				packman->x = x * SCALE + BORDER;
+				packman->y = y * SCALE + BORDER;
 				par->map->map[y][x] = '0';
 				return ;
 			}
@@ -36,19 +36,11 @@ void	find_start(t_mlx_start *par)
 	}
 }
 
-void	packman_init(t_mlx_start *par)
-{
-	par->packman = malloc(sizeof(t_packman));
-	if (par->packman == NULL)
-		error_message("Error\nMalloc failed\n");
-	find_start(par);
-	par->packman->img.img = mlx_xpm_file_to_image(par->mlx, "./includes/textures/packman_1.xpm", &par->packman->img.width, &par->packman->img.height);
-	par->packman->img.addr = mlx_get_data_addr(par->packman->img.img, &par->packman->img.bits_per_pixel, &par->packman->img.line_length, &par->packman->img.endian);
-	if (par->packman->img.img == NULL)
-		error_message("Error\nInvalid packman texture\n");
-}
 
-void	render_packman(t_mlx_start *par, t_img *img)
+void	packman_init(t_mlx_start *par, t_packman *packman)
 {
-	create_img(img, par->packman->img, par->packman->x, par->packman->y);
+	find_start(par, packman);
+	packman->img = mlx_xpm_file_to_image(par->mlx, "./textures/packman_1.xpm", &packman->width, &packman->height);
+	if (packman->img == NULL)
+		error_message("Error\nInvalid packman texture\n");
 }
