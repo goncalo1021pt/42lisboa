@@ -55,7 +55,7 @@ fcount:
 	@cat $(SRCS) | wc -l
 
 run: all
-	./$(NAME) map.ber
+	./$(NAME) includes/maps/ola.ber
 
 re: fclean all
 

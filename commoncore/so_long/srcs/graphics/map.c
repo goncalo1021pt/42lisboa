@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:46:44 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/07 17:01:58 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/08 01:02:42 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,19 +100,28 @@ void render_boarder(t_mlx_start *par, t_img *img)
 			x++;
 		}
 		y++;
-	} 
+	}
 }
 
 void create_boarder(t_mlx_start *par, t_img *img, int x, int y)
 {
 	if (x + 1 < par->map->cols && par->map->map[y][x + 1] == '1' )
-		create_img(img, par->map->boarder_vertical, ((x + 1)* SCALE) + BORDER - 1 , (y * SCALE) + BORDER);
-	if (y + 1 < par->map->rows && par->map->map[y + 1][x] == '1')
-		create_img(img, par->map->boarder_horizontal, (x * SCALE) + BORDER, ((y + 1) * SCALE) + BORDER - 1);
+	{
+		if (y + 1 < par->map->rows && par->map->map[y + 1][x] == '1' && par->map->map[y + 1][x + 1] == '1')
+		{
+			put_pixel(img, ((x + 1)* SCALE) + BORDER - 1 , ((y + 1) * SCALE) + BORDER - 1, WALL_COLOR);
+			put_pixel(img, ((x + 1)* SCALE) + BORDER , ((y + 1) * SCALE) + BORDER - 1, WALL_COLOR);
+			put_pixel(img, ((x + 1)* SCALE) + BORDER - 1 , ((y + 1) * SCALE) + BORDER, WALL_COLOR);
+			put_pixel(img, ((x + 1)* SCALE) + BORDER , ((y + 1) * SCALE) + BORDER, WALL_COLOR);
+		}
+		create_img(img, par->map->boarder_vertical, ((x + 1)* SCALE) + BORDER - 1 , (y * SCALE) + BORDER + 1);
+	}
 	if (x - 1 >= 0 && par->map->map[y][x - 1] == '1')
-		create_img(img, par->map->boarder_vertical, (x * SCALE) + BORDER + 1, (y * SCALE) + BORDER);
+		create_img(img, par->map->boarder_vertical, (x * SCALE) + BORDER , (y * SCALE) + BORDER + 1);
+	if (y + 1 < par->map->rows && par->map->map[y + 1][x] == '1')
+		create_img(img, par->map->boarder_horizontal, (x * SCALE) + BORDER + 1 , ((y + 1) * SCALE) + BORDER - 1);
 	if (y - 1 >= 0 && par->map->map[y - 1][x] == '1')
-		create_img(img, par->map->boarder_horizontal, (x * SCALE) + BORDER, (y * SCALE) + BORDER + 1);
+		create_img(img, par->map->boarder_horizontal, (x * SCALE) + BORDER + 1 , (y * SCALE) + BORDER);
 }
 
 void	map_init(t_mlx_start *par)

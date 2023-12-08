@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/07 01:43:08 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:14:25 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ void	exit_init(t_mlx_start *par);
 void	collectible_init(t_mlx_start *par);
 void	boarder_init(t_mlx_start *par);
 void	render_map(t_mlx_start *par, t_img *img);
+void	render_boarder(t_mlx_start *par, t_img *img);
 void	create_boarder(t_mlx_start *par, t_img *img, int x, int y);
 void	map_init(t_mlx_start *par);
 

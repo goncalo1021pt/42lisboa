@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:56:17 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/07 14:35:49 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:14:46 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	mlx_exit(t_mlx_start *par, char *message, int status)
 void	create_all(t_mlx_start *par, t_img *img)
 {
 	render_map(par, img);
+	render_boarder(par, img);
 	render_packman(par, img);
 	put_screen(par, img);
 }
