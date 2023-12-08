@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/07 17:14:25 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:28:00 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define FALSE 0
 # define SCALE 50
 # define BORDER 50
-# define MOVE_SPEED 10
+# define MOVE_SPEED 1
 # define TRANSPARENT 0xFF000000
 # define WALL_COLOR 0x1100FE
 
@@ -68,10 +68,11 @@ typedef struct s_packman
 {
 	t_img	img;
 	char	*path;
+	char	dir;
+	char	prev;
+	char	next;
 	int		x;
 	int		y;
-	// int		width;
-	// int		height;
 }	t_packman;
 
 typedef struct s_mlx_start
@@ -79,10 +80,6 @@ typedef struct s_mlx_start
 	void		*mlx;
 	t_img		*load_img;
 	void		*mlx_win;
-	// char		*addr;
-	// int			line_length;
-	// int			endian;
-	// int			bits_per_pixel;
 	t_map		*map;
 	t_packman	*packman;
 }	t_mlx_start;
@@ -108,29 +105,8 @@ void	free_matrix(t_map *map, int i, int max);
 t_bool	flood_fill(t_map *map, int x, int y);
 void	validate_map(t_map *map);
 
-// graphics
-
-// mlx_start
-// void	put_image(t_mlx_start *par);
-// void	mlx_start(t_map *map);
-// int		mlx_exit(t_mlx_start *par, char *message , int status);
-
-// hooks
-// int		key_hook(int keycode, t_mlx_start *par);
-// int		close_window(t_mlx_start *par);
-// void	move_packman(t_mlx_start *par, char direction);
-// void	check_collectables(t_mlx_start *par);
-
-//packman
-// void	packman_init(t_mlx_start *par, t_packman *packman);
-
-// render_map
-// void	wall_init(t_mlx_start *par);
-// void	floor_init(t_mlx_start *par);
-// void	exit_init(t_mlx_start *par);
-// void	render_map(t_mlx_start *par);
-
 // graphics_new
+
 // mlx_start
 void	mlx_start(t_map *map);
 int		mlx_exit(t_mlx_start *par, char *message, int status);
@@ -161,8 +137,10 @@ void	map_init(t_mlx_start *par);
 
 // hooks
 int		key_hook(int keycode, t_mlx_start *par);
-void	move_packman(t_mlx_start *par, char direction);
+t_bool	move_packman(t_mlx_start *par, char direction, int status);
 void	check_collectables(t_mlx_start *par);
+int		const_move(t_mlx_start *par);
+
 
 
 #endif

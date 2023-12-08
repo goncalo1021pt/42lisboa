@@ -5,11 +5,11 @@ S = so_long read_input verify_map close_program \
 	$(GRAPHICS)
 
 G = mlx_start packman map img hooks
-GRAPHICS = $(addprefix graphics/,$(G))
+GRAPHICS = $(addprefix graphics_copy/,$(G))
 
 COMPRESS = ar rcs
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 CC = cc
 
 MLX_DIR = ./includes/minilibx-linux
