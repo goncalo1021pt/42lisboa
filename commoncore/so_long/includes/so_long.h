@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/08 16:28:00 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:04:46 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_map
 
 typedef struct s_packman
 {
-	t_img	img;
+	t_img	img[16];
 	char	*path;
 	char	dir;
 	char	prev;
@@ -79,6 +79,8 @@ typedef struct s_mlx_start
 {
 	void		*mlx;
 	t_img		*load_img;
+	int			width;
+	int			height;
 	void		*mlx_win;
 	t_map		*map;
 	t_packman	*packman;
@@ -123,6 +125,8 @@ void	create_img(t_img *img, t_img src, int x, int y);
 void	find_start(t_mlx_start *par);
 void	packman_init(t_mlx_start *par);
 void	render_packman(t_mlx_start *par, t_img *img);
+void	packman_rotate(t_mlx_start *par);
+void	rotate_img(t_img *src, t_img *dst);
 
 // map
 void	wall_init(t_mlx_start *par);

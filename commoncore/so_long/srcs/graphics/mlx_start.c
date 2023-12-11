@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:56:17 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/07 17:14:46 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/11 14:31:17 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int	mlx_exit(t_mlx_start *par, char *message, int status)
 	mlx_destroy_image(par->mlx, par->map->exit.img);
 	mlx_destroy_image(par->mlx, par->map->boarder_vertical.img);
 	mlx_destroy_image(par->mlx, par->map->boarder_horizontal.img);
-	mlx_destroy_image(par->mlx, par->packman->img.img);
+	mlx_destroy_image(par->mlx, par->packman->img[0].img);
+	mlx_destroy_image(par->mlx, par->packman->img[1].img);
+	mlx_destroy_image(par->mlx, par->packman->img[2].img);
+	mlx_destroy_image(par->mlx, par->packman->img[3].img);
 	mlx_destroy_window(par->mlx, par->mlx_win);
 	mlx_destroy_display(par->mlx);
 	free(par->packman);
@@ -38,22 +41,35 @@ void	create_all(t_mlx_start *par, t_img *img)
 	put_screen(par, img);
 }
 
+void	mlx_initiazie_var(t_mlx_start *par, t_map *map)
+{
+	int	width;
+	int	height;
+
+	par->map = map;
+	par->width = map->cols * SCALE + BORDER * 2;
+	par->height = map->rows * SCALE + BORDER * 2;
+	par->mlx = mlx_init();
+	mlx_get_screen_size(par->mlx, &width, &height);
+	if (par->width > width || par->height > height)
+	{
+		free(par->mlx);
+		error_message("Map too big for the screen");
+	}
+	par->mlx_win = mlx_new_window(par->mlx, par->width, par->height, "So_Long");
+}
+
 void	mlx_start(t_map *map)
 {
 	t_mlx_start	par;
 	t_img		img;
-	int			width;
-	int			height;
 
-	width = map->cols * SCALE + BORDER * 2;
-	height = map->rows * SCALE + BORDER * 2;
-	par.map = map;
-	par.mlx = mlx_init();
-	par.mlx_win = mlx_new_window(par.mlx, width, height, "So_Long");
-	initialize_image(&par, &img, width, height);
+	mlx_initiazie_var(&par, map);
+	initialize_image(&par, &img, par.width, par.height);
 	packman_init(&par);
 	map_init(&par);
 	create_all(&par, &img);
+	mlx_loop_hook(par.mlx, const_move, &par);
 	mlx_hook(par.mlx_win, 2, 1L << 0, key_hook, &par);
 	mlx_hook(par.mlx_win, 17, 1L << 17, mlx_exit, &par);
 	mlx_loop(par.mlx);
