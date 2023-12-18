@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/15 10:47:20 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/15 10:50:46 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
 # include <stdio.h>
 # include <fcntl.h>
 
-# define LEGAL_CHARS "01CEPG"
+# define LEGAL_CHARS "01CEP"
 # define TRUE 1
 # define FALSE 0
 # define SCALE 50
@@ -46,6 +46,7 @@ typedef struct s_check
 	int		player_y;
 	int		exit;
 	int		collectibles;
+	int		ghosts;
 }	t_check;
 
 typedef struct s_map
@@ -75,6 +76,15 @@ typedef struct s_packman
 	int		y;
 }	t_packman;
 
+typedef struct s_ghost
+{
+	t_img	img[4];
+	char	*path;
+	char	dir;
+	int		x;
+	int		y;
+}	t_ghost;
+
 typedef struct s_mlx_start
 {
 	void		*mlx;
@@ -84,8 +94,8 @@ typedef struct s_mlx_start
 	void		*mlx_win;
 	t_map		*map;
 	t_packman	*packman;
+	t_ghost		*ghost[4];
 }	t_mlx_start;
-
 
 // so_long
 void	print_map(t_map *map);
@@ -143,7 +153,5 @@ int		key_hook(int keycode, t_mlx_start *par);
 t_bool	move_packman(t_mlx_start *par, char direction, int status);
 void	check_collectables(t_mlx_start *par);
 int		const_move(t_mlx_start *par);
-
-
 
 #endif

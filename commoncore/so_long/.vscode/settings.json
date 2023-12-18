@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"*.c": "c",
+		"so_long.h": "c",
+		"so_long_bonus.h": "c"
+	}
+}

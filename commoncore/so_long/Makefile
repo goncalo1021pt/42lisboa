@@ -1,4 +1,11 @@
 NAME = so_long
+BONUS_NAME = so_long_bonus
+
+BONUS = $(addprefix bonus/,$(addsuffix .c, $(S)))
+B = so_long read_input verify_map close_program
+
+G_B = mlx_start packman map img hooks ghosts.c
+GRAPHICS_B = $(addprefix graphics/,$(G_B))
 
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 S = so_long read_input verify_map close_program \
@@ -21,6 +28,7 @@ LIBFT_DIR = ./includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 all: $(NAME)
+bonus: $(BONUS_NAME)
 
 debug: CFLAGS += -g3 -fPIE
 debug: re
@@ -29,9 +37,17 @@ $(OBJS_DIR)/%.o: srcs/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+$(OBJS_DIR)/%.o: bonus/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 $(NAME): $(MLX) $(OBJS) $(LIBFT)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX)
 	@echo $(NAME) ready!
+
+$(BONUS_NAME): $(MLX) $(OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(OBJS) $(LIBFT) $(MLX)
+	@echo $(BONUS_NAME) ready!
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
@@ -48,6 +64,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) $(BONUS_NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
 
 fcount:
@@ -55,7 +72,7 @@ fcount:
 	@cat $(SRCS) | wc -l
 
 run: all
-	./$(NAME) includes/maps/ola.ber
+	./$(NAME) includes/maps/teste.ber
 
 re: fclean all
 

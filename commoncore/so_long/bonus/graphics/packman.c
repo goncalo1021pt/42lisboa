@@ -6,11 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 10:36:37 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/11 20:31:16 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/15 10:46:41 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 void	find_start(t_mlx_start *par)
 {

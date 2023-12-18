@@ -6,11 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:54:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/11 20:51:30 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/15 10:46:26 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 t_bool move_packman(t_mlx_start *par, char direction, int status)
 {
