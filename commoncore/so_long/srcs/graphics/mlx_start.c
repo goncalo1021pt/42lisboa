@@ -52,11 +52,11 @@ void	mlx_initiazie_var(t_mlx_start *par, t_map *map)
 	par->height = map->rows * SCALE + BORDER * 2;
 	par->mlx = mlx_init();
 	mlx_get_screen_size(par->mlx, &width, &height);
-	if (par->width > width || par->height > height)
+	/* if (par->width > width || par->height > height)
 	{
 		free(par->mlx);
 		error_message("Map too big for the screen");
-	}
+	} */
 	par->mlx_win = mlx_new_window(par->mlx, par->width, par->height, "So_Long");
 }
 

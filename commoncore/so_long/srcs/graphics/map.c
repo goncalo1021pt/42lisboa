@@ -88,7 +88,7 @@ void render_boarder(t_mlx_start *par, t_img *img)
 {
 	int	x;
 	int	y;
-
+	(void)img;
 	y = 0;
 	while (y < par->map->rows)
 	{

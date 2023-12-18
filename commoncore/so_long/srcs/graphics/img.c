@@ -56,6 +56,36 @@ void create_img (t_img *img, t_img src, int x, int y)
 	}
 }
 
+/* void create_img_scre (t_img *img, t_img src, int x, int y, int w, int h)
+{
+	int				i;
+	int				j;
+	unsigned int	color;
+	double dy = h / src.height;
+	double 	dx = w / src.width;
+	double				i2;
+	double				j2;
+
+	i = 0;
+	i2 = 0;
+	while (i < src.width)
+	{
+		j = 0;
+		j2 = 0;
+		while (j < src.height)
+		{
+			color = get_pixel(&src, (int) i2, (int) j2);
+			if (color != TRANSPARENT)
+				put_pixel(img, x + i, y + j, color);
+			j++;
+			j2 += dy;
+		}
+		i2 += dx;
+		i++;
+	}
+} */
+
+
 void	initialize_image(t_mlx_start *par, t_img *img, int width, int height)
 {
 	img->img = mlx_new_image(par->mlx, width, height);
