@@ -28,6 +28,7 @@ int	mlx_exit(t_mlx_start *par, char *message, int status)
 	mlx_destroy_image(par->mlx, par->map->boarder_horizontal.img);
 	mlx_destroy_window(par->mlx, par->mlx_win);
 	mlx_destroy_display(par->mlx);
+
 	free(par->packman);
 	free(par->mlx);
 	freemap(par->map, message, status);
@@ -58,6 +59,7 @@ void	mlx_initiazie_var(t_mlx_start *par, t_map *map)
 		error_message("Map too big for the screen");
 	} */
 	par->mlx_win = mlx_new_window(par->mlx, par->width, par->height, "So_Long");
+	// mlx_set_font(par->mlx, par->mlx_win, "-*-fixed-medium-r-normal--20-*-*-*-*-*-*-*");
 }
 
 void	mlx_start(t_map *map)

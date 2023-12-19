@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:54:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/15 10:46:26 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/11 20:51:30 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ t_bool move_packman(t_mlx_start *par, char direction, int status)
 			par->packman->y += MOVE_SPEED;
 	if (x != par->packman->x || y != par->packman->y)
 	{
+		if (status == 0 && par->packman->dir != par->packman->next)
+		{
+			par->packman->moves++;
+			ft_printf("Moves: %d\n", par->packman->moves);
+		}
 		if (status == 0)
 			par->packman->dir = par->packman->next;
 		par->packman->prev = par->packman->dir;
@@ -45,6 +50,13 @@ t_bool move_packman(t_mlx_start *par, char direction, int status)
 	else
 		par->packman->dir = par->packman->prev;
 	return (flag);
+}
+
+int check_time(int last_time)
+{
+	int time;
+
+	return (0);
 }
 
 void	check_collectables(t_mlx_start *par)

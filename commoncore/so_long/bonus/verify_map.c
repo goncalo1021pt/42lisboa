@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:49:04 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/15 10:47:00 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:26:39 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_bool	allocate_visited(t_map *map)
 {
 	int	ctd;
-
 	map->visited = malloc(sizeof(t_bool *) * map->rows);
 	if (map->visited == NULL)
 		return (FALSE);
@@ -34,8 +33,7 @@ t_bool	allocate_visited(t_map *map)
 	initialize_visited(map);
 	return (TRUE);
 }
-
-void	initialize_visited(t_map *map)
+void initialize_visited(t_map *map)
 {
 	int	ctd;
 	int	ctd2;

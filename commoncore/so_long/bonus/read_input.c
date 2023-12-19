@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 11:15:39 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/15 10:46:51 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:26:35 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	check_map(t_map *map)
 	map->check.player = 0;
 	map->check.exit = 0;
 	map->collectibles_count = 0;
-	map->check.ghosts = 0;
 	while (map->map[++ctd])
 	{
 		ctd2 = -1;
@@ -46,16 +45,12 @@ void	check_map(t_map *map)
 				map->check.exit++;
 			else if (map->map[ctd][ctd2] == 'C')
 				map->collectibles_count++;
-			else if (map->map[ctd][ctd2] == 'G')
-				map->check.ghosts++;
 		}
 	}
 	if (map->check.player != 1)
 		freemap(map, "Invalid number of players", 1);
 	if (map->check.exit != 1)
 		freemap(map, "Invalid number of exits", 1);
-	if (map->check.ghosts > 4)
-		freemap(map, "Invalid number of ghosts", 1);
 }
 
 void	read_map(t_map *map, int count, int fd)

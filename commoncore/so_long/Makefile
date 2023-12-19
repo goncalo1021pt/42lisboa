@@ -1,8 +1,9 @@
 NAME = so_long
 BONUS_NAME = so_long_bonus
 
-BONUS = $(addprefix bonus/,$(addsuffix .c, $(S)))
-B = so_long read_input verify_map close_program
+BONUS = $(addprefix bonus/,$(addsuffix .c, $(B)))
+B = so_long read_input verify_map close_program \
+	$(GRAPHICS)
 
 G_B = mlx_start packman map img hooks ghosts.c
 GRAPHICS_B = $(addprefix graphics/,$(G_B))
@@ -23,7 +24,9 @@ MLX_DIR = ./includes/minilibx-linux
 MLX = $(MLX_DIR)/libmlx_Linux.a -lXext -lX11 -lm -lz
 
 OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:srcs/%.c=%.o))
+BONUS_OBJS = $(addprefix $(OBJS_DIR_BONUS)/,$(BONUS:bonus/%.c=%.o))
 OBJS_DIR = objs
+OBJS_DIR_BONUS = objs_bonus
 LIBFT_DIR = ./includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
@@ -37,7 +40,7 @@ $(OBJS_DIR)/%.o: srcs/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJS_DIR)/%.o: bonus/%.c
+$(OBJS_DIR_BONUS)/%.o: bonus/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
@@ -45,8 +48,8 @@ $(NAME): $(MLX) $(OBJS) $(LIBFT)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX)
 	@echo $(NAME) ready!
 
-$(BONUS_NAME): $(MLX) $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(OBJS) $(LIBFT) $(MLX)
+$(BONUS_NAME): $(MLX) $(BONUS_OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJS) $(LIBFT) $(MLX)
 	@echo $(BONUS_NAME) ready!
 
 $(LIBFT):
@@ -59,6 +62,7 @@ $(MLX):
 
 clean:
 	@$(RM) -r $(OBJS_DIR)
+	@$(RM) -r $(OBJS_DIR_BONUS)
 	@$(MAKE) -C $(LIBFT_DIR) clean --no-print-directory
 	@$(MAKE) -C $(MLX_DIR) clean --no-print-directory
 
@@ -72,7 +76,7 @@ fcount:
 	@cat $(SRCS) | wc -l
 
 run: all
-	./$(NAME) includes/maps/teste.ber
+	./$(NAME) includes/maps/test.ber
 
 re: fclean all
 

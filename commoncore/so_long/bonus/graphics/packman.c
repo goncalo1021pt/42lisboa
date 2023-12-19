@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 10:36:37 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/15 10:46:41 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/11 20:31:16 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	packman_init(t_mlx_start *par)
 	par->packman->dir = 's';
 	par->packman->next = 's';
 	par->packman->prev = 's';
+	par->packman->moves = 0;
 	par->packman->img[0].img = mlx_xpm_file_to_image(par->mlx, "./includes/textures/packman_0.xpm", &par->packman->img[0].width, &par->packman->img[0].height);
 	par->packman->img[1].img = mlx_xpm_file_to_image(par->mlx, "./includes/textures/packman_1.xpm", &par->packman->img[1].width, &par->packman->img[1].height);
 	par->packman->img[2].img = mlx_xpm_file_to_image(par->mlx, "./includes/textures/packman_2.xpm", &par->packman->img[2].width, &par->packman->img[2].height);
@@ -95,9 +96,12 @@ void	render_packman(t_mlx_start *par, t_img *img)
 		create_img(img, par->packman->img[direction + 1], par->packman->x, par->packman->y);
 	else if (i < 30)
 		create_img(img, par->packman->img[direction + 2], par->packman->x, par->packman->y);
-	else if (i < 40)
+	else if (i < 39)
 		create_img(img, par->packman->img[direction + 3], par->packman->x, par->packman->y);
 	else
+	{
+		create_img(img, par->packman->img[direction + 3], par->packman->x, par->packman->y);
 		i = -1;
+	}
 	i++;
 }

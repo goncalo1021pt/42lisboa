@@ -6,11 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:46:44 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/15 10:46:33 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/11 20:43:20 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long_bonus.h"
+#include "../includes/so_long_bonus.h"
 
 void	wall_init(t_mlx_start *par)
 {
@@ -88,7 +88,7 @@ void render_boarder(t_mlx_start *par, t_img *img)
 {
 	int	x;
 	int	y;
-
+	(void)img;
 	y = 0;
 	while (y < par->map->rows)
 	{
@@ -122,6 +122,23 @@ void create_boarder(t_mlx_start *par, t_img *img, int x, int y)
 		create_img(img, par->map->boarder_horizontal, (x * SCALE) + BORDER + 1 , ((y + 1) * SCALE) + BORDER - 1);
 	if (y - 1 >= 0 && par->map->map[y - 1][x] == '1')
 		create_img(img, par->map->boarder_horizontal, (x * SCALE) + BORDER + 1 , (y * SCALE) + BORDER);
+}
+
+void render_counter(t_mlx_start *par)
+{
+	char	*moves;
+	int 	pos_x;
+
+	pos_x = 25;
+	moves = ft_itoa(par->packman->moves);
+	if (ft_strlen(moves) == 2)
+		pos_x -= 5;
+	else if (ft_strlen(moves) == 3)
+		pos_x -= 10;
+	else if (ft_strlen(moves) == 4)
+		pos_x -= 15;
+	mlx_string_put(par->mlx, par->mlx_win, pos_x, 30, 0x00FFFFFF, moves);
+	free(moves);
 }
 
 void	map_init(t_mlx_start *par)

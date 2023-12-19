@@ -35,6 +35,11 @@ t_bool move_packman(t_mlx_start *par, char direction, int status)
 			par->packman->y += MOVE_SPEED;
 	if (x != par->packman->x || y != par->packman->y)
 	{
+		if (status == 0 && par->packman->dir != par->packman->next)
+		{
+			par->packman->moves++;
+			ft_printf("Moves: %d\n", par->packman->moves);
+		}
 		if (status == 0)
 			par->packman->dir = par->packman->next;
 		par->packman->prev = par->packman->dir;

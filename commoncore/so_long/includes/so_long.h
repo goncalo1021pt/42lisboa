@@ -73,6 +73,7 @@ typedef struct s_packman
 	char	next;
 	int		x;
 	int		y;
+	int		moves;
 }	t_packman;
 
 typedef struct s_mlx_start

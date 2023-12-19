@@ -17,6 +17,7 @@
 # include "minilibx-linux/mlx.h"
 # include <stdio.h>
 # include <fcntl.h>
+# include <time.h>
 
 # define LEGAL_CHARS "01CEP"
 # define TRUE 1
@@ -74,6 +75,7 @@ typedef struct s_packman
 	char	next;
 	int		x;
 	int		y;
+	int		moves;
 }	t_packman;
 
 typedef struct s_ghost
@@ -146,6 +148,7 @@ void	boarder_init(t_mlx_start *par);
 void	render_map(t_mlx_start *par, t_img *img);
 void	render_boarder(t_mlx_start *par, t_img *img);
 void	create_boarder(t_mlx_start *par, t_img *img, int x, int y);
+void	render_counter(t_mlx_start *par);
 void	map_init(t_mlx_start *par);
 
 // hooks

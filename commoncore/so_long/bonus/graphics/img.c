@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:20:25 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/15 10:46:30 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/11 14:12:32 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,36 @@ void create_img (t_img *img, t_img src, int x, int y)
 		i++;
 	}
 }
+
+/* void create_img_scre (t_img *img, t_img src, int x, int y, int w, int h)
+{
+	int				i;
+	int				j;
+	unsigned int	color;
+	double dy = h / src.height;
+	double 	dx = w / src.width;
+	double				i2;
+	double				j2;
+
+	i = 0;
+	i2 = 0;
+	while (i < src.width)
+	{
+		j = 0;
+		j2 = 0;
+		while (j < src.height)
+		{
+			color = get_pixel(&src, (int) i2, (int) j2);
+			if (color != TRANSPARENT)
+				put_pixel(img, x + i, y + j, color);
+			j++;
+			j2 += dy;
+		}
+		i2 += dx;
+		i++;
+	}
+} */
+
 
 void	initialize_image(t_mlx_start *par, t_img *img, int width, int height)
 {
