@@ -17,12 +17,11 @@ t_bool move_packman(t_mlx_start *par, char direction, int status)
 	t_bool flag;
 	int x;
 	int y;
+	static long long last_time = 0;
 
 	x = par->packman->x;
 	y = par->packman->y;
 	flag = FALSE;
-	if (check_time(&par->last_time) == FALSE)
-		return (flag);
 	if (direction == 'a' && par->map->map[(par->packman->y - BORDER) / SCALE][(par->packman->x - MOVE_SPEED - BORDER) / SCALE] != '1')
 		if (((par->packman->y - BORDER) % SCALE) == 0 || par->map->map[(par->packman->y - BORDER) / SCALE + 1][(par->packman->x - MOVE_SPEED - BORDER) / SCALE] != '1')
 			par->packman->x -= MOVE_SPEED;
@@ -46,6 +45,7 @@ t_bool move_packman(t_mlx_start *par, char direction, int status)
 			par->packman->dir = par->packman->next;
 		par->packman->prev = par->packman->dir;
 		check_collectables(par);
+		while (check_time(&last_time) == FALSE);
 		create_all(par, par->load_img);
 		flag = TRUE;
 	}
@@ -56,19 +56,19 @@ t_bool move_packman(t_mlx_start *par, char direction, int status)
 
 t_bool check_time(long long *last_time)
 {
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
+	struct timeval tv;
+	long long current_time;
 
-    long long current_time = tv.tv_sec * 1000000LL + tv.tv_usec;
-    if (current_time - *last_time >= FRAME_TIME)
-    {
-        *last_time = current_time;
-        return (TRUE); // Enough time has passed, render the next frame
-    }
-    else
-    {
-        return (FALSE); // Not enough time has passed, don't render
-    }
+	gettimeofday(&tv, NULL);
+	current_time = tv.tv_sec * 1000000 + tv.tv_usec;
+	if (current_time - *last_time >= FRAME_TIME)
+	{
+		*last_time = current_time;
+		usleep(100);
+		return (TRUE); 
+	}
+	else
+		return (FALSE);
 }
 
 void	check_collectables(t_mlx_start *par)

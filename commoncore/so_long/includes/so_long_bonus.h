@@ -17,7 +17,7 @@
 # include "minilibx-linux/mlx.h"
 # include <stdio.h>
 # include <fcntl.h>
-# include <time.h>
+# include <sys/time.h>
 
 # define LEGAL_CHARS "01CEP"
 # define TRUE 1
@@ -27,7 +27,7 @@
 # define MOVE_SPEED 1
 # define TRANSPARENT 0xFF000000
 # define WALL_COLOR 0x1100FE
-#define FPS 30
+#define FPS 60
 #define FRAME_TIME (1000000 / FPS) // Time for each frame in microseconds
 
 typedef unsigned char	t_bool;
@@ -158,5 +158,6 @@ int		key_hook(int keycode, t_mlx_start *par);
 t_bool	move_packman(t_mlx_start *par, char direction, int status);
 void	check_collectables(t_mlx_start *par);
 int		const_move(t_mlx_start *par);
+t_bool check_time(long long *last_time);
 
 #endif
