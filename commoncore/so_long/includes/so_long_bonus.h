@@ -27,6 +27,8 @@
 # define MOVE_SPEED 1
 # define TRANSPARENT 0xFF000000
 # define WALL_COLOR 0x1100FE
+#define FPS 30
+#define FRAME_TIME (1000000 / FPS) // Time for each frame in microseconds
 
 typedef unsigned char	t_bool;
 

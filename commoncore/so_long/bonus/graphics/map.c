@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long_bonus.h"
+#include "../../includes/so_long_bonus.h"
 
 void	wall_init(t_mlx_start *par)
 {
