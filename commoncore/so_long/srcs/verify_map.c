@@ -6,15 +6,16 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:49:04 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/06 11:26:39 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:33:45 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 t_bool	allocate_visited(t_map *map)
 {
 	int	ctd;
+
 	map->visited = malloc(sizeof(t_bool *) * map->rows);
 	if (map->visited == NULL)
 		return (FALSE);
@@ -33,7 +34,8 @@ t_bool	allocate_visited(t_map *map)
 	initialize_visited(map);
 	return (TRUE);
 }
-void initialize_visited(t_map *map)
+
+void	initialize_visited(t_map *map)
 {
 	int	ctd;
 	int	ctd2;
@@ -77,13 +79,13 @@ t_bool	flood_fill(t_map *map, int x, int y)
 
 void	validate_map(t_map *map)
 {
-	int				ctd;
-	int				ctd2;
+	int	ctd;
+	int	ctd2;
 
 	check_map(map);
 	check_line(map);
-	ctd = 0;
-	while (ctd < map->rows)
+	ctd = -1;
+	while (++ctd < map->rows)
 	{
 		ctd2 = 0;
 		while (ctd2 < map->cols)
@@ -93,13 +95,13 @@ void	validate_map(t_map *map)
 				map->check.player_x = ctd;
 				map->check.player_y = ctd2;
 			}
-			if (ctd == 0 || ctd == map->rows - 1 || ctd2 == 0 || ctd2 == map->cols - 1)
+			if (ctd == 0 || ctd == map->rows - 1 || ctd2 == 0
+				|| ctd2 == map->cols - 1)
 			{
 				if (map->map[ctd][ctd2] != '1')
 					freemap(map, "Map must be surrounded by walls", 1);
 			}
 			ctd2++;
 		}
-		ctd++;
 	}
 }

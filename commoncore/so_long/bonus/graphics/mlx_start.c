@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:56:17 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/11 20:42:27 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:14:54 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	mlx_exit(t_mlx_start *par, char *message, int status)
 	mlx_destroy_image(par->mlx, par->map->boarder_horizontal.img);
 	mlx_destroy_window(par->mlx, par->mlx_win);
 	mlx_destroy_display(par->mlx);
-
 	free(par->packman);
 	free(par->mlx);
 	freemap(par->map, message, status);
@@ -44,6 +43,8 @@ void	create_all(t_mlx_start *par, t_img *img)
 	render_counter(par);
 }
 
+// mlx_set_font(par->mlx, par->mlx_win,
+// 		"-*-fixed-medium-r-normal--20-*-*-*-*-*-*-*");
 void	mlx_initiazie_var(t_mlx_start *par, t_map *map)
 {
 	int	width;
@@ -54,13 +55,7 @@ void	mlx_initiazie_var(t_mlx_start *par, t_map *map)
 	par->height = map->rows * SCALE + BORDER * 2;
 	par->mlx = mlx_init();
 	mlx_get_screen_size(par->mlx, &width, &height);
-	/* if (par->width > width || par->height > height)
-	{
-		free(par->mlx);
-		error_message("Map too big for the screen");
-	} */
 	par->mlx_win = mlx_new_window(par->mlx, par->width, par->height, "So_Long");
-	// mlx_set_font(par->mlx, par->mlx_win, "-*-fixed-medium-r-normal--20-*-*-*-*-*-*-*");
 }
 
 void	mlx_start(t_map *map)

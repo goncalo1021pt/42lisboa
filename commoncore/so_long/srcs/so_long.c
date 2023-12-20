@@ -6,11 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:35:24 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/07 13:56:42 by gfontao-         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:20:04 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	print_map(t_map *map)
 {

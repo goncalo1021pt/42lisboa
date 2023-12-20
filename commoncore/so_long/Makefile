@@ -2,17 +2,17 @@ NAME = so_long
 BONUS_NAME = so_long_bonus
 
 BONUS = $(addprefix bonus/,$(addsuffix .c, $(B)))
-B = so_long read_input verify_map close_program \
-	$(GRAPHICS)
+B = so_long read_input check_map verify_map close_program \
+	$(GRAPHICS_B)
 
-G_B = mlx_start packman map img hooks ghosts.c
+G_B = mlx_start packman packman_init map map_init map_init2 img hooks hooks2
 GRAPHICS_B = $(addprefix graphics/,$(G_B))
 
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
-S = so_long read_input verify_map close_program \
+S = so_long read_input check_map verify_map close_program \
 	$(GRAPHICS)
 
-G = mlx_start packman map img hooks
+G = mlx_start packman packman_init map map_init map_init2 img hooks hooks2
 GRAPHICS = $(addprefix graphics/,$(G))
 
 COMPRESS = ar rcs
@@ -30,7 +30,7 @@ OBJS_DIR_BONUS = objs_bonus
 LIBFT_DIR = ./includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-all: $(NAME)
+all: $(NAME) $(BONUS_NAME)
 bonus: $(BONUS_NAME)
 
 debug: CFLAGS += -g3 -fPIE
