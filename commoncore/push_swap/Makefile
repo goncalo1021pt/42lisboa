@@ -1,3 +1,4 @@
+SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 S = save_stack quicksort small_sort \
 	send_cost lists/costs lists/costs2 lists/lists \
 	src_aux lists/swap lists/lists2
@@ -6,7 +7,6 @@ MAIN_SRC = srcs/push_swap.c
 
 BONUS = bonus/checker.c bonus/checker_aux.c
 
-SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 
 NAME = push_swap
 

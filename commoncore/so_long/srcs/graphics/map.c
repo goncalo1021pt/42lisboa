@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:46:44 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/20 14:23:53 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:36:47 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	render_boarder(t_mlx_start *par, t_img *img)
 		x = 0;
 		while (x < par->map->cols)
 		{
-			if (par->map->map[y][x] == '1')
-				create_boarder(par, img, x, y);
+			// if (par->map->map[y][x] == '1')
+			// 	create_boarder(par, img, x, y);
 			x++;
 		}
 		y++;

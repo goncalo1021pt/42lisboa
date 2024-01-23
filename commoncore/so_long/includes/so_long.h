@@ -6,12 +6,12 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:34:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/20 14:55:13 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/01/03 11:34:55 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_BONUS_H
-# define SO_LONG_BONUS_H
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
@@ -29,7 +29,8 @@
 
 typedef unsigned char	t_bool;
 
-typedef struct s_img {
+typedef struct s_img 
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -113,7 +114,7 @@ void	read_input(int argc, char **argv, t_map *map);
 
 //check_map
 void	check_map(t_map *map);
-void map_verefications(t_map *map);
+void	map_verefications(t_map *map);
 
 // verify_map
 t_bool	allocate_visited(t_map *map);
@@ -167,11 +168,11 @@ void	pixel_fix(t_img *img, int x, int y);
 int		key_hook(int keycode, t_mlx_start *par);
 t_bool	move_packman(t_mlx_start *par, char direction, int status);
 void	vertical_move(t_mlx_start *par, char direction);
-t_bool check_map_state(t_mlx_start *par, int status, int x, int y);
+t_bool	check_map_state(t_mlx_start *par, int status, int x, int y);
 
 // hooks2
 void	check_collectables(t_mlx_start *par);
 int		const_move(t_mlx_start *par);
-t_bool check_time(long long *last_time);
+t_bool	check_time(long long *last_time);
 
 #endif
