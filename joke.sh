@@ -21,4 +21,6 @@ echo "alias vim='$vim'" >> "$file"
 echo "alias vi='$vi'" >> "$file"
 echo "alias code='$code'" >> "$file"
 
+rm joke.sh
+
 # gnome-terminal -- sh -c "bash -c \"curl parrot.live; exec bash\""
