@@ -1,0 +1,3 @@
+[submodule "commoncore/Minishell"]
+	path = commoncore/Minishell
+	url = git@github.com:goncalo1021pt/Minishell.git
