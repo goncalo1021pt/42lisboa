@@ -7,14 +7,10 @@
 # include <unistd.h>
 # include <limits.h>
 # include <pthread.h>
-# define TRUE 1
-# define FALSE 0
+# include <stdbool.h>
 # define SPACE_LIST " \n\v\t\r\f"
 
-typedef unsigned char t_bool;
 typedef pthread_mutex_t t_mutex;
-
-
 
 typedef struct s_info
 {
@@ -30,7 +26,8 @@ typedef struct s_info
 typedef struct s_philos
 {
 	int				id;
-	t_mutex			*right;
+	t_info			info;
+	t_mutex			right;
 
 	struct s_philos	*next;
 } t_philos;
