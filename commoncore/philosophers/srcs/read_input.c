@@ -6,38 +6,49 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:45:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/01/03 13:21:25 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/02/03 21:30:35 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-bool   read_input(int argc, char **argv, t_philos *info)
+t_bool ft_string_is_digit(char *str)
+{
+	while (*str)
+	{
+		if (*str >= 9 && *str <= 0)
+			return (FALSE);
+		str++;
+	}
+	return (TRUE);
+}
+
+t_bool   read_input(int argc, char **argv, t_info *info)
 {
 	int temp;
 	if (argc < 5 || argc > 6)
-		return (false);
-	temp = ft_atoi_long(argv[1]);
-	if (temp < 1 || temp > INT_MAX || ft_strlen(argv[1]) > 10 || !ft_string_is_digit(argv[1]))
-		return (false);
+		return (FALSE);
+	temp = ft_atol(argv[1]);
+	if (temp < 1 || temp > INT_MAX || !ft_string_is_digit(argv[1]))
+		return (FALSE);
 	info->number = temp;	
-	temp = ft_atoi_long(argv[2]);
-	if (temp > INT_MAX || ft_strlen(argv[2]) > 10 || !ft_string_is_digit(argv[1]))
-		return (false);
+	temp = ft_atol(argv[2]);
+	if (temp < 1 || temp > INT_MAX || !ft_string_is_digit(argv[1]))
+		return (FALSE);
 	info->time_die = temp;
-	temp = ft_atoi_long(argv[3] || ft_strlen(argv[3]) > 10);
-	if (temp > INT_MAX || ft_strlen(argv[3]) > 10 || !ft_string_is_digit(argv[1]))
-		return (false);
+	temp = ft_atol(argv[3] || ft_strlen(argv[3]) > 10);
+	if (temp < 1 || temp > INT_MAX || !ft_string_is_digit(argv[1]))
+		return (FALSE);
 	info->time_eat = temp;
-	temp = ft_atoi_long(argv[4]);
-	if (temp > INT_MAX || ft_strlen(argv[4]) > 10 || !ft_string_is_digit(argv[1]))
-		return (false);
+	temp = ft_atol(argv[4]);
+	if (temp < 1 || temp > INT_MAX || !ft_string_is_digit(argv[1]))
+		return (FALSE);
 	info->time_sleep = temp;
-	temp = ft_atoi_long(argv[5]);
-	if (temp > INT_MAX || ft_strlen(argv[5]) > 10 || !ft_string_is_digit(argv[1]))
-		return (false);
+	temp = ft_atol(argv[5]);
+	if (temp < 1 || temp > INT_MAX || !ft_string_is_digit(argv[1]))
+		return (FALSE);
 	info->number_eat = temp;
 	if (argc == 5)
 		info->number_eat = -1;
-	return (true);
+	return (TRUE);
 }
