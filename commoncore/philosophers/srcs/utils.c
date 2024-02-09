@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:59 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/02/05 23:30:13 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/02/08 18:01:58 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 bool	is_in_array(char *str, char c)
 {
-	int ctd;
-
 	while (*str)
 	{
 		if (*str == c)
@@ -56,4 +54,12 @@ long	ft_atol(char *nptr)
 		result += nptr[ctd++] - '0';
 	}
 	return (signal * result);
+}
+
+long get_time(void)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }

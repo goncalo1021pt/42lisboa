@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:45:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/02/05 23:43:57 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/02/09 10:29:33 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	read_input(int argc, char **argv, t_info *info)
 	if (temp < 1 || temp > INT_MAX || !ft_string_is_digit(argv[1]))
 		return (false);
 	info->time_die = temp;
-	temp = ft_atol(argv[3] || ft_strlen(argv[3]) > 10);
+	temp = ft_atol(argv[3]);
 	if (temp < 1 || temp > INT_MAX || !ft_string_is_digit(argv[1]))
 		return (false);
 	info->time_eat = temp;
@@ -32,16 +32,20 @@ bool	read_input(int argc, char **argv, t_info *info)
 	if (temp < 1 || temp > INT_MAX || !ft_string_is_digit(argv[1]))
 		return (false);
 	info->time_sleep = temp;
-	temp = ft_atol(argv[5]);
-	if (temp < 1 || temp > INT_MAX || !ft_string_is_digit(argv[1]))
-		return (false);
-	info->number_eat = temp;
-	if (argc == 5)
+	if (argc == 6)
+	{
+		temp = ft_atol(argv[5]);
+		if (temp < 1 || temp > INT_MAX || !ft_string_is_digit(argv[1]))
+			return (false);
+		info->number_eat = temp;
+	}
+	else
 		info->number_eat = -1;
 	return (true);
 }
 
-void   print_message(t_philos *philo, char *message)
+
+void	print_message(t_philos *philo, char *message)
 {
 	pthread_mutex_lock(philo->info.status_mutex);
 	printf("%ld %d %s\n", get_time(), philo->id, message);

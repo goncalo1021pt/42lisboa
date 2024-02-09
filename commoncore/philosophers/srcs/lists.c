@@ -6,20 +6,20 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:45 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/02/05 23:33:00 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/02/08 17:55:24 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-t_philos *lst_new(int id, t_info *info)
+t_philos *lst_new(int id, t_info info)
 {
 	t_philos *new;
 
 	new = (t_philos *)malloc(sizeof(t_philos));
 	if (!new)
 		return (NULL);
-	new->info = *info;
+	new->info = info;
 	new->id = id;
 	pthread_mutex_init(&new->forks, NULL);
 	new->next = NULL;
