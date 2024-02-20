@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:45 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/02/08 17:55:24 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/02/20 13:09:29 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ t_philos *lst_new(int id, t_info info)
 		return (NULL);
 	new->info = info;
 	new->id = id;
+	new->info.status_mutex = (t_mutex *)malloc(sizeof(t_mutex));
+	if (!new->info.status_mutex)
+		return (free(new), NULL);
 	pthread_mutex_init(&new->forks, NULL);
 	new->next = NULL;
 	return (new);
