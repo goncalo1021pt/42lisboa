@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:48 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/02/20 13:14:39 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/02/20 13:29:16 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ bool	philo_init(t_info info)
 			return (lst_clear(&philo), false);
 		temp = temp->next;
 	}
-	// temp = philo;
-	// while (temp)
-	// {
-	// 	pthread_join(temp->philo, NULL);
-	// 	temp = temp->next;
-	// }
+	temp = philo;
+	while (temp)
+	{
+		pthread_join(temp->philo, NULL);
+		temp = temp->next;
+	}
 	lst_clear(&philo);
 	return (true);
 }
@@ -52,7 +52,7 @@ void	*philo_routine(void *list)
 	philo = (t_philos *)list;
 	while (philo->info.number)
 	{
-		philo_eat(philo);
+		// philo_eat(philo);
 		philo_sleep(philo);
 		philo_think(philo);
 	}

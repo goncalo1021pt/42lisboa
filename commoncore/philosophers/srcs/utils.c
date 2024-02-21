@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:59 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/02/20 13:07:08 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/02/20 13:27:37 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ long	ft_atol(char *nptr)
 	return (signal * result);
 }
 
-long get_time(void)
+long	get_time(void)
 {
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+	return ((time.tv_sec * (long)1000) + (time.tv_usec / 1000));
 }
