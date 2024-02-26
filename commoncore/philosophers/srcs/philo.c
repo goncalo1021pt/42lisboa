@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:48 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/02/20 13:29:16 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/02/26 10:50:04 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,11 @@ void	*philo_routine(void *list)
 	philo = (t_philos *)list;
 	while (philo->info.number)
 	{
-		// philo_eat(philo);
+		if (philo->info.number_eat == 0)
+			break ;
+		if (philo->info.number % 2 != 0)
+			usleep(100);
+		philo_eat(philo);
 		philo_sleep(philo);
 		philo_think(philo);
 	}
@@ -69,8 +73,6 @@ void	philo_eat(t_philos *philo)
 	pthread_mutex_unlock(&philo->next->forks);	
 	if (philo->info.number_eat != -1)
 		philo->info.number_eat--;
-	if (philo->info.number_eat == 0)
-		philo->info.number = 0;
 }
 
 void	philo_sleep(t_philos *philo)

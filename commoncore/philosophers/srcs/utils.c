@@ -6,11 +6,24 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:59 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/02/20 13:27:37 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/02/26 10:58:34 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*out;
+
+	out = malloc(nmemb * size);
+	if (out == NULL)
+		return (NULL);
+	if (nmemb == 0 || size == 0)
+		return (out);
+	ft_memset(out, 0, nmemb * size);
+	return (out);
+}
 
 bool	is_in_array(char *str, char c)
 {

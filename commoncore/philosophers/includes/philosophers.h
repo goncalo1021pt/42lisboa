@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:42 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/02/08 18:00:57 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/02/26 10:54:33 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ typedef pthread_mutex_t	t_mutex;
 
 typedef struct s_info
 {
-	int				number;
-	int				time_die;
-	int				time_eat;
-	int				time_sleep;
-	int				number_eat;
+	int					number;
+	bool				dead;
+	long				time_die;
+	long				time_eat;
+	long				time_sleep;
+	long				number_eat;
 	t_mutex			*status_mutex;
 }						t_info;
 
