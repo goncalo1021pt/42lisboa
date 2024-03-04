@@ -6,7 +6,11 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:42 by goncalo1021       #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/02/22 14:50:20 by gfontao-         ###   ########.fr       */
+=======
+/*   Updated: 2024/02/26 10:54:33 by goncalo1021      ###   ########.fr       */
+>>>>>>> refs/remotes/origin/main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +32,12 @@ typedef struct s_table t_table;
 
 typedef struct s_info
 {
-	int				number;
-	int				time_die;
-	int				time_eat;
-	int				time_sleep;
-	int				number_eat;
+	int					number;
+	bool				dead;
+	long				time_die;
+	long				time_eat;
+	long				time_sleep;
+	long				number_eat;
 	t_mutex			*status_mutex;
 }						t_info;
 

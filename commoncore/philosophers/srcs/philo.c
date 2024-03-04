@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:48 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/04 11:54:20 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/04 11:55:16 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void	philo_eat(t_philos *philo)
 	pthread_mutex_unlock(&philo->next->forks);	
 	if (philo->info.number_eat != -1)
 		philo->info.number_eat--;
-	if (philo->info.number_eat == 0)
-		philo->info.number = 0;
 }
 
 void	philo_sleep(t_philos *philo)
