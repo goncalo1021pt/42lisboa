@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:48 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/04 11:55:16 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/04 12:01:06 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,8 @@ bool	philo_init(t_info info)
 		lst_add_back(&philo, temp);
 		ctd++;
 	}
-	temp = philo;
-	while (temp)
-	{
-		if (pthread_create(&temp->philo, NULL, philo_routine, temp))
-			return (lst_clear(&philo), false);
-		temp = temp->next;
-	}
-	temp = philo;
-	while (temp)
-	{
-		pthread_join(temp->philo, NULL);
-		temp = temp->next;
-	}
-	lst_clear(&philo);
+	start_routine(philo);
+	end_routine(philo);
 	return (true);
 }
 
