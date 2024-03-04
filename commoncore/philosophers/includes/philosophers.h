@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
+/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:42 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/02/08 18:00:57 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/02/22 14:50:20 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define SPACE_LIST " \n\v\t\r\f"
 
 typedef pthread_mutex_t	t_mutex;
+typedef struct s_table t_table;
 
 typedef struct s_info
 {
@@ -42,15 +43,19 @@ typedef struct s_philos
 	t_info			info;
 	t_mutex			forks;
 	pthread_t		philo;
+	t_table			*table;
 	struct s_philos	*next;
 }						t_philos;
 
-typedef struct s_table
+struct s_table
 {
 	t_philos		*philo;
 	t_mutex			*print;
 	t_mutex			*dead;
-}						t_table;
+
+	// bool			dead;
+	// t_mutex			table;
+} ;
 
 // parser
 bool				read_input(int argc, char **argv, t_info *info);

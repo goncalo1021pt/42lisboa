@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
+/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:48 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/02/20 13:29:16 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/04 11:54:20 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,21 @@ void	*philo_routine(void *list)
 	philo = (t_philos *)list;
 	while (philo->info.number)
 	{
-		// philo_eat(philo);
+		// if (is_dead = true )
+		// // 	break;
+		// if (lfork && rfork)
+		// 	eat;
+		// else if (!lfork && !rfork)
+		// 	try to eat;
+		philo_eat(philo);
+		// if (is_dead = true )
+		// 	break;
 		philo_sleep(philo);
+		// if (is_dead = true )
+		// 	break;
 		philo_think(philo);
+		// if (is_dead = true )
+		// 	break;
 	}
 	return (NULL);
 }
