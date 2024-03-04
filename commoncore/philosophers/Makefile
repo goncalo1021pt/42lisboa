@@ -5,7 +5,7 @@ BONUS = $(addprefix bonus/,$(addsuffix .c, $(B)))
 B = 
 
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
-S = main read_input philo utils lists 
+S = main read_input philo utils lists algo
 
 COMPRESS = ar rcs
 RM = rm -f

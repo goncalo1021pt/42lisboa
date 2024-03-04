@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:42 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/04 12:23:30 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/04 12:24:01 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/time.h>
 # include <unistd.h>
 # define SPACE_LIST " \n\v\t\r\f"
+
 
 typedef pthread_mutex_t	t_mutex;
 typedef struct s_table t_table;
