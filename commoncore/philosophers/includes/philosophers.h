@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:42 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/04 12:24:01 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:54:17 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_info
 	long				time_eat;
 	long				time_sleep;
 	long				number_eat;
-	t_mutex			*status_mutex;
 }						t_info;
 
 typedef struct s_philos
@@ -52,11 +51,9 @@ typedef struct s_philos
 struct s_table
 {
 	t_philos		*philo;
-	t_mutex			*print;
-	t_mutex			*dead;
-
-	// bool			dead;
-	// t_mutex			table;
+	t_mutex			*print_mutex;
+	t_mutex			*sim_status_mutex;
+	bool			sim_status;
 } ;
 
 // parser
@@ -70,19 +67,23 @@ void				lst_clear(t_philos **lst);
 
 // utils
 long				ft_atol(char *str);
+void				*ft_calloc(size_t nmemb, size_t size);
 bool				ft_string_is_digit(char *str);
 bool				is_in_array(char *str, char c);
 long				get_time(void);
 
 // philos
-bool				philo_init(t_info info);
+bool				philo_init(t_table *table, t_info info);
 void				*philo_routine(void *list);
 void				philo_eat(t_philos *philo);
 void				philo_sleep(t_philos *philo);
 void				philo_think(t_philos *philo);
 
 // algo
-void				start_routine(t_philos *philo);
+bool				start_routine(t_philos *philo);
 void				end_routine(t_philos *philo);
+
+// table
+bool				table_init(t_table *table);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:45:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/02/22 14:49:36 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:53:33 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ bool	read_input(int argc, char **argv, t_info *info)
 
 void	print_message(t_philos *philo, char *message)
 {
-	pthread_mutex_lock(philo->info.status_mutex);
+	pthread_mutex_lock(philo->table->print_mutex);
 	printf("%ld %d %s\n", get_time(), philo->id, message);
-	pthread_mutex_unlock(philo->info.status_mutex);
+	pthread_mutex_unlock(philo->table->print_mutex);
 }

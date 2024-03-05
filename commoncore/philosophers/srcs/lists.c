@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:45 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/02/20 13:09:29 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/05 11:16:47 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,9 @@ t_philos *lst_new(int id, t_info info)
 	new = (t_philos *)malloc(sizeof(t_philos));
 	if (!new)
 		return (NULL);
+	pthread_mutex_init(&new->forks, NULL);
 	new->info = info;
 	new->id = id;
-	new->info.status_mutex = (t_mutex *)malloc(sizeof(t_mutex));
-	if (!new->info.status_mutex)
-		return (free(new), NULL);
-	pthread_mutex_init(&new->forks, NULL);
 	new->next = NULL;
 	return (new);
 }
@@ -36,23 +33,33 @@ void	lst_add_back(t_philos **lst, t_philos *new)
 	if (!lst)
 		return ;
 	if (end)
+	{
 		end->next = new;
+		new->next = *lst;
+	}
 	else
+	{
 		*lst = new;
+		new->next = *lst;
+	}
 	end = new;
 }
 
 void	lst_clear(t_philos **lst)
 {
 	t_philos *temp;
+	t_philos *first;
 
 	if (!lst)
 		return ;
+	first = *lst;
 	while (*lst)
 	{
 		temp = (*lst)->next;
 		pthread_mutex_destroy(&(*lst)->forks);
 		free(*lst);
 		*lst = temp;
+		if (*lst == first)
+			break ;
 	}
 }
