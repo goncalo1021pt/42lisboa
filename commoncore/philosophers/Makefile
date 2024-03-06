@@ -9,7 +9,8 @@ S = main read_input philo utils lists algo table
 
 COMPRESS = ar rcs
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g
+sanitize = -fsanitize=address
 CC = cc
 
 OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:srcs/%.c=%.o))
@@ -17,9 +18,6 @@ OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:srcs/%.c=%.o))
 BONUS_OBJS = $(addprefix $(OBJS_DIR_BONUS)/,$(BONUS:bonus/%.c=%.o))
 OBJS_DIR = objs
 OBJS_DIR_BONUS = objs_bonus
-
-LIBFT_DIR = ./includes/libft
-LIBFT = $(LIBFT_DIR)/libft.a
 
 # Color codes
 GREEN = \033[0;32m
@@ -59,8 +57,13 @@ fclean: clean
 	@$(RM) $(BONUS_NAME)
 	@echo "$(RED)$(NAME)$(NC)cleaned!"
 
-v: 
-	make re && valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions="supression.supp" ./$(NAME)
+s: fclean
+	@echo "$(GREEN)$(NAME)$(NC) compiling with $(ORANGE)$(sanitize)...$(NC)"
+	@$(CC) $(CFLAGS) $(sanitize) -o $(NAME) $(SRCS)
+	@echo "$(GREEN)$(NAME)$(NC) ready!"
+
+v: re
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
 
 fcount:
 	@echo "you wrote $(RED)$(shell cat $(SRCS) | wc -l)$(NC)lines of code"

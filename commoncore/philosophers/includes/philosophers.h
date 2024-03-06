@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:42 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/05 10:54:17 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/05 17:32:45 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,5 @@ void				end_routine(t_philos *philo);
 
 // table
 bool				table_init(t_table *table);
-
+void				free_table(t_table *table);
 #endif

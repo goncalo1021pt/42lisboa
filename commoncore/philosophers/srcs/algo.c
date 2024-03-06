@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:51 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/05 11:18:33 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/05 17:30:05 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,15 @@ bool	start_routine(t_philos *philo)
 
 void end_routine(t_philos *philo)
 {
+	t_philos *first;
+	
+	first = philo;
 	while (philo)
 	{
 		pthread_join(philo->philo, NULL);
 		philo = philo->next;
+		if (philo == first)
+			break;
 	}
 	lst_clear(&philo);
 }

@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 10:40:07 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/05 11:10:19 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/05 17:34:10 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,12 @@ bool table_init(t_table *table)
 	table->sim_status = true;
 	table->philo = NULL;
 	return (true);
+}
+
+void free_table(t_table *table)
+{
+	pthread_mutex_destroy(table->sim_status_mutex);
+	pthread_mutex_destroy(table->print_mutex);
+	free(table->sim_status_mutex);
+	free(table->print_mutex);
 }
