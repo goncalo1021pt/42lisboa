@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:48 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/07 14:35:25 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/07 14:56:44 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	*philo_routine(void *list)
 
 	philo = (t_philos *)list;
 	first = true;
+	if (philo->info.number == 1)
+		return (usleep(philo->info.time_die * 1000), NULL);
 	while (philo->info.number_eat != 0)
 	{
 		if ((philo->id % 2 == 0 || philo->next->id == 1) && first == true)

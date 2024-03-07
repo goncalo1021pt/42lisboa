@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:42 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/07 14:28:12 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/07 15:14:41 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ struct					s_table
 
 // parser
 bool					read_input(int argc, char **argv, t_info *info);
+bool					read_input2(int argc, char **argv, t_info *info,
+							int temp);
 void					print_message(t_philos *philo, char *message);
 
 // lists

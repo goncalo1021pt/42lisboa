@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:45:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/03/07 14:37:48 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/07 15:13:35 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ bool	read_input(int argc, char **argv, t_info *info)
 	if (temp < 1 || temp > INT_MAX || !ft_string_is_digit(argv[1]))
 		return (false);
 	info->time_sleep = temp;
+	if (!read_input2(argc, argv, info, temp))
+		return (false);
+	return (true);
+}
+
+bool	read_input2(int argc, char **argv, t_info *info, int temp)
+{
 	if (argc == 6)
 	{
 		temp = ft_atol(argv[5]);
@@ -61,7 +68,7 @@ bool	read_input(int argc, char **argv, t_info *info)
 void	print_message(t_philos *philo, char *message)
 {
 	bool	sim_status;
-	
+
 	pthread_mutex_lock(philo->table->sim_status_mutex);
 	sim_status = philo->table->sim_status;
 	pthread_mutex_unlock(philo->table->sim_status_mutex);
