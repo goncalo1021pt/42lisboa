@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:48 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/06 17:13:49 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/07 14:35:25 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ bool	philo_init(t_table *table, t_info info)
 	t_philos	*philo;
 	t_philos	*temp;
 	long		start;
-	
+
 	ctd = 0;
 	philo = NULL;
 	start = get_time();
@@ -36,15 +36,15 @@ bool	philo_init(t_table *table, t_info info)
 	}
 	if (!start_routine(philo))
 		return (false);
-	// check_status(table, philo);
+	check_status(table, philo);
 	end_routine(philo);
 	return (true);
 }
 
 void	*philo_routine(void *list)
 {
-	t_philos *philo;
-	bool	first;
+	t_philos	*philo;
+	bool		first;
 
 	philo = (t_philos *)list;
 	first = true;
@@ -59,7 +59,6 @@ void	*philo_routine(void *list)
 		}
 		if (!philo_eat(philo))
 			break ;
-		
 		philo_sleep(philo);
 		philo_think(philo);
 	}
@@ -68,7 +67,7 @@ void	*philo_routine(void *list)
 
 bool	philo_eat(t_philos *philo)
 {
-	bool sim_status;
+	bool	sim_status;
 
 	pthread_mutex_lock(philo->table->sim_status_mutex);
 	sim_status = philo->table->sim_status;
@@ -89,7 +88,7 @@ bool	philo_eat(t_philos *philo)
 
 bool	philo_sleep(t_philos *philo)
 {
-	bool sim_status;
+	bool	sim_status;
 
 	pthread_mutex_lock(philo->table->sim_status_mutex);
 	sim_status = philo->table->sim_status;
@@ -103,7 +102,7 @@ bool	philo_sleep(t_philos *philo)
 
 bool	philo_think(t_philos *philo)
 {
-	bool sim_status;
+	bool	sim_status;
 
 	pthread_mutex_lock(philo->table->sim_status_mutex);
 	sim_status = philo->table->sim_status;

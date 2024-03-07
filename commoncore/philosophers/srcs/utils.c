@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:59 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/04 13:01:11 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:34:22 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,6 @@ bool	is_in_array(char *str, char c)
 		str++;
 	}
 	return (false);
-}
-
-bool	ft_string_is_digit(char *str)
-{
-	while (*str)
-	{
-		if (*str >= 9 && *str <= 0)
-			return (false);
-		str++;
-	}
-	return (true);
 }
 
 long	ft_atol(char *nptr)

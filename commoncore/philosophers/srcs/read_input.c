@@ -6,11 +6,22 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:45:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/03/06 13:26:23 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/07 14:37:48 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
+
+static bool	ft_string_is_digit(char *str)
+{
+	while (*str)
+	{
+		if (*str >= 9 && *str <= 0)
+			return (false);
+		str++;
+	}
+	return (true);
+}
 
 bool	read_input(int argc, char **argv, t_info *info)
 {
@@ -47,9 +58,15 @@ bool	read_input(int argc, char **argv, t_info *info)
 	return (true);
 }
 
-
 void	print_message(t_philos *philo, char *message)
 {
+	bool	sim_status;
+	
+	pthread_mutex_lock(philo->table->sim_status_mutex);
+	sim_status = philo->table->sim_status;
+	pthread_mutex_unlock(philo->table->sim_status_mutex);
+	if (sim_status == false)
+		return ;
 	pthread_mutex_lock(philo->table->print_mutex);
 	printf("%ld %d %s\n", get_time() - philo->start, philo->id, message);
 	pthread_mutex_unlock(philo->table->print_mutex);
