@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:45 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/05 11:16:47 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/06 17:11:04 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_philos *lst_new(int id, t_info info)
 	if (!new)
 		return (NULL);
 	pthread_mutex_init(&new->forks, NULL);
+	pthread_mutex_init(&new->last_meal_mutex, NULL);
 	new->info = info;
 	new->id = id;
 	new->next = NULL;
@@ -57,6 +58,7 @@ void	lst_clear(t_philos **lst)
 	{
 		temp = (*lst)->next;
 		pthread_mutex_destroy(&(*lst)->forks);
+		pthread_mutex_destroy(&(*lst)->last_meal_mutex);
 		free(*lst);
 		*lst = temp;
 		if (*lst == first)

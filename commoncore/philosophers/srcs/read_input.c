@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:45:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/03/05 10:53:33 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/06 13:26:23 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ bool	read_input(int argc, char **argv, t_info *info)
 	}
 	else
 		info->number_eat = -1;
+	info->time_think = (info->time_die - info->time_eat - info->time_sleep) / 4;
+	if (info->time_think < 0)
+		info->time_think = 0;
 	return (true);
 }
 
@@ -48,6 +51,6 @@ bool	read_input(int argc, char **argv, t_info *info)
 void	print_message(t_philos *philo, char *message)
 {
 	pthread_mutex_lock(philo->table->print_mutex);
-	printf("%ld %d %s\n", get_time(), philo->id, message);
+	printf("%ld %d %s\n", get_time() - philo->start, philo->id, message);
 	pthread_mutex_unlock(philo->table->print_mutex);
 }
