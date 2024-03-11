@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
+/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:48 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/07 14:56:44 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/11 18:08:46 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ void	*philo_routine(void *list)
 	philo = (t_philos *)list;
 	first = true;
 	if (philo->info.number == 1)
-		return (usleep(philo->info.time_die * 1000), NULL);
+		return (print_message(philo, "has taken a fork"), usleep(philo->info.time_die * 1000), NULL);
 	while (philo->info.number_eat != 0)
 	{
 		if ((philo->id % 2 == 0 || philo->next->id == 1) && first == true)
 		{
-			usleep(1000);
+			usleep(SYNC_TIME);
 			if (philo->next->id == 1)
-				usleep(1000);
+				usleep(SYNC_TIME);
 			first = false;
 		}
 		if (!philo_eat(philo))

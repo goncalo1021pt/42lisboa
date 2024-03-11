@@ -1,9 +1,0 @@
-{
-	"files.associations": {
-		"stdlib.h": "c",
-		"stdio.h": "c",
-		"philosophers.h": "c",
-		"unistd.h": "c",
-		"limits.h": "c"
-	}
-}

@@ -1,5 +1,5 @@
-NAME = philosophers
-BONUS_NAME = philosophers_bonus
+NAME = philo
+BONUS_NAME = philo_bonus
 
 BONUS = $(addprefix bonus/,$(addsuffix .c, $(B)))
 B = 
@@ -10,7 +10,7 @@ S = main read_input philo utils lists algo table
 COMPRESS = ar rcs
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror -g
-sanitize = -fsanitize=address
+SANITIZE = -fsanitize=address
 CC = cc
 
 OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:srcs/%.c=%.o))
@@ -59,7 +59,7 @@ fclean: clean
 
 s: fclean
 	@echo "$(GREEN)$(NAME)$(NC) compiling with $(ORANGE)$(sanitize)...$(NC)"
-	@$(CC) $(CFLAGS) $(sanitize) -o $(NAME) $(SRCS)
+	@$(CC) $(CFLAGS) $(SANITIZE) -o $(NAME) $(SRCS)
 	@echo "$(GREEN)$(NAME)$(NC) ready!"
 
 v: re

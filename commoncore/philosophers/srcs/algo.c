@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
+/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:51 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/07 14:59:45 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/11 18:56:09 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,16 @@ void	lock_forks(t_philos *philo)
 	if (philo->id % 2 == 1)
 	{
 		pthread_mutex_lock(&philo->forks);
+		print_message(philo ,"has taken a fork");
 		pthread_mutex_lock(&philo->next->forks);
+		print_message(philo ,"has taken a fork");
 	}
 	else
 	{
 		pthread_mutex_lock(&philo->next->forks);
+		print_message(philo ,"has taken a fork");
 		pthread_mutex_lock(&philo->forks);
+		print_message(philo ,"has taken a fork");
 	}
 }
 

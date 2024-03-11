@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
+/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:42 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/07 15:14:41 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/11 18:43:52 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define SPACE_LIST " \n\v\t\r\f"
 # define EVEN 0
 # define ODD 1
+# define SYNC_TIME 1000
 
 typedef pthread_mutex_t	t_mutex;
 typedef struct s_table	t_table;
