@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   philosophers_bonus.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:42 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/07 16:48:10 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/07 16:16:21 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#ifndef PHILOSOPHERS_BONUS_H
+# define PHILOSOPHERS_BONUS_H
 
 # include <limits.h>
 # include <pthread.h>
@@ -24,7 +24,6 @@
 # define SPACE_LIST " \n\v\t\r\f"
 # define EVEN 0
 # define ODD 1
-# define SYNCHRONIZE 1000
 
 typedef pthread_mutex_t	t_mutex;
 typedef struct s_table	t_table;
@@ -37,7 +36,6 @@ typedef struct s_info
 	long				time_sleep;
 	long				time_think;
 	long				number_eat;
-	t_mutex				number_eat_mutex;
 }						t_info;
 
 typedef struct s_philos
@@ -46,9 +44,6 @@ typedef struct s_philos
 	long				last_meal;
 	long				start;
 	t_info				info;
-	t_mutex				forks;
-	t_mutex				last_meal_mutex;
-	pthread_t			philo;
 	t_table				*table;
 	struct s_philos		*next;
 }						t_philos;
@@ -56,8 +51,6 @@ typedef struct s_philos
 struct					s_table
 {
 	t_philos			*philo;
-	t_mutex				*print_mutex;
-	t_mutex				*sim_status_mutex;
 	bool				sim_status;
 };
 

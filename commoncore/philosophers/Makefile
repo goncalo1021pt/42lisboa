@@ -9,7 +9,7 @@ S = main read_input philo utils lists algo table
 
 COMPRESS = ar rcs
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -pthread
 sanitize = -fsanitize=address
 CC = cc
 
@@ -29,7 +29,6 @@ NC = \033[0m
 all: $(NAME) 
 bonus: $(BONUS_NAME)
   
-
 $(OBJS_DIR)/%.o: srcs/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@

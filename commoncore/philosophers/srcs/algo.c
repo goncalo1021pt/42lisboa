@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:51 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/07 14:59:45 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/07 17:10:11 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,13 @@ void	check_status(t_table *table, t_philos *philo)
 
 	while (philo)
 	{
+		pthread_mutex_lock(&philo->info.number_eat_mutex);
 		if (philo->info.number_eat == 0)
+		{
+			pthread_mutex_unlock(&philo->info.number_eat_mutex);
 			break ;
+		}
+		pthread_mutex_unlock(&philo->info.number_eat_mutex);
 		pthread_mutex_lock(&philo->last_meal_mutex);
 		last_meal = philo->last_meal;
 		pthread_mutex_unlock(&philo->last_meal_mutex);
