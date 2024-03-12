@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:48 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/12 17:33:29 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/12 18:40:08 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ void	*philo_routine(void *list)
 	philo = (t_philos *)list;
 	first = true;
 	if (philo->info.number == 1)
-		return (print_message(philo, "has taken a fork"),
-			usleep(philo->info.time_die * 1000), NULL);
+		return (stupid_case(philo));
 	while (philo->info.number_eat != 0)
 	{
 		if ((philo->id % 2 == 0 || philo->next->id == 1) && first == true)

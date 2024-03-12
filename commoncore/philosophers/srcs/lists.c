@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lists.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
+/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:45 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/07 14:26:50 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/12 18:53:57 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_philos	*lst_new(int id, t_info info)
 		return (NULL);
 	pthread_mutex_init(&new->forks, NULL);
 	pthread_mutex_init(&new->last_meal_mutex, NULL);
+	new->philo = 0;
 	new->last_meal = get_time();
 	new->info = info;
 	new->id = id;

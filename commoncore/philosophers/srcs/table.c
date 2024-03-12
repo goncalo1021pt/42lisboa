@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 10:40:07 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/12 14:58:37 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/12 18:41:08 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,13 @@ void	free_table(t_table *table)
 	pthread_mutex_destroy(table->print_mutex);
 	free(table->sim_status_mutex);
 	free(table->print_mutex);
+}
+
+void *stupid_case (t_philos *philo)
+{
+	pthread_mutex_lock(&philo->forks);
+	print_message(philo, "has taken a fork");
+	usleep(philo->info.time_die * 1000);
+	pthread_mutex_unlock(&philo->forks);
+	return (NULL);
 }
