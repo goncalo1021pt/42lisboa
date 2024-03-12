@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
+/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:45:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/03/07 15:13:35 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/11 18:48:04 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool	read_input2(int argc, char **argv, t_info *info, int temp)
 	}
 	else
 		info->number_eat = -1;
-	info->time_think = (info->time_die - info->time_eat - info->time_sleep) / 4;
+	info->time_think = (info->time_die - info->time_eat - info->time_sleep) / 2;
 	if (info->time_think < 0)
 		info->time_think = 0;
 	return (true);

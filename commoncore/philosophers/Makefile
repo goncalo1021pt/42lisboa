@@ -1,5 +1,5 @@
-NAME = philosophers
-BONUS_NAME = philosophers_bonus
+NAME = philo
+BONUS_NAME = philo_bonus
 
 BONUS = $(addprefix bonus/,$(addsuffix .c, $(B)))
 B = 
@@ -58,7 +58,7 @@ fclean: clean
 
 s: fclean
 	@echo "$(GREEN)$(NAME)$(NC) compiling with $(ORANGE)$(sanitize)...$(NC)"
-	@$(CC) $(CFLAGS) $(sanitize) -o $(NAME) $(SRCS)
+	@$(CC) $(CFLAGS) $(SANITIZE) -o $(NAME) $(SRCS)
 	@echo "$(GREEN)$(NAME)$(NC) ready!"
 
 v: re
