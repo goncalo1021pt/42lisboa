@@ -3,25 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   table.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
+/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 10:40:07 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/07 13:31:55 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/12 18:15:52 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philosophers.h"
+#include "../includes/philosophers_bonus.h"
 
-bool	table_init(t_table *table)
+bool init_sem(t_table *table)
 {
-	table->sim_status_mutex = ft_calloc(1, sizeof(t_mutex));
-	if (!table->sim_status_mutex)
+	sem_unlink(SEM_FORKS);
+	table->forks = sem_open(SEM_FORKS, O_CREAT | O_EXCL, 0644, table->info.number);
+	if (table->forks == SEM_FAILED)
 		return (false);
-	pthread_mutex_init(table->sim_status_mutex, NULL);
-	table->print_mutex = ft_calloc(1, sizeof(t_mutex));
-	if (!table->print_mutex)
-		return (free(table->sim_status_mutex), false);
-	pthread_mutex_init(table->print_mutex, NULL);
+	sem_unlink(SEM_PRINT);
+	table->print = sem_open(SEM_PRINT, O_CREAT | O_EXCL, 0644, 1);
+	if (table->print == SEM_FAILED)
+		return (false);
+	sem_unlink(SEM_SIMSTATUS);
+	table->simstatus = sem_open(SEM_SIMSTATUS, O_CREAT | O_EXCL, 0644, 1);
+	if (table->simstatus == SEM_FAILED)
+		return (false);
+	return (true);
+}
+
+bool	table_init(t_table *table, t_info info)
+{
+	int	ctd;
+
+	table->info = info;
+	ctd = 0;
+	init_sem(table);
 	table->sim_status = true;
 	table->philo = NULL;
 	return (true);
@@ -29,8 +43,6 @@ bool	table_init(t_table *table)
 
 void	free_table(t_table *table)
 {
-	pthread_mutex_destroy(table->sim_status_mutex);
-	pthread_mutex_destroy(table->print_mutex);
-	free(table->sim_status_mutex);
-	free(table->print_mutex);
+	sem_close(table->forks);
+	sem_unlink(SEM_FORKS);
 }

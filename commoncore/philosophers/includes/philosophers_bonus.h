@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers_bonus.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
+/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:42 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/07 16:16:21 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/12 18:01:28 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,19 @@
 # include <stdlib.h>
 # include <string.h>
 # include <sys/time.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 # include <unistd.h>
+# include <semaphore.h>
+# include <fcntl.h>
 # define SPACE_LIST " \n\v\t\r\f"
 # define EVEN 0
 # define ODD 1
+# define SYNCHRONIZE 1000
+# define SEM_FORKS "forks"
+# define SEM_PRINT "print"
+# define SEM_SIMSTATUS "simstatus"
 
-typedef pthread_mutex_t	t_mutex;
 typedef struct s_table	t_table;
 
 typedef struct s_info
@@ -40,6 +47,7 @@ typedef struct s_info
 
 typedef struct s_philos
 {
+	pid_t				pid;
 	int					id;
 	long				last_meal;
 	long				start;
@@ -50,7 +58,12 @@ typedef struct s_philos
 
 struct					s_table
 {
+	t_info				info;
 	t_philos			*philo;
+	sem_t				*forks;
+	sem_t 				*print;
+	sem_t				*simstatus;
+	
 	bool				sim_status;
 };
 
@@ -73,7 +86,7 @@ long					get_time(void);
 
 // philos
 bool					philo_init(t_table *table, t_info info);
-void					*philo_routine(void *list);
+void					*philo_routine(t_philos *philo);
 bool					philo_eat(t_philos *philo);
 bool					philo_sleep(t_philos *philo);
 bool					philo_think(t_philos *philo);
@@ -81,10 +94,11 @@ bool					philo_think(t_philos *philo);
 // algo
 bool					start_routine(t_philos *philo);
 void					end_routine(t_philos *philo);
-void					lock_forks(t_philos *philo);
-void					unlock_forks(t_philos *philo);
+void					get_forks(t_philos *philo);
+void					relese_forks(t_philos *philo);
 void					check_status(t_table *table, t_philos *philo);
+
 // table
-bool					table_init(t_table *table);
+bool					table_init(t_table *table, t_info info);
 void					free_table(t_table *table);
 #endif

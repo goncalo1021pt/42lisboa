@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
+/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:48 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/11 19:44:38 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/12 17:33:29 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ void	*philo_routine(void *list)
 		}
 		if (!philo_eat(philo))
 			break ;
-		philo_sleep(philo);
-		philo_think(philo);
+		if (!philo_sleep(philo))
+			break ;
+		if (!philo_think(philo))
+			break ;
 	}
 	return (NULL);
 }

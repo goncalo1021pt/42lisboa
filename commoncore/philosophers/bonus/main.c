@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
+/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:40:20 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/03/07 13:31:39 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/12 18:07:03 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philosophers.h"
+#include "../includes/philosophers_bonus.h"
 
 int	main(int argc, char **argv)
 {
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 5 || argc > 6 || !read_input(argc, argv, &info))
 		return (printf("Error: invalid input\n"), 1);
-	if (!table_init(&table) || !philo_init(&table, info))
+	if (!table_init(&table, info) || !philo_init(&table, info))
 		return (printf("Error: failed to initialize philosophers\n"), 1);
 	else
 		free_table(&table);

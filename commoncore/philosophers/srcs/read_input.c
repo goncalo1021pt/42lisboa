@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:45:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/03/11 18:48:04 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:09:28 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool	read_input2(int argc, char **argv, t_info *info, int temp)
 	}
 	else
 		info->number_eat = -1;
-	info->time_think = (info->time_die - info->time_eat - info->time_sleep) / 2;
+	info->time_think = (info->time_die - info->time_eat - info->time_sleep) / 4;
 	if (info->time_think < 0)
 		info->time_think = 0;
 	return (true);

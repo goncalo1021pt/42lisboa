@@ -2,7 +2,7 @@ NAME = philo
 BONUS_NAME = philo_bonus
 
 BONUS = $(addprefix bonus/,$(addsuffix .c, $(B)))
-B = 
+B = main read_input philo utils lists algo table
 
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 S = main read_input philo utils lists algo table
@@ -43,8 +43,9 @@ $(NAME): $(OBJS)
 	@echo "$(GREEN)$(NAME)$(NC) ready!"
 
 $(BONUS_NAME): $(BONUS_OBJS) 
+	@echo "$(GREEN)$(BONUS_NAME)$(NC) compiling..."
 	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJS) 
-	@echo $(BONUS_NAME)ready!
+	@echo "$(GREEN)$(BONUS_NAME)$(NC) ready!"
 
 clean:
 	@$(RM) -r $(OBJS_DIR)
@@ -71,6 +72,7 @@ run: all
 	./$(NAME) 
 
 re: fclean all
+reb: fclean bonus
 
 .PHONY: all fclean clean re
 
