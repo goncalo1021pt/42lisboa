@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:45:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/03/12 13:09:28 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/13 02:15:32 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ bool	read_input2(int argc, char **argv, t_info *info, int temp)
 	info->time_think = (info->time_die - info->time_eat - info->time_sleep) / 4;
 	if (info->time_think < 0)
 		info->time_think = 0;
+	pthread_mutex_init(&info->number_eat_mutex, NULL);
 	return (true);
 }
 

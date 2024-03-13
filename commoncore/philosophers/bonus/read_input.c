@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:45:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/03/12 14:46:53 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/12 21:52:14 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ void	print_message(t_philos *philo, char *message)
 	sim_status = philo->table->sim_status;
 	if (sim_status == false)
 		return ;
+	sem_wait(philo->table->print);
 	printf("%ld %d %s\n", get_time() - philo->start, philo->id, message);
+	sem_post(philo->table->print);
 }

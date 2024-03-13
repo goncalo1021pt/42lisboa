@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:48 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/12 19:10:19 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/13 02:47:39 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ bool	philo_init(t_table *table, t_info info)
 	ctd = 0;
 	philo = NULL;
 	start = get_time();
-	printf("here\n");
 	while (ctd < info.number)
 	{
-		printf("here\n");
 		temp = lst_new(ctd + 1, info);
 		temp->table = table;
 		temp->start = start;
@@ -38,27 +36,21 @@ bool	philo_init(t_table *table, t_info info)
 	}
 	if (!start_routine(philo))
 		return (false);
-	check_status(table, philo);
-	end_routine(philo);
+	end_routine(philo, table);
 	return (true);
 }
 
 void	*philo_routine(t_philos *philo)
 {
 	bool		first;
-	
+
 	first = true;
-	if (philo->info.number == 1)
-		return (usleep(philo->info.time_die * 1000), NULL);
-	while (philo->info.number_eat != 0)
+	while (philo->info.number_eat != 0 && philo->table->simstatus)
 	{
-		if ((philo->id % 2 == 0 || philo->next->id == 1) && first == true)
-		{
-			usleep(1000);
-			if (philo->next->id == 1)
-				usleep(1000);
+		if (first == true && !sync_philos(philo))
+			break ;
+		else
 			first = false;
-		}
 		if (!philo_eat(philo))
 			break ;
 		if (!philo_sleep(philo))
@@ -66,6 +58,8 @@ void	*philo_routine(t_philos *philo)
 		if (!philo_think(philo))
 			break ;
 	}
+	free_table(philo->table);
+	lst_clear(&philo);
 	return (NULL);
 }
 

@@ -26,7 +26,7 @@ BLUE = \033[0;34m
 ORANGE = \033[0;33m
 NC = \033[0m 
 
-all: $(NAME) 
+all: $(NAME) $(BONUS_NAME)
 bonus: $(BONUS_NAME)
   
 $(OBJS_DIR)/%.o: srcs/%.c
@@ -51,16 +51,21 @@ clean:
 	@$(RM) -r $(OBJS_DIR)
 	@$(RM) -r $(OBJS_DIR_BONUS)
 	@echo "$(RED)$(NAME)$(NC)OBJS cleaned!"
+	@echo "$(RED)$(BONUS_NAME)$(NC)OBJS cleaned!"
 
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) $(BONUS_NAME)
 	@echo "$(RED)$(NAME)$(NC)cleaned!"
+	@echo "$(RED)$(BONUS_NAME)$(NC)cleaned!"
 
 s: fclean
 	@echo "$(GREEN)$(NAME)$(NC) compiling with $(ORANGE)$(sanitize)...$(NC)"
+	@echo "$(GREEN)$(BONUS_NAME)$(NC) compiling with $(ORANGE)$(sanitize)...$(NC)"
 	@$(CC) $(CFLAGS) $(SANITIZE) -o $(NAME) $(SRCS)
+	@$(CC) $(CFLAGS) $(SANITIZE) -o $(BONUS_NAME) $(BONUS)
 	@echo "$(GREEN)$(NAME)$(NC) ready!"
+	@echo "$(GREEN)$(BONUS_NAME)$(NC) ready!"
 
 v: re
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
@@ -72,7 +77,6 @@ run: all
 	./$(NAME) 
 
 re: fclean all
-reb: fclean bonus
 
 .PHONY: all fclean clean re
 

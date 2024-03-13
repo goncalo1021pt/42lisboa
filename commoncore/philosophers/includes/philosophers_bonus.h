@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers_bonus.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:42 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/12 18:01:28 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/13 02:47:47 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <unistd.h>
 # include <semaphore.h>
 # include <fcntl.h>
+# include <signal.h>
 # define SPACE_LIST " \n\v\t\r\f"
 # define EVEN 0
 # define ODD 1
@@ -61,9 +62,9 @@ struct					s_table
 	t_info				info;
 	t_philos			*philo;
 	sem_t				*forks;
-	sem_t 				*print;
+	sem_t				*print;
 	sem_t				*simstatus;
-	
+
 	bool				sim_status;
 };
 
@@ -93,10 +94,10 @@ bool					philo_think(t_philos *philo);
 
 // algo
 bool					start_routine(t_philos *philo);
-void					end_routine(t_philos *philo);
+void					end_routine(t_philos *philo, t_table *table);
 void					get_forks(t_philos *philo);
 void					relese_forks(t_philos *philo);
-void					check_status(t_table *table, t_philos *philo);
+bool					sync_philos(t_philos *philo);
 
 // table
 bool					table_init(t_table *table, t_info info);

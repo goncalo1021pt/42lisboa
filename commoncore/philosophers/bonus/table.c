@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   table.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 10:40:07 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/12 19:06:42 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/13 02:38:51 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers_bonus.h"
 
-bool init_sem(t_table *table)
+bool	init_sem(t_table *table)
 {
 	sem_unlink(SEM_FORKS);
 	table->forks = sem_open(SEM_FORKS, O_CREAT | O_EXCL, 0644, table->info.number);
@@ -23,7 +23,7 @@ bool init_sem(t_table *table)
 	if (table->print == SEM_FAILED)
 		return (false);
 	sem_unlink(SEM_SIMSTATUS);
-	table->simstatus = sem_open(SEM_SIMSTATUS, O_CREAT | O_EXCL, 0644, 1);
+	table->simstatus = sem_open(SEM_SIMSTATUS, O_CREAT | O_EXCL, 0644, 0);
 	if (table->simstatus == SEM_FAILED)
 		return (false);
 	return (true);
@@ -31,10 +31,7 @@ bool init_sem(t_table *table)
 
 bool	table_init(t_table *table, t_info info)
 {
-	int	ctd;
-
 	table->info = info;
-	ctd = 0;
 	init_sem(table);
 	table->sim_status = true;
 	table->philo = NULL;
@@ -45,4 +42,8 @@ void	free_table(t_table *table)
 {
 	sem_close(table->forks);
 	sem_unlink(SEM_FORKS);
+	sem_close(table->print);
+	sem_unlink(SEM_PRINT);
+	sem_close(table->simstatus);
+	sem_unlink(SEM_SIMSTATUS);
 }
