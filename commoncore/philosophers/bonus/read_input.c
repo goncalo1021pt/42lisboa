@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:45:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/03/12 21:52:14 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/13 11:54:31 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	read_input(int argc, char **argv, t_info *info)
 	int	temp;
 
 	temp = ft_atol(argv[1]);
-	if (temp < 1 || temp > INT_MAX || !ft_string_is_digit(argv[1]))
+	if (temp < 1 || temp > 1000 || !ft_string_is_digit(argv[1]))
 		return (false);
 	info->number = temp;
 	temp = ft_atol(argv[2]);

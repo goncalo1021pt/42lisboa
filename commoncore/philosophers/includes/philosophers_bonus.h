@@ -6,15 +6,18 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:42 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/13 02:47:47 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/13 11:32:38 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_BONUS_H
 # define PHILOSOPHERS_BONUS_H
 
+# include <fcntl.h>
 # include <limits.h>
 # include <pthread.h>
+# include <semaphore.h>
+# include <signal.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -23,9 +26,6 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <unistd.h>
-# include <semaphore.h>
-# include <fcntl.h>
-# include <signal.h>
 # define SPACE_LIST " \n\v\t\r\f"
 # define EVEN 0
 # define ODD 1
@@ -95,6 +95,8 @@ bool					philo_think(t_philos *philo);
 // algo
 bool					start_routine(t_philos *philo);
 void					end_routine(t_philos *philo, t_table *table);
+
+// algo_utils
 void					get_forks(t_philos *philo);
 void					relese_forks(t_philos *philo);
 bool					sync_philos(t_philos *philo);

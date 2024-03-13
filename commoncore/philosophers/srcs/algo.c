@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:51 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/12 19:05:40 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:33:54 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
-
-void	join_all(t_philos *list)
-{
-	t_philos	*start;
-
-	start = list;
-	while(list)
-	{
-		if (list->philo)
-			pthread_join(list->philo, NULL);
-		list = list->next;
-		if (list == start)
-			break ;
-	}
-}
 
 bool	start_routine(t_philos *philo)
 {
@@ -39,7 +24,7 @@ bool	start_routine(t_philos *philo)
 			pthread_mutex_lock(philo->table->sim_status_mutex);
 			philo->table->sim_status = false;
 			pthread_mutex_unlock(philo->table->sim_status_mutex);
-			return (join_all(philo) ,lst_clear(&philo), false);
+			return (join_all(philo), lst_clear(&philo), false);
 		}
 		philo = philo->next;
 		if (philo == first)

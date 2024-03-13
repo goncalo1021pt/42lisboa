@@ -6,11 +6,26 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 23:21:51 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/13 02:53:11 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/13 11:53:44 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers_bonus.h"
+
+static bool	kill_all(t_philos *philo)
+{
+	t_philos	*start;
+
+	start = philo;
+	while (philo)
+	{
+		kill(philo->pid, SIGKILL);
+		philo = philo->next;
+		if (philo == start)
+			break ;
+	}
+	return (true);
+}
 
 void	*simstatus_routine(void *lst)
 {
@@ -37,22 +52,13 @@ void	*kill_routine(void *list)
 {
 	t_table		*table;
 	t_philos	*philo;
-	t_philos	*start;
 
 	table = (t_table *)list;
 	philo = table->philo;
-	start = philo;
 	sem_wait(philo->table->simstatus);
-	printf("table->sim_status: %d\n", table->sim_status);
 	if (table->sim_status == false)
 		return (NULL);
-	while (philo)
-	{
-		kill(philo->pid, SIGKILL);
-		philo = philo->next;
-		if (philo == start)
-			break ;
-	}
+	kill_all(philo);
 	return (NULL);
 }
 
@@ -74,7 +80,7 @@ bool	start_routine(t_philos *philo)
 			exit(0);
 		}
 		else if (philo->pid < 0)
-			return (false);
+			return (kill_all(philo), false);
 		philo = philo->next;
 		if (philo == start)
 			break ;
@@ -100,31 +106,4 @@ void	end_routine(t_philos *philo, t_table *table)
 	sem_post(philo->table->simstatus);
 	usleep(1000);
 	lst_clear(&philo);
-}
-
-void	get_forks(t_philos *philo)
-{
-	sem_wait(philo->table->forks);
-	print_message(philo, "has taken a fork");
-	sem_wait(philo->table->forks);
-	print_message(philo, "has taken a fork");
-}
-
-void	relese_forks(t_philos *philo)
-{
-	sem_post(philo->table->forks);
-	sem_post(philo->table->forks);
-}
-
-bool	sync_philos(t_philos *philo)
-{
-	if (philo->info.number == 1)
-		return (usleep(philo->info.time_die * 1000), false);
-	if ((philo->id % 2 == 0 || philo->next->id == 1))
-	{
-		usleep(1000);
-		if (philo->next->id == 1)
-			usleep(1000);
-	}
-	return (true);
 }

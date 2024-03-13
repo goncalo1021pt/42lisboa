@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   table.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 10:40:07 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/12 18:41:08 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:35:18 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,26 @@ void	free_table(t_table *table)
 	free(table->print_mutex);
 }
 
-void *stupid_case (t_philos *philo)
+void	*stupid_case(t_philos *philo)
 {
 	pthread_mutex_lock(&philo->forks);
 	print_message(philo, "has taken a fork");
 	usleep(philo->info.time_die * 1000);
 	pthread_mutex_unlock(&philo->forks);
 	return (NULL);
+}
+
+void	join_all(t_philos *list)
+{
+	t_philos	*start;
+
+	start = list;
+	while (list)
+	{
+		if (list->philo)
+			pthread_join(list->philo, NULL);
+		list = list->next;
+		if (list == start)
+			break ;
+	}
 }

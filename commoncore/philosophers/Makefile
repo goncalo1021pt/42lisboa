@@ -2,7 +2,7 @@ NAME = philo
 BONUS_NAME = philo_bonus
 
 BONUS = $(addprefix bonus/,$(addsuffix .c, $(B)))
-B = main read_input philo utils lists algo table
+B = main read_input philo utils lists algo algo_utils table
 
 SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
 S = main read_input philo utils lists algo table

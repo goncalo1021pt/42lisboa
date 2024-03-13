@@ -6,7 +6,7 @@
 /*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 10:40:07 by goncalo1021       #+#    #+#             */
-/*   Updated: 2024/03/13 02:38:51 by goncalo1021      ###   ########.fr       */
+/*   Updated: 2024/03/13 11:23:04 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 bool	init_sem(t_table *table)
 {
 	sem_unlink(SEM_FORKS);
-	table->forks = sem_open(SEM_FORKS, O_CREAT | O_EXCL, 0644, table->info.number);
+	table->forks = sem_open(SEM_FORKS, O_CREAT | O_EXCL, 0644,
+			table->info.number);
 	if (table->forks == SEM_FAILED)
 		return (false);
 	sem_unlink(SEM_PRINT);
