@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 10:59:29 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/08 11:59:55 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/04/01 12:00:07 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ void	diff_direction(t_stack *stack_a, t_stack *stack_b, t_node *lowest)
 {
 	while (stack_a->head != lowest->cost.best)
 	{
-		if (lowest->cost.best->cost.head < lowest->cost.best->cost.tail)
+		if (lowest->cost.best->cost.head <=  lowest->cost.best->cost.tail)
 			interpreter(stack_a, stack_b, "ra");
 		else if (lowest->cost.best->cost.head > lowest->cost.best->cost.tail)
 			interpreter(stack_a, stack_b, "rra");
 	}
 	while (stack_b->head != lowest)
 	{
-		if (lowest->cost.head < lowest->cost.tail)
+		if (lowest->cost.head <= lowest->cost.tail)
 			interpreter(stack_a, stack_b, "rb");
 		else if (lowest->cost.head > lowest->cost.tail)
 			interpreter(stack_a, stack_b, "rrb");
@@ -75,7 +75,7 @@ void	sort_ba(t_stack *stack_a, t_stack *stack_b)
 	all_costs(stack_a, stack_b);
 	while (stack_a->head != lowest)
 	{
-		if (lowest->cost.head < lowest->cost.tail)
+		if (lowest->cost.head <= lowest->cost.tail)
 			interpreter(stack_a, stack_b, "ra");
 		else if (lowest->cost.head > lowest->cost.tail)
 			interpreter(stack_a, stack_b, "rra");
