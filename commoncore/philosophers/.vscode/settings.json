@@ -1,5 +1,6 @@
 {
-	"files.associations": {
-		"philosophers_bonus.h": "c"
-	}
+    "files.associations": {
+        "philosophers.h": "c",
+        "stdbool.h": "c"
+    }
 }

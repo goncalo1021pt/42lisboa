@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 #include "stdio.h"
-
+#include "limits.h"
 char	*get_next_line(int fd)
 {
 	static char		buffer [BUFFER_SIZE + 1];
@@ -21,7 +21,7 @@ char	*get_next_line(int fd)
 
 	ctd = 0;
 	if (read(fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
-	{
+	{	
 		while (ctd <= BUFFER_SIZE)
 			buffer[ctd++] = '\0';
 		return (NULL);
