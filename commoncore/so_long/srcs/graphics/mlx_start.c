@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_start.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:56:17 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/02/14 11:33:32 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/04/11 00:16:34 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	mlx_initiazie_var(t_mlx_start *par, t_map *map)
 	par->width = map->cols * SCALE + BORDER * 2;
 	par->height = map->rows * SCALE + BORDER * 2;
 	par->mlx = mlx_init();
-	mlx_get_screen_size(par->mlx, &width, &height);	
+	mlx_get_screen_size(par->mlx, &width, &height);
 	par->mlx_win = mlx_new_window(par->mlx, par->width, par->height, "So_Long");
 }
 

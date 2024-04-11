@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_start.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:56:17 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/12/20 14:14:54 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/04/11 01:16:10 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ void	mlx_start(t_map *map)
 	create_all(&par, &img);
 	mlx_loop_hook(par.mlx, const_move, &par);
 	mlx_hook(par.mlx_win, 2, 1L << 0, key_hook, &par);
-	mlx_hook(par.mlx_win, 17, 1L << 17, mlx_exit, &par);
+	// mlx_hook(par.mlx_win, 17, 1L << 17, mlx_exit, &par);
 	mlx_loop(par.mlx);
 }
