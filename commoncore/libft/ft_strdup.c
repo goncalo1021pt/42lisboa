@@ -6,7 +6,7 @@
 /*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:06 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/30 20:56:25 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/04/13 18:34:55 by gfontao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(const char *s)
 {
 	char	*duplicate;
 
+	if (!s)
+		return (NULL);
 	duplicate = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (duplicate == NULL)
 	{
