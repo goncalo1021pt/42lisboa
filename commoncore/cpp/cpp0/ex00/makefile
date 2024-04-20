@@ -1,21 +1,18 @@
-NAME = 
+NAME = megaphone
 
-SRCS = $(addprefix srcs/,$(addsuffix .c, $(S)))
-S =
+SRCS = $(addprefix srcs/,$(addsuffix .cpp, $(S)))
+S = megaphone
 
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 SFLAGS = -fsanitize=address
-CC = cc
+CC = c++
 
-OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:srcs/%.c=%.o))
-SOBJS = $(addprefix $(OBJS_DIR_S)/,$(SRCS:srcs/%.c=%.o))
+OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:srcs/%.cpp=%.o))
+SOBJS = $(addprefix $(OBJS_DIR_S)/,$(SRCS:srcs/%.cpp=%.o))
 
 OBJS_DIR = objs
 OBJS_DIR_S = s_objs
-
-LIBFT_DIR = ./includes/libft
-LIBFT = $(LIBFT_DIR)/libft.a
 
 # Color codes
 GREEN = \033[0;32m
@@ -26,40 +23,33 @@ NC = \033[0m
 
 all: $(NAME)
 
-$(OBJS_DIR)/%.o: srcs/%.c
+$(OBJS_DIR)/%.o: srcs/%.cpp
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJS_DIR_S)/%.o: srcs/%.c
+$(OBJS_DIR_S)/%.o: srcs/%.cpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(SFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS) $(LIBFT)
+$(NAME): $(OBJS)
 	@echo "$(GREEN)$(NAME)$(NC) compiling..."
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(rd_ln)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 	@echo "$(GREEN)$(NAME)$(NC) ready!"
 
-$(LIBFT):
-	@echo "$(ORANGE)libft$(NC)compiling..."
-	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
-	@echo "$(ORANGE)libft$(NC)ready!"
-
-s: fclean $(SOBJS) $(LIBFT)
+s: fclean $(SOBJS)
 	@echo "$(GREEN)$(NAME)$(NC) compiling..."
-	@$(CC) $(CFLAGS) $(SFLAGS) -o $(NAME) $(SOBJS) $(LIBFT) $(rd_ln)
+	@$(CC) $(CFLAGS) $(SFLAGS) -o $(NAME) $(SOBJS) 
 	@echo "$(GREEN)$(NAME)$(NC) ready!"
 
 clean:
 	@$(RM) -r $(OBJS_DIR)
 	@$(RM) -r $(OBJS_DIR_BONUS)
 	@$(RM) -r $(OBJS_DIR_S)
-	@$(MAKE) -C $(LIBFT_DIR) clean --no-print-directory
 	@echo "$(RED)$(NAME)$(NC)OBJS cleaned!"
 
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) $(BONUS_NAME)
-	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
 	@echo "$(RED)$(NAME)$(NC)cleaned!"
 
 v: 
