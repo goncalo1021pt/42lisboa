@@ -1,4 +1,4 @@
-NAME = phonebook
+NAME = test
 
 SRCS = $(wildcard srcs/*.cpp)
 

@@ -1,7 +1,7 @@
 NAME = megaphone
 
-SRCS = $(addprefix srcs/,$(addsuffix .cpp, $(S)))
-S = megaphone
+SRCS = $(addprefix srcs/,$(S))
+S = *.cpp
 
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror -std=c++98
