@@ -76,7 +76,7 @@ void t::displayStatus() const {
 void t::_displayTimestamp() {
 	std::time_t t = std::time(NULL);
 	struct tm *now = std::localtime(&t);
-	char buffer[20];
+	char buffer[18];
 	strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S]", now);
 	// std::string str = "[19920104_091532]";
 	// std::cout << str << " ";
