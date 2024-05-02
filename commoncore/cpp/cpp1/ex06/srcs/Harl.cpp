@@ -31,11 +31,26 @@ void Harl::error() {
 }
 
 void Harl::complain(std::string level) {
-	for (int ctd = 0; ctd < 4; ctd++) {
-		if (level == levels[ctd]) {
-			(this->*functions[ctd])();
-			return;
-		}
+	int ctd = -1;
+	while (++ctd < 4)
+		if (level == levels[ctd]) 
+			break;
+	switch (ctd)
+	{
+		// fallthrough
+		case 0:
+			(this->*functions[0])();
+		// fallthrough
+		case 1:
+			(this->*functions[1])();
+		// fallthrough
+		case 2:
+			(this->*functions[2])();
+		// fallthrough
+		case 3:
+			(this->*functions[3])();
+			break;
+		default:
+			std::cout << "Invalid: HARL forgot more star wars quotes" << std::endl;
 	}
-	std::cout << "Invalid: HARL forgot more star wars quotes" << std::endl;
 }
