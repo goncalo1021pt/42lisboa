@@ -1,4 +1,4 @@
-NAME = sed_is_for_loosers
+NAME = Harl2
 
 SRCS = $(wildcard srcs/*.cpp)
 

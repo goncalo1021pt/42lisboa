@@ -1,24 +1,19 @@
-#include <Weapon.h>
-#include <HumanA.h>
-#include <HumanB.h>
+#include <includes.h>
 
-int main()
-{
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
+int main(int argc, char **argv) {
+	if (argc != 4) {
+		std::cerr << "Usage: " <<  "<filename> <s1> <s2>" << std::endl;
+		return 1;
 	}
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.attack();
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
-	}
+	t_string filename = argv[1];
+	t_string s1 = argv[2];
+	t_string s2 = argv[3];
+	std::ostringstream ss;
+	std::ifstream infile;
+	std::ofstream outfile;
+
+	if (!processInput(infile, outfile, filename, ss))
+		return 1;
+	processOutput(outfile, ss, s1, s2);
 	return 0;
 }
