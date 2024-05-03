@@ -16,23 +16,23 @@ Contact GetContactInfo(void)
 
 	do {
 		std::cout << "Enter first name: ";
-		std::getline(std::cin, input);
+		getInput(input);
 	} while (!contact.SetFirstName(input));
 	do {
 		std::cout << "Enter last name: ";
-		std::getline(std::cin, input);
+		getInput(input);
 	} while (!contact.SetLastName(input));
 	do {
 		std::cout << "Enter nickname: ";
-		std::getline(std::cin, input);
+		getInput(input);
 	} while (!contact.SetNickname(input));
 	do {
 		std::cout << "Enter phone number: ";
-		std::getline(std::cin, input);
+		safeGetLine(input);
 	} while (!contact.SetPhoneNumber(input));
 	do {
 		std::cout << "Enter darkest secret: ";
-		std::getline(std::cin, input);
+		getInput(input);
 	} while (!contact.SetDarkestSecret(input));
 	return contact;
 }
@@ -62,11 +62,19 @@ void PhoneBook::SearchContact()
 		temp = temp.length() > 10 ? temp.substr(0, 9) + "." : temp;
 		std::cout << std::setw(10) << temp << std::endl;
 	}
-	do {
+	if (_contactCtd == 0)
+	{
+		std::cout << "No contacts available" << std::endl;
+		return;
+	}
+	while (1)
+	{
 		std::cout << "Enter index of contact: ";
-		std::getline(std::cin, temp);
+		safeGetLine(temp);
 		if (temp.length() != 1 || temp[0] < '0' || temp[0] > '7' || temp[0] - '0' >= _contactCtd)
 			std::cout << "Invalid index" << std::endl;
-	} while (temp.length() != 1 || temp[0] < '0' || temp[0] > '7'|| temp[0] - '0' >= _contactCtd);
+		else
+			break;
+	}
 	_contacts[temp[0] - '0'].PrintContact();
 }
