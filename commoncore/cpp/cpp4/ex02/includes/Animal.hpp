@@ -9,12 +9,12 @@ typedef std::string t_string;
 class Animal {
 	protected:
 		t_string type;
-	public:
 		Animal();
+	public:
 		virtual ~Animal();
 		Animal(const Animal &other);
 		Animal &operator=(const Animal &other);
 		t_string getType() const;
-		virtual void makeSound() const;
+		virtual void makeSound() const = 0;
 };
 #endif
