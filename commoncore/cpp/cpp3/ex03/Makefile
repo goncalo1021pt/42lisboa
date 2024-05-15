@@ -92,13 +92,15 @@ class:
 	@echo "" >> srcs/$(CN).cpp
 	@echo "$(CN)::$(CN)() {}" >> srcs/$(CN).cpp
 	@echo "" >> srcs/$(CN).cpp
-	@echo "$(CN)::$(CN)(const $(CN) &src) { *this = src; }" >> srcs/$(CN).cpp
+	@echo "$(CN)::$(CN)(const $(CN) &src) {" >> srcs/$(CN).cpp
+	@echo "*this = src;" >> srcs/$(CN).cpp 
+	@echo "}" >> srcs/$(CN).cpp
 	@echo "" >> srcs/$(CN).cpp
 	@echo "$(CN)::~$(CN)() {}" >> srcs/$(CN).cpp
 	@echo "" >> srcs/$(CN).cpp
 	@echo "$(CN)& $(CN)::operator=(const $(CN) &src) {" >> srcs/$(CN).cpp
-	@echo "    (void)src;" >> srcs/$(CN).cpp
-	@echo "    return *this;" >> srcs/$(CN).cpp
+	@echo "	(void)src;" >> srcs/$(CN).cpp
+	@echo "	return *this;" >> srcs/$(CN).cpp
 	@echo "}" >> srcs/$(CN).cpp
 	
 
