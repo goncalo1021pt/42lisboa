@@ -6,7 +6,6 @@
 class Brain {
 	private:
 		std::string ideas[100];
-		int ideaCount;
 	public:
 		Brain();
 		Brain(const Brain& src);
