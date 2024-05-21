@@ -2,7 +2,7 @@
 # define AMateria_HPP
 
 # include <iostream>
-# include "ICharacter.h"
+# include "ICharacter.hpp"
 
 typedef std::string t_string;
 

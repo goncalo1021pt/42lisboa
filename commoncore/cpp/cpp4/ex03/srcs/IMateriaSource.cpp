@@ -1,4 +1,4 @@
-#include "IMateriaSource.h"
+#include "IMateriaSource.hpp"
 
 IMateriaSource::IMateriaSource() {
 	std::cout << "Default constructor called" << std::endl;

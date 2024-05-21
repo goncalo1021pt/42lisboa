@@ -1,4 +1,4 @@
-#include "AMateria.h"
+#include "AMateria.hpp"
 
 AMateria::AMateria() {
 	std::cout << "Default constructor called" << std::endl;
@@ -18,8 +18,5 @@ AMateria &AMateria::operator=(const AMateria &other) {
 }
 
 void AMateria::use(ICharacter &target) {
-	if (_type == "ice")
-		std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
-	else if (_type == "cure")
-		std::cout << "heals " << target.getName() << "'s wounds.. *" << std::endl;
+	(void)target;
 }

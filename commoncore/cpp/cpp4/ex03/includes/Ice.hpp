@@ -1,7 +1,7 @@
 #ifndef Ice_HPP
 #define Ice_HPP
 
-#include "AMateria.h"
+#include "AMateria.hpp"
 
 class Ice : public AMateria {
 	private:
@@ -11,6 +11,8 @@ class Ice : public AMateria {
 		Ice(const Ice& src);
 		~Ice();
 		Ice &operator=(const Ice& src);
-		Ice* clone() const;
+
+		virtual AMateria* clone() const;
+		virtual void use(ICharacter &target);
 };
 #endif
