@@ -2,10 +2,7 @@
 # define ICharacter_HPP
 
 # include <iostream>
-# include "AMateria.hpp"
-
-class AMateria;
-typedef std::string t_string;
+# include "AMateria.h"
 
 class ICharacter
 {
@@ -17,4 +14,4 @@ class ICharacter
 		virtual void use(int idx, ICharacter& target) = 0;
 };
 
-#endif
+# endif

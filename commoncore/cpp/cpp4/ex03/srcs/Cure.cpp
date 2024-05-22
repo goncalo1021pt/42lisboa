@@ -1,18 +1,14 @@
 #include "Cure.hpp"
 
-Cure::Cure() {
-	std::cout << "Cure default constructor called" << std::endl;
+Cure::Cure() : AMateria() {
 	_type = "cure";
 }
 
-Cure::Cure(const Cure &src) {
-	std::cout << "Cure copy constructor called" << std::endl;
+Cure::Cure(const Cure &src) : AMateria() {
 	*this = src;
 }
 
-Cure::~Cure() {
-	std::cout << "Cure destructor called" << std::endl;
-}
+Cure::~Cure() {}
 
 Cure& Cure::operator=(const Cure &src) {
 	_type = src._type;
