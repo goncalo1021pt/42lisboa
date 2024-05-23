@@ -25,10 +25,11 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &src) {
 void MateriaSource::learnMateria(AMateria *materia) {
 	for (int ctd = 0; ctd < 4; ctd++) {
 		if (_materia[ctd] == NULL) {
-			_materia[ctd] = materia;
+			_materia[ctd] = materia->clone();
 			break;
 		}
 	}
+	delete materia;
 }
 
 AMateria* MateriaSource::createMateria(std::string const &type) {

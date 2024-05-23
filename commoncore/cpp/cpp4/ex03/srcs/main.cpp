@@ -11,14 +11,17 @@ int main()
 		src->learnMateria(new Ice());
 		src->learnMateria(new Cure());
 		ICharacter* me = new Character("me");
+		
 		AMateria* tmp;
 		tmp = src->createMateria("ice");
 		me->equip(tmp);
 		tmp = src->createMateria("cure");
 		me->equip(tmp);
+
 		ICharacter* bob = new Character("bob");
 		me->use(0, *bob);
 		me->use(1, *bob);
+
 		delete bob;
 		delete me;
 		delete src;
@@ -39,17 +42,21 @@ int main()
 			std::cout << "Unknown materia type correctly handled" << std::endl;
 
 		ICharacter* me = new Character("me");
-		AMateria* tmp;
+		AMateria* tmp[10];
 
 		// Test equipping more than 4 materias
 		for (int ctd = 0; ctd < 5; ctd++) {
 			if (ctd < 2)
-				tmp = src->createMateria("cure");
+				tmp[ctd] = src->createMateria("cure");
 			else
-				tmp = src->createMateria("ice");
-			me->equip(tmp);
+				tmp[ctd] = src->createMateria("ice");
+			me->equip(tmp[ctd]);
 		}
 
+		// Test unequipping a materia
+		me->unequip(0);
+		delete tmp[0];
+		// Test using a materia in an empty slot
 		ICharacter* bob = new Character("bob");
 		for (int ctd = 0; ctd < 4; ctd++)
         	me->use(ctd, *bob);

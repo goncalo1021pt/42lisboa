@@ -1,13 +1,13 @@
 #include "Character.hpp"
 
 Character::Character() : _name("Default") {
-	for (int i = 0; i < 4; i++)
-		_materia[i] = NULL;
+	for (int ctd = 0; ctd < 4; ctd++)
+		_materia[ctd] = NULL;
 }
 
 Character::Character(const t_string &name) : _name(name) {
-	for (int i = 0; i < 4; i++)
-		_materia[i] = NULL;
+	for (int ctd = 0; ctd < 4; ctd++)
+		_materia[ctd] = NULL;
 }
 
 Character::Character(const Character &src) {
@@ -15,9 +15,9 @@ Character::Character(const Character &src) {
 }
 
 Character::~Character() {
-	for (int i = 0; i < 4; i++)
-		if (_materia[i])
-			delete _materia[i];
+	for (int ctd = 0; ctd < 4; ctd++)
+		if (_materia[ctd])
+			delete _materia[ctd];
 }
 
 Character& Character::operator=(const Character &src) {
@@ -36,11 +36,14 @@ void Character::use(int idx, ICharacter &target) {
 }
 
 void Character::equip(AMateria* m) {
-	for (int i = 0; i < 4; i++) {
-		if (!_materia[i]) {
-			_materia[i] = m;
+	
+	for (int ctd = 0; ctd < 4; ctd++) {
+		if (!_materia[ctd]) {
+			_materia[ctd] = m;
 			break;
 		}
+		if (ctd == 3)
+			delete m;
 	}
 }
 
