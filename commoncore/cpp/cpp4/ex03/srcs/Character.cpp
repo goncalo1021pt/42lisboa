@@ -11,7 +11,12 @@ Character::Character(const t_string &name) : _name(name) {
 }
 
 Character::Character(const Character &src) {
-	*this = src;
+	for (int ctd = 0; ctd < 4; ctd++) {
+		if (src._materia[ctd])
+			_materia[ctd] = src._materia[ctd]->clone();
+		else
+			_materia[ctd] = NULL;
+	}
 }
 
 Character::~Character() {
@@ -21,7 +26,16 @@ Character::~Character() {
 }
 
 Character& Character::operator=(const Character &src) {
-	(void)src;
+	if (this == &src)
+		return *this;
+	for (int ctd = 0; ctd < 4; ctd++) {
+		if (_materia[ctd])
+			delete _materia[ctd];
+		if (src._materia[ctd])
+			_materia[ctd] = src._materia[ctd]->clone();
+		else
+			_materia[ctd] = NULL;
+	}
 	return *this;
 }
 
