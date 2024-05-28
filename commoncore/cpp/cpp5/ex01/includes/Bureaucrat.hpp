@@ -2,6 +2,7 @@
 # define Bureaucrat_HPP
 
 # include <iostream>
+# include "Form.h"
 
 typedef std::string t_string;
 
@@ -20,6 +21,7 @@ class Bureaucrat {
 		int getGrade() const;
 		void incrementGrade(int amount);
 		void decrementGrade(int amount);
+		void signForm(class Form &form);
 
 		class GradeTooHighException : public std::exception {
 			public:

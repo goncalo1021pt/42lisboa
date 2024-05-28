@@ -1,19 +1,22 @@
 #include "Bureaucrat.h"
 
 int main() {
-	// Bureaucrat b1("b1", 1);
+	try {
+        Bureaucrat b("goncalo", 2);
+        std::cout << b << std::endl;
 
-	// std::cout << b1 << std::endl;
-	// b1.incrementGrade(50);
-	// std::cout << b1 << std::endl;
-	// b1.decrementGrade(25);
-	// std::cout << b1 << std::endl;
+        Form f("Form1", 1, 1);
+        std::cout << f << std::endl;
 
-	Bureaucrat b1("b1", 1);
+        b.signForm(f);
+        std::cout << f << std::endl;
 
-	std::cout << b1 << std::endl;
-	b1.incrementGrade(150);
-	std::cout << b1 << std::endl;
+        Bureaucrat b2("Joao", 5);
+        std::cout << b2 << std::endl;
 
+        b2.signForm(f);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
 	return 0;
 }
