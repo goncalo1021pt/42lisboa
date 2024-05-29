@@ -14,6 +14,6 @@ class WrongAnimal {
 		WrongAnimal(const WrongAnimal &other);
 		WrongAnimal &operator=(const WrongAnimal &other);
 		t_string getType() const;
-		virtual void makeSound() const;
+		void makeSound() const;
 };
 #endif
