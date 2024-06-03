@@ -37,13 +37,10 @@ int main()
 	std::cout << "----------------" << std::endl;
 	std::cout << std::endl;
 	{
-		WrongCat a1;
-		Animal a2;
-
-		std::cout << a1.getType() << std::endl;
-		a1.makeSound();
-		std::cout << a2.getType() << std::endl;
-		a2.makeSound();
+		const WrongAnimal* c1 = new WrongCat();
+		std::cout << c1->getType() << std::endl;
+		c1->makeSound();
+		delete c1;
 	}
 	return 0;
 }
