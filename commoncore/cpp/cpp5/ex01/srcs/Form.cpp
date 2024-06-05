@@ -1,4 +1,5 @@
 #include "Form.h"
+#include "Bureaucrat.h"
 
 Form::Form() : _name("default"), _signed(false), _gradeToSign(150), _gradeToExecute(150) {}
 
@@ -32,7 +33,7 @@ const char * Form::GradeTooLowException::what() const throw() {
 }
 
 std::ostream &operator<<(std::ostream &out, const Form &form) {
-	std
+	out << "Form:\n" <<  "Name: " << form.getName() << "\nSigned: " << form.getSigned() << "\nGrade to sign: " << form.getGradeToSign() << "\nGrade to execute: " << form.getGradeToExecute();
 	return out;
 }
 

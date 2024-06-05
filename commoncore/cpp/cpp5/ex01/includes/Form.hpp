@@ -2,9 +2,10 @@
 #define form_HPP
 
 # include <iostream>
-# include "Bureaucrat.h"
 
 typedef std::string t_string;
+
+class Bureaucrat;
 
 class Form {
 	private:

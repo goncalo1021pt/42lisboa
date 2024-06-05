@@ -2,15 +2,27 @@
 #define ShrubberyCreationForm_HPP
 
 #include <iostream>
+#include <fstream>
 #include "AForm.hpp"
+
+typedef std::string t_string;
 
 class ShrubberyCreationForm : public AForm {
 	private:
+		t_string _target;
 
 	public:
 		ShrubberyCreationForm();
-		ShrubberyCreationForm(const ShrubberyCreationForm& src);
+		ShrubberyCreationForm(t_string target);
+		ShrubberyCreationForm(const ShrubberyCreationForm &other);
 		~ShrubberyCreationForm();
-		ShrubberyCreationForm &operator=(const ShrubberyCreationForm& src);
+		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
+
+		void execute(const Bureaucrat &executor) const;
+
+		class FileNotOpenException : public std::exception {
+			public:
+				const char *what() const throw();
+		};
 };
 #endif
