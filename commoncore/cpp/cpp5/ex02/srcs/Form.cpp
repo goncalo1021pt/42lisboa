@@ -18,9 +18,13 @@ AForm& AForm::operator=(const AForm &src) {
 	return *this;
 }
 
-void AForm::beSigned(const Bureaucrat &bureaucrat) {
-	if (bureaucrat.getGrade() > _gradeToSign)
+void AForm::beSigned(const Bureaucrat& bureaucrat) {
+	if (bureaucrat.getGrade() > _gradeToSign) {
 		throw AForm::GradeTooLowException();
+	}
+	if (_signed) {
+		throw AForm::FormAlreadySignedException();
+	}
 	_signed = true;
 }
 

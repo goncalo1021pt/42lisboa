@@ -4,48 +4,34 @@
 #include "PresidentialPardonForm.hpp"
 
 int main() {
-try
+    try
     {
-        std::cout << "-----------------ShrubberyCreationForm-----------------\n\n";
-        ShrubberyCreationForm doc1("doc1");
-        {
-            Bureaucrat bob("Bob", 150);
-            bob.signForm(doc1);
-            bob.executeForm(doc1);
-        }
-        std::cout << "\n";
-        {
-            Bureaucrat bob("Bob", 138);
-            bob.executeForm(doc1);
-        }
-        std::cout << "\n";
-        {
-            Bureaucrat bob("Bob", 138);
-            bob.signForm(doc1); // will be signed in the next scope
-            bob.executeForm(doc1);
-        }
-        std::cout << "\n";
-        {
-            Bureaucrat bob("Bob", 100);
-            bob.executeForm(doc1);
-        }
-        std::cout << "\n-----------------RobotomyRequestForm-----------------\n\n";
-        RobotomyRequestForm doc2("doc2");
-        {
-            Bureaucrat jim("Jim", 55);
-            jim.signForm(doc2);
-            jim.executeForm(doc2);
-        }
-        std::cout << "\n";
-        {
-            Bureaucrat jim("Jim", 42);
-            jim.executeForm(doc2);
-        }
-        std::cout << "\n-----------------PresidentialPardonFormquestForm-----------------\n\n";
-        PresidentialPardonForm doc3("doc3");
-        Bureaucrat tim("Tim", 1);
-        tim.signForm(doc3);
-        tim.executeForm(doc3);
+       // Create bureaucrats
+        Bureaucrat highLevel("High Level", 1);
+        Bureaucrat midLevel("Mid Level", 70);
+        Bureaucrat lowLevel("Low Level", 150);
+
+        // Create forms
+        ShrubberyCreationForm shrubberyForm("Home");
+        RobotomyRequestForm robotomyForm("Employee");
+        PresidentialPardonForm pardonForm("Criminal");
+
+        // highLevel.signForm(shrubberyForm);
+        // highLevel.executeForm(shrubberyForm);
+        // highLevel.signForm(robotomyForm);
+        // highLevel.executeForm(robotomyForm);
+        // highLevel.signForm(pardonForm);
+        // highLevel.executeForm(pardonForm);
+
+        // Test mid level bureaucrat
+        std::cout << "\nTesting mid level bureaucrat:" << std::endl;
+        midLevel.signForm(shrubberyForm);
+        midLevel.executeForm(shrubberyForm);
+        midLevel.signForm(robotomyForm);
+        midLevel.executeForm(robotomyForm);
+        midLevel.signForm(pardonForm);
+        midLevel.executeForm(pardonForm);
+
     }
     catch (const std::exception &e)
     {
