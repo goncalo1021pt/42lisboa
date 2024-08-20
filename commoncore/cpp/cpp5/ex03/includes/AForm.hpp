@@ -17,7 +17,7 @@ class AForm {
 		AForm();
 		AForm(t_string name, int gradeToSign, int gradeToExecute);
 		AForm(const AForm& src);
-		~AForm();
+		virtual ~AForm();
 		AForm &operator=(const AForm& src);
 		void beSigned(const Bureaucrat &bureaucrat);
 		t_string getName() const;
