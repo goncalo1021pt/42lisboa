@@ -34,59 +34,112 @@ bool isChar(t_string &stringLiteral) {
 	return false;
 }
 
+bool isInff(t_string &stringLiteral) {
+	if (stringLiteral == "+inff" || stringLiteral == "+inff" ||
+	stringLiteral == "-inf" || stringLiteral == "-inf" || stringLiteral == "nan" || stringLiteral == "nanf")
+		return true;
+	return false;
+}
+
 void charConversion(t_string &stringLiteral) {
-	char c = static_cast<char>(stringLiteral[0]);
-	int i = static_cast<int>(c);
-	float f = static_cast<float>(i);
-	double d = static_cast<double>(i);
-	std::cout << "char: " << c << std::endl;
-	std::cout << "int: " << i <<  std::endl;
-	std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: " << f << 'f' << std::endl;
-	std::cout << "double: " << d << std::endl;
+	if (isprint(stringLiteral[0]))
+		std::cout << "char: '" << stringLiteral[0] << "'" << std::endl;
+	else
+		std::cout << "char: Non displayable" << std::endl;
+	int intNumber = static_cast<int>(stringLiteral[0]);
+	std::cout << "int: " << intNumber << std::endl;
+	float floatNumber = static_cast<float>(intNumber);
+	std::cout << "float: " << floatNumber << "f" << std::endl;
+	double doubleNumber = static_cast<double>(intNumber);
+	std::cout << "double: " << doubleNumber << std::endl;
 }
 
 void intConversion(t_string &stringLiteral) {
-	(void)stringLiteral;
-	std::cout << "int" << std::endl;
+	try {
+		long representation = std::atol(stringLiteral.c_str());
+		if (representation < std::numeric_limits<int>::min() || representation > std::numeric_limits<int>::max())
+			throw std::exception();
+		std::cout << "char: " ;
+		if (representation < 255 && representation > -1 && std::isprint(representation))
+			std::cout << "'" << static_cast<char>(representation) << "'" << std::endl;
+		else
+			std::cout << "non-displayable\n";
+		std::cout << "int: " << representation << std::endl;
+		std::cout << std::fixed << std::setprecision(1);
+		std::cout << "float: " << static_cast<float>(representation) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(representation) << ".0" << std::endl;
+	} catch (std::exception &e) {
+		std::cout << "char: " << "impossible" << std::endl;
+		std::cout << "int: " << "impossible" << std::endl;
+		std::cout << "float: " << "nanf" << std::endl;
+		std::cout << "double: " << "nan" << std::endl;
+	}
+}
+
+void floatConversion(t_string &stringLiteral) {
 	try
 	{
-		
+		if (stringLiteral.find('-') != stringLiteral.npos && stringLiteral.length() > 10)
+			throw std::exception();
+		else if (stringLiteral.find('-') == stringLiteral.npos && stringLiteral.length() > 9)
+			throw std::exception();
+			
+		float floatNumber = std::atof(stringLiteral.c_str());
+		if (floatNumber < 255 && floatNumber > -1 && std::isprint(floatNumber))
+			std::cout << "char: '" << static_cast<char>(floatNumber) << "'" << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+		std::cout << "int: " << static_cast<int>(floatNumber) << std::endl;
+		std::cout << std::fixed << std::setprecision(1);
+		std::cout << "float: " << floatNumber << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(floatNumber) << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << "char: " << "impossible" << std::endl;
+		std::cout << "int: " << "impossible" << std::endl;
+		std::cout << "float: " << "nanf" << std::endl;
+		std::cout << "double: " << "nan" << std::endl;
 	}
 	
 }
 
-void floatConversion(t_string &stringLiteral) {
-	std::cout << "float" << std::endl;
+void doubleConversion(t_string &stringLiteral) {
 	try {
-		float f = std::atof(stringLiteral.c_str());
-		if (stringLiteral.length() > 9)
+		if (stringLiteral.find('-') != stringLiteral.npos && stringLiteral.length() > 9)
 			throw std::exception();
-		int i = static_cast<int>(f);
-		double d = static_cast<double>(f);
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: " << i << std::endl;
+		else if (stringLiteral.find('-') == stringLiteral.npos && stringLiteral.length() > 8)
+			throw std::exception();
+		double doubleNumber = std::atof(stringLiteral.c_str());
+		if (doubleNumber < 255 && doubleNumber > -1 && std::isprint(doubleNumber))
+			std::cout << "char: '" << static_cast<char>(doubleNumber) << "'" << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+		std::cout << "int: " << static_cast<int>(doubleNumber) << std::endl;
 		std::cout << std::fixed << std::setprecision(1);
-		std::cout << "float: " << f << 'f' << std::endl;
-		std::cout << "double: " << d << std::endl;	
-
+		std::cout << "float: " << static_cast<float>(doubleNumber) << "f" << std::endl;
+		std::cout << "double: " << doubleNumber << std::endl;
 	} catch (std::exception &e) {
-		std::cout << "char: " << "impossible" << "\n";
-		std::cout << "int: " << "impossible" << "\n";
-		std::cout << "float: " << "+inff\n";
-		std::cout << "double: " << "+inff" << std::endl;
+		std::cout << "char: " << "impossible" << std::endl;
+		std::cout << "int: " << "impossible" << std::endl;
+		std::cout << "float: " << "nanf" << std::endl;
+		std::cout << "double: " << "nan" << std::endl;
 	}
 }
 
-void doubleConversion(t_string &stringLiteral) {
-	(void)stringLiteral;
-	std::cout << "double" << std::endl;
-	// double doubleNumber = std::stod(stringLiteral);
-	// std::cout << "double: " << doubleNumber << std::endl;
+void infinityConvesion(t_string stringLiteral){
+	if (stringLiteral == "+inff" || stringLiteral == "+inf") {
+		std::cout << "char: " << "char: Non displayable" << std::endl;
+		std::cout << "int: " << "+inf" << std::endl;
+		std::cout << "float: " << "+inff" << std::endl;
+		std::cout << "double: " << "+inf" << std::endl;
+	}
+	else if (stringLiteral == "-inff" || stringLiteral == "-inf") {
+		std::cout << "char: " << "char: Non displayable" << std::endl;
+		std::cout << "int: " << "-inf" << std::endl;
+		std::cout << "float: " << "-inff" << std::endl;
+		std::cout << "double: " << "-inf" << std::endl;
+	}
 }
 
 void ScalarConverter::convert(t_string stringLiteral) {
@@ -96,6 +149,8 @@ void ScalarConverter::convert(t_string stringLiteral) {
 		doubleConversion(stringLiteral);
 	else if (isChar(stringLiteral))
 		charConversion(stringLiteral);
+	else if (isInff(stringLiteral))
+		infinityConvesion(stringLiteral);
 	else
 		intConversion(stringLiteral);
 }
