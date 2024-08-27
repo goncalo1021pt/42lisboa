@@ -14,11 +14,7 @@
 
 int	mlx_exit(t_mlx_start *par, char *message, int status)
 {
-	int	ctd;
-
-	ctd = 0;
-	while (ctd < 16)
-		mlx_destroy_image(par->mlx, par->packman->img[ctd++].img);
+	mlx_destroy_image(par->mlx, par->packman->img[0].img);
 	mlx_destroy_image(par->mlx, par->load_img->img);
 	mlx_destroy_image(par->mlx, par->map->wall.img);
 	mlx_destroy_image(par->mlx, par->map->floor.img);
