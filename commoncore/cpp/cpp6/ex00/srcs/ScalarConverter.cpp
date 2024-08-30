@@ -55,7 +55,11 @@ void charConversion(t_string &stringLiteral) {
 }
 
 void intConversion(t_string &stringLiteral) {
+	std::cout << "int" << std::endl;
 	try {
+		for (int ctd = 0; stringLiteral[ctd]; ctd++)
+			if (!std::isdigit(stringLiteral[ctd]) && stringLiteral[ctd]!= '-' && stringLiteral[ctd]!= '+')
+				throw std::exception();
 		long representation = std::atol(stringLiteral.c_str());
 		if (representation < std::numeric_limits<int>::min() || representation > std::numeric_limits<int>::max())
 			throw std::exception();
@@ -66,8 +70,8 @@ void intConversion(t_string &stringLiteral) {
 			std::cout << "non-displayable\n";
 		std::cout << "int: " << representation << std::endl;
 		std::cout << std::fixed << std::setprecision(1);
-		std::cout << "float: " << static_cast<float>(representation) << ".0f" << std::endl;
-		std::cout << "double: " << static_cast<double>(representation) << ".0" << std::endl;
+		std::cout << "float: " << static_cast<float>(representation) << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(representation) << std::endl;
 	} catch (std::exception &e) {
 		std::cout << "char: " << "impossible" << std::endl;
 		std::cout << "int: " << "impossible" << std::endl;
