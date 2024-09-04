@@ -66,8 +66,10 @@ void intConversion(t_string &stringLiteral) {
 		std::cout << "char: " ;
 		if (representation < 255 && representation > -1 && std::isprint(representation))
 			std::cout << "'" << static_cast<char>(representation) << "'" << std::endl;
-		else
+		else if (representation >= 0 && representation <= 127)
 			std::cout << "non-displayable\n";
+		else
+			std::cout << "impossible\n";
 		std::cout << "int: " << representation << std::endl;
 		std::cout << std::fixed << std::setprecision(1);
 		std::cout << "float: " << static_cast<float>(representation) << "f" << std::endl;
@@ -91,8 +93,10 @@ void floatConversion(t_string &stringLiteral) {
 		float floatNumber = std::atof(stringLiteral.c_str());
 		if (floatNumber < 255 && floatNumber > -1 && std::isprint(floatNumber))
 			std::cout << "char: '" << static_cast<char>(floatNumber) << "'" << std::endl;
-		else
+		else if (floatNumber >= 0 && floatNumber <= 127)
 			std::cout << "char: Non displayable" << std::endl;
+		else
+			std::cout << "char: impossible" << std::endl;
 		std::cout << "int: " << static_cast<int>(floatNumber) << std::endl;
 		std::cout << std::fixed << std::setprecision(1);
 		std::cout << "float: " << floatNumber << "f" << std::endl;
@@ -117,8 +121,10 @@ void doubleConversion(t_string &stringLiteral) {
 		double doubleNumber = std::atof(stringLiteral.c_str());
 		if (doubleNumber < 255 && doubleNumber > -1 && std::isprint(doubleNumber))
 			std::cout << "char: '" << static_cast<char>(doubleNumber) << "'" << std::endl;
-		else
+		else if (doubleNumber >= 0 && doubleNumber <= 127)
 			std::cout << "char: Non displayable" << std::endl;
+		else
+			std::cout << "char: impossible" << std::endl;
 		std::cout << "int: " << static_cast<int>(doubleNumber) << std::endl;
 		std::cout << std::fixed << std::setprecision(1);
 		std::cout << "float: " << static_cast<float>(doubleNumber) << "f" << std::endl;
@@ -133,16 +139,22 @@ void doubleConversion(t_string &stringLiteral) {
 
 void infinityConvesion(t_string stringLiteral){
 	if (stringLiteral == "+inff" || stringLiteral == "+inf") {
-		std::cout << "char: " << "char: Non displayable" << std::endl;
+		std::cout << "char: " << "impossible" << std::endl;
 		std::cout << "int: " << "+inf" << std::endl;
 		std::cout << "float: " << "+inff" << std::endl;
 		std::cout << "double: " << "+inf" << std::endl;
 	}
 	else if (stringLiteral == "-inff" || stringLiteral == "-inf") {
-		std::cout << "char: " << "char: Non displayable" << std::endl;
+		std::cout << "char: " << "impossible" << std::endl;
 		std::cout << "int: " << "-inf" << std::endl;
 		std::cout << "float: " << "-inff" << std::endl;
 		std::cout << "double: " << "-inf" << std::endl;
+	}
+	else if (stringLiteral == "nan" || stringLiteral == "nanf") {
+		std::cout << "char: " << "impossible" << std::endl;
+		std::cout << "int: " << "impossible" << std::endl;
+		std::cout << "float: " << "nanf" << std::endl;
+		std::cout << "double: " << "nan" << std::endl;
 	}
 }
 
