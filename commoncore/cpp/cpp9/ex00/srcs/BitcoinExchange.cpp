@@ -65,13 +65,22 @@ void parseInput(std::string &line, std::ifstream &file, int argc, char **argv)
 	if (argc != 2) {
 		throw std::runtime_error("Usage: ./btc [filename]");
 	}
+	file.open(argv[1]);
 	if (!file.is_open()) {
 		throw std::runtime_error("Error: file not found");
 	}
-	file.open(argv[1]);
 	std::getline(file, line);
 	if (line != "date | value") 
 		throw std::runtime_error("Error: invalid file format");
+}
+
+void BitcoinExchange::outputData(std::string date, double btc_data) {
+	std::map<std::string, double>::iterator it = _data.lower_bound(date);
+	if (_data[it->first] * btc_data > std::numeric_limits<int>::max()) {
+		std::cout << "Error: too large a number." << std::endl;
+		return;
+	}
+	std::cout << date << " => " << btc_data << " = " << _data[it->first] * btc_data << std::endl;
 }
 
 void BitcoinExchange::execute(int argc, char **argv) {
@@ -101,7 +110,7 @@ void BitcoinExchange::execute(int argc, char **argv) {
 			std::cerr << "Error: not a positive number." << std::endl;
 			continue;
 		}
+		outputData(date, btc_data);
 	}
 	file.close();
-	
 }

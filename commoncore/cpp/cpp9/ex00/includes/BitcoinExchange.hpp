@@ -7,6 +7,7 @@
 # include <map>
 # include <exception>
 # include <algorithm>
+# include <limits>
 
 class BitcoinExchange {
 	private:
@@ -19,5 +20,6 @@ class BitcoinExchange {
 		BitcoinExchange();
 		~BitcoinExchange();
 		void execute(int argc,char **argv);
+		void outputData(std::string date, double btc_data);
 };
 #endif
