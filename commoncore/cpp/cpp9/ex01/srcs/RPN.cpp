@@ -29,6 +29,4 @@ void RPN::parse(int argc, char **argv) {
 	if (expression.find_first_not_of("0123456789+-*/ ") != std::string::npos) {
 		throw std::runtime_error("Error");
 	}
-	expression.erase(std::remove(expression.begin(), expression.end(), ' '), expression.end());
-	
 }
