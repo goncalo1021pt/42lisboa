@@ -3,6 +3,7 @@
 
 #include <stack>
 #include <deque>
+#include <list>
 #include <iostream>
 
 template <typename T>
