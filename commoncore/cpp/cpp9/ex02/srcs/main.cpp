@@ -6,9 +6,9 @@ int main(int argc, char **argv) {
 		PmergeMe p;
 		p.execute(argc, argv);
 		std::cout << "----------------" << std::endl;
-		p.printVec();
+		print(p.getVec());
 		std::cout << "----------------" << std::endl;
-		p.printDeq();
+		print(p.getDeq());
 	}
 	catch(const std::exception& e)
 	{
