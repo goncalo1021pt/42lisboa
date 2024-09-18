@@ -16,8 +16,9 @@ void print(T container) {
 	typename T::iterator it;
 
 	for (it = container.begin(); it != container.end(); it++) {
-		std::cout << *it << std::endl;
+		std::cout << *it << " ";
 	}
+	std::cout << std::endl;
 }
 
 class PmergeMe {
@@ -26,16 +27,23 @@ class PmergeMe {
 		PmergeMe &operator=(const PmergeMe &other);
 		std::vector<int> _vec;
 		std::deque<int> _deq;
+		long _timevec;
+		long _timedeq;
 		void parseArgs(int argc, char **argv);
 		void sortVec();
 		void sortDeq();
-		void mergeSort(std::vector<int> &vec, int l, int r);
-		void merge(std::vector<int> &vec, int l, int m, int r);
-		void insertionSort(std::vector<int> &vec, int l, int r);
-	public:
+		void mergePairsVec(std::vector<int> &vec, int l, int m, int r);
+		void mergePairsDeq(std::deque<int> &deq, int l, int m, int r);
+		void insertionSortVec(std::vector<int> &vec, int l, int r);
+		void insertionSortDeq(std::deque<int> &deq, int l, int r);
+		void fordJohnsonSortVec(std::vector<int> &vec, int l, int r);
+		void fordJohnsonSortDeq(std::deque<int> &deq, int l, int r);
+		std::vector<int> generateJacobsthalSequence(int n);
 		PmergeMe();
+
+	public:
+		PmergeMe(int argc, char **argv);
 		~PmergeMe();
-		void execute(int argc, char **argv);
 		std::vector<int> getVec() const;
 		std::deque<int> getDeq() const;
 };

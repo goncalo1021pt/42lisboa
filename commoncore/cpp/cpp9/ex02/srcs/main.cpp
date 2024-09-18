@@ -3,12 +3,7 @@
 int main(int argc, char **argv) {
 	try
 	{
-		PmergeMe p;
-		p.execute(argc, argv);
-		std::cout << "----------------" << std::endl;
-		print(p.getVec());
-		std::cout << "----------------" << std::endl;
-		print(p.getDeq());
+		PmergeMe p(argc, argv);
 	}
 	catch(const std::exception& e)
 	{

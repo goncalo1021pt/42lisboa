@@ -2,6 +2,19 @@
 
 PmergeMe::PmergeMe() {}
 
+PmergeMe::PmergeMe(int argc, char **argv) {
+	parseArgs(argc, argv);
+	std::cout << "Before  ";
+	print(_vec);
+	sortVec();
+	sortDeq();
+	std::cout << "After   ";
+	print(_vec);
+	std::cout << "Time to process a range of " << _vec.size() << " elements with std::vec : " << _timevec << " us" << std::endl;
+	std::cout << "Time to process a range of " << _deq.size() << " elements with std::deq : " << _timedeq << " us" << std::endl;
+}
+
+
 PmergeMe::~PmergeMe() {}
 
 PmergeMe::PmergeMe(const PmergeMe &other) {
@@ -24,40 +37,30 @@ void PmergeMe::parseArgs(int argc, char **argv) {
 	}
 }
 
-void PmergeMe::merge(std::vector<int> &vec, int l, int m, int r)
-{
-	int n1 = m - l + 1;
-	int n2 = r - m;
+void PmergeMe::mergePairsVec(std::vector<int> &vec, int l, int m, int r) {
+    int n1 = m - l + 1;
+    int n2 = r - m;
 
-	std::vector<int> L(n1);
-	std::vector<int> R(n2);
+    std::vector<int> L(n1), R(n2);
 
-	for (int ctd = 0; ctd < n1; ctd++)
-	{
-        L[ctd] = vec[l + ctd];
-	}
+    for (int i = 0; i < n1; i++)
+        L[i] = vec[l + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = vec[m + 1 + j];
 
-    for (int ctd2 = 0; ctd2 < n2; ctd2++)
-	{
-        R[ctd2] = vec[m + 1 + ctd2];
-	}
-
-	int ctd = 0;
-	int ctd2 = 0;
-    int k = l;
-	while (ctd < n1 && ctd2 < n2) {
+    int ctd = 0, ctd2 = 0, k = l;
+    while (ctd < n1 && ctd2 < n2) {
         if (L[ctd] <= R[ctd2]) {
             vec[k] = L[ctd];
             ctd++;
-        }
-        else {
+        } else {
             vec[k] = R[ctd2];
             ctd2++;
         }
         k++;
     }
 
-	 while (ctd < n1) {
+    while (ctd < n1) {
         vec[k] = L[ctd];
         ctd++;
         k++;
@@ -70,35 +73,134 @@ void PmergeMe::merge(std::vector<int> &vec, int l, int m, int r)
     }
 }
 
-void PmergeMe::mergeSort(std::vector<int> &vec, int l, int r)
-{
-	int m;
+void PmergeMe::mergePairsDeq(std::deque<int> &deq, int l, int m, int r) {
+    int n1 = m - l + 1;
+    int n2 = r - m;
 
-	if (l < r) {
-		m = l + (r - l) / 2;
-		mergeSort(vec, l, m);
-		mergeSort(vec, m + 1, r);
-		merge(vec, l, m, r);
-	}
+    std::deque<int> L(n1), R(n2);
+
+    for (int i = 0; i < n1; i++)
+        L[i] = deq[l + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = deq[m + 1 + j];
+
+    int ctd = 0, ctd2 = 0, k = l;
+    while (ctd < n1 && ctd2 < n2) {
+        if (L[ctd] <= R[ctd2]) {
+            deq[k] = L[ctd];
+            ctd++;
+        } else {
+            deq[k] = R[ctd2];
+            ctd2++;
+        }
+        k++;
+    }
+
+    while (ctd < n1) {
+        deq[k] = L[ctd];
+        ctd++;
+        k++;
+    }
+
+    while (ctd2 < n2) {
+        deq[k] = R[ctd2];
+        ctd2++;
+        k++;
+    }
+}
+
+void PmergeMe::insertionSortVec(std::vector<int> &vec, int l, int r) {
+    for (int i = l + 1; i <= r; i++) {
+        int key = vec[i];
+        int j = i - 1;
+        while (j >= l && vec[j] > key) {
+            vec[j + 1] = vec[j];
+            j--;
+        }
+        vec[j + 1] = key;
+    }
+}
+
+void PmergeMe::insertionSortDeq(std::deque<int> &deq, int l, int r) {
+    for (int i = l + 1; i <= r; i++) {
+        int key = deq[i];
+        int j = i - 1;
+        while (j >= l && deq[j] > key) {
+            deq[j + 1] = deq[j];
+            j--;
+        }
+        deq[j + 1] = key;
+    }
+}
+
+std::vector<int> PmergeMe::generateJacobsthalSequence(int n) {
+    std::vector<int> jacobsthal;
+    jacobsthal.push_back(0);
+    jacobsthal.push_back(1);
+    while (jacobsthal.back() < n) {
+        jacobsthal.push_back(jacobsthal[jacobsthal.size() - 1] + 2 * jacobsthal[jacobsthal.size() - 2]);
+    }
+    return jacobsthal;
+}
+
+void PmergeMe::fordJohnsonSortVec(std::vector<int> &vec, int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
+        fordJohnsonSortVec(vec, l, m);
+        fordJohnsonSortVec(vec, m + 1, r);
+        mergePairsVec(vec, l, m, r);
+
+        std::vector<int> jacobsthal = generateJacobsthalSequence(r - l + 1);
+        for (size_t i = 2; i < jacobsthal.size(); i++) {
+            int index = l + jacobsthal[i];
+            if (index <= r) {
+                int key = vec[index];
+                int j = index - 1;
+                while (j >= l && vec[j] > key) {
+                    vec[j + 1] = vec[j];
+                    j--;
+                }
+                vec[j + 1] = key;
+            }
+        }
+    }
+}
+
+void PmergeMe::fordJohnsonSortDeq(std::deque<int> &deq, int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
+        fordJohnsonSortDeq(deq, l, m);
+        fordJohnsonSortDeq(deq, m + 1, r);
+        mergePairsDeq(deq, l, m, r);
+
+        std::vector<int> jacobsthal = generateJacobsthalSequence(r - l + 1);
+        for (size_t i = 2; i < jacobsthal.size(); i++) {
+            int index = l + jacobsthal[i];
+            if (index <= r) {
+                int key = deq[index];
+                int j = index - 1;
+                while (j >= l && deq[j] > key) {
+                    deq[j + 1] = deq[j];
+                    j--;
+                }
+                deq[j + 1] = key;
+            }
+        }
+    }
 }
 
 void PmergeMe::sortVec() {
-	std::cout << "Vector:" << std::endl;
-	// std::sort(_vec.begin(), _vec.end());
-	// merge-insertion sort
-	mergeSort(_vec, 0, _vec.size() - 1);
-
+    std::clock_t start = std::clock();
+    fordJohnsonSortVec(_vec, 0, _vec.size() - 1);
+    std::clock_t end = std::clock();
+    _timevec = (end - start) * 1000000 / CLOCKS_PER_SEC; // Convert to microseconds
 }
 
 void PmergeMe::sortDeq() {
-	// std::sort(_deq.begin(), _deq.end());
-}
-
-void PmergeMe::execute(int argc, char **argv) {
-	
-	parseArgs(argc, argv);
-	sortVec();
-	sortDeq();
+    std::clock_t start = std::clock();
+    fordJohnsonSortDeq(_deq, 0, _deq.size() - 1);
+    std::clock_t end = std::clock();
+    _timedeq = (end - start) * 1000000 / CLOCKS_PER_SEC; // Convert to microseconds
 }
 
 std::vector<int> PmergeMe::getVec() const {
