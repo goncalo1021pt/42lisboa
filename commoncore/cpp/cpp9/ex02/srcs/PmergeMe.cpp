@@ -33,7 +33,6 @@ void PmergeMe::parseArgs(int argc, char **argv) {
 		element = std::atoi(argv[i]);
 		_vec.push_back(element);
 		_deq.push_back(element);
-		// std::cout << element << std::endl;
 	}
 }
 
@@ -193,14 +192,14 @@ void PmergeMe::sortVec() {
     std::clock_t start = std::clock();
     fordJohnsonSortVec(_vec, 0, _vec.size() - 1);
     std::clock_t end = std::clock();
-    _timevec = (end - start) * 1000000 / CLOCKS_PER_SEC; // Convert to microseconds
+    _timevec = (end - start) * 1000000 / CLOCKS_PER_SEC;
 }
 
 void PmergeMe::sortDeq() {
     std::clock_t start = std::clock();
     fordJohnsonSortDeq(_deq, 0, _deq.size() - 1);
     std::clock_t end = std::clock();
-    _timedeq = (end - start) * 1000000 / CLOCKS_PER_SEC; // Convert to microseconds
+    _timedeq = (end - start) * 1000000 / CLOCKS_PER_SEC; 
 }
 
 std::vector<int> PmergeMe::getVec() const {
