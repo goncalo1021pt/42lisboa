@@ -29,8 +29,14 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
 void PmergeMe::parseArgs(int argc, char **argv) {
 	int element;
 
+	if (argc < 2) {
+		throw std::runtime_error("Error");
+	}
 	for (int i = 1; i < argc; i++) {
 		element = std::atoi(argv[i]);
+		if (element < 0) {
+			throw std::runtime_error("Error");
+		}
 		_vec.push_back(element);
 		_deq.push_back(element);
 	}
