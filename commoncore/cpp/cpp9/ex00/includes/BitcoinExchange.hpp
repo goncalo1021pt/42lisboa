@@ -8,6 +8,7 @@
 # include <exception>
 # include <algorithm>
 # include <limits>
+# include <string>
 
 class BitcoinExchange {
 	private:

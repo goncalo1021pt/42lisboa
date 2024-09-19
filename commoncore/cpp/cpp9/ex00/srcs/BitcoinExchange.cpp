@@ -43,6 +43,37 @@ void removeSpaces(std::string &str) {
 	str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
 }
 
+bool dateIsValid(std::string date)
+{
+	if (date.size() != 10)
+		return false;
+	if (date[4] != '-' || date[7] != '-')
+		return false;
+	int year = std::atoi(date.substr(0, 4).c_str());
+	int month = std::atoi(date.substr(5, 6).c_str());
+	int day = std::atoi(date.substr(8, 9).c_str());
+	if (year < 2009)
+		return false;
+	if (month < 1 || month > 12)
+		return false;
+	if (day > 31)
+		return false;
+	if (month == 4 || month == 6 || month == 9 || month == 11)
+		if (day > 30)
+			return false;
+	if (month == 2)
+	{
+		if (year % 4 == 0 && year % 100 != 0)
+		{
+			if (day > 29)
+				return false;
+		}
+		else if (day > 28)
+			return false;
+	}
+	return true;
+}
+
 bool checkline(std::string line)
 {
 	if (line.empty())
@@ -102,7 +133,7 @@ void BitcoinExchange::execute(int argc, char **argv) {
 
 		std::getline(iss, date, '|');
 		iss >> btc_data;
-		if (date < "2009-01-02") {
+		if (date < "2009-01-02" || !dateIsValid(date)) {
 			std::cerr << "Error: date out of range => " << line << std::endl;
 			continue;
 		}
