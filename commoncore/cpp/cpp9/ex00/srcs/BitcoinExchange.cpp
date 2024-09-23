@@ -141,6 +141,10 @@ void BitcoinExchange::execute(int argc, char **argv) {
 			std::cerr << "Error: not a positive number." << std::endl;
 			continue;
 		}
+		else if (btc_data > 999) {
+			std::cerr << "Error: number bigger then 1000." << std::endl;
+			continue;
+		}
 		outputData(date, btc_data);
 	}
 	file.close();
