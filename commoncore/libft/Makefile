@@ -46,6 +46,9 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 
+fcount:
+	@echo "you wrote $(RED)$(shell cat $(SRCS) | wc -l)$(NC) lines of code"
+
 re: fclean all
 
 .PHONY: all fclean clean re

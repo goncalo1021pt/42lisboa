@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:28:22 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/02 15:31:11 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/09/12 02:36:27 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ typedef struct limit
 	int	signal;
 	int	num;
 	int	bl;
-}	t_limit;
+}		t_limit;
 
 int	ft_strlen(char *str)
 {

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   btree_apply_infix.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:42:06 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/01/23 12:53:26 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/09/17 01:20:35 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_btree.h"
 
-void btree_apply_infix(t_btree *root, void (*applyf)(void *))
+void	btree_apply_infix(t_btree *root, void (*applyf)(void *))
 {
-	if(root)
+	if (root)
 	{
 		btree_apply_infix(root->left, applyf);
 		applyf(root->item);

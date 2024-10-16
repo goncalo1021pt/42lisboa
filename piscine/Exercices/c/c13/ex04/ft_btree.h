@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_btree.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:31:33 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/01/23 12:44:48 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/09/17 01:21:30 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ typedef struct	s_btree
 	void			*item;
 }	t_btree;
 
-t_btree *btree_create_node(void *item);
+t_btree	*btree_create_node(void *item);
 
 #endif

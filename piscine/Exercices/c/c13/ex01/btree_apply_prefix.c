@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   btree_apply_prefix.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:42:06 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/01/23 12:49:49 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/09/17 01:20:26 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void btree_apply_prefix(t_btree *root, void (*applyf)(void *))
 {
-	if(root)
+	if (root)
 	{
 		applyf(root->item);
 		btree_apply_prefix(root->left, applyf);

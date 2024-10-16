@@ -11,7 +11,7 @@
 
 class RPN {
 	private:
-		std::stack<double, std::list<double>> _stack;
+		std::stack<double> _stack;
 		RPN(const RPN &other);
 		RPN &operator=(const RPN &other);
 		bool isOperator(const std::string &token);
