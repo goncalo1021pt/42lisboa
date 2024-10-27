@@ -3,7 +3,12 @@
 
 AForm::AForm() : _name("default"), _signed(false), _gradeToSign(150), _gradeToExecute(150) {}
 
-AForm::AForm(t_string name, int gradeToSign, int gradeToExecute) : _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {}
+AForm::AForm(t_string name, int gradeToSign, int gradeToExecute) : _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
+	if ( _gradeToExecute > 150 || _gradeToSign > 150)
+		throw AForm::GradeTooLowException();
+	if (_gradeToExecute < 0 || _gradeToSign < 0)
+		throw AForm::GradeTooHighException();
+}
 
 AForm::AForm(const AForm &src) : _name(src._name), _gradeToSign(src._gradeToSign), _gradeToExecute(src._gradeToExecute) {
 	*this = src;

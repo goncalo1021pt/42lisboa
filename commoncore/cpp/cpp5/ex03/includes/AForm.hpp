@@ -13,6 +13,7 @@ class AForm {
 		bool _signed;
 		const int _gradeToSign;
 		const int _gradeToExecute;
+	
 	public:
 		AForm();
 		AForm(t_string name, int gradeToSign, int gradeToExecute);
