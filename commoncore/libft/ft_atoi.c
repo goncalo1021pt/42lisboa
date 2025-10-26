@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:01:04 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/04/13 18:43:23 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/10/27 11:56:07 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	ft_atoi(const char *nptr)
 	ctd = 0;
 	signal = 1;
 	result = 0;
-	if (!nptr)
-		return (NULL);
 	while (nptr[ctd] == ' ' || (nptr[ctd] >= 9 && nptr[ctd] <= 13))
 		ctd++;
 	if (nptr[ctd] == '+' || nptr[ctd] == '-')

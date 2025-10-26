@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 12:01:37 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/19 18:01:54 by gfontao-         ###   ########.fr       */
+/*   Updated: 2025/09/25 17:27:23 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,3 +94,33 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	free(str);
 	return (0);
 }*/
+
+// int	main(void)
+// {
+// 	int size = 3;
+// 	char *strs[] = {"hello", "world", "!"};
+// 	char *sep = " ";
+// 	char *result = ft_strjoin(size, strs, sep);
+// 	printf("%s\n", result);
+// 	free(result);
+// 	return (0);
+// }
+
+int main()
+{
+    char **strs;
+    char sep[10] = ", ";
+    char *p;
+    int size = 5;
+    strs = malloc(sizeof(char *) * 6);
+    strs[0] = "Ola!";
+    strs[1] = "Esta";
+    strs[2] = "tudo";
+    strs[3] = "bem";
+    strs[4] = "contigo?";
+    p = ft_strjoin(size, strs, sep);
+    printf("%s", p);
+    free(p);
+    free(strs);
+    return (0);
+}

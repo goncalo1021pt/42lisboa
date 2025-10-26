@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:02:06 by gfontao-          #+#    #+#             */
-/*   Updated: 2024/04/13 18:34:55 by gfontao-         ###   ########.fr       */
+/*   Updated: 2024/10/27 11:56:28 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char	*ft_strdup(const char *s)
 {
 	char	*duplicate;
 
-	if (!s)
-		return (NULL);
 	duplicate = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (duplicate == NULL)
 	{

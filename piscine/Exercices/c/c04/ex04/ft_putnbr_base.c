@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:56:40 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/09/20 09:01:43 by gfontao-         ###   ########.fr       */
+/*   Updated: 2025/03/19 23:41:47 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
+#define EX_BASE "0123456789ABCDEF"
 
 int	ft_slen(char *s)
 {
@@ -66,7 +67,7 @@ void	ft_putnbr_base(int nbr, char *base)
 		ft_putnbr_base(nb / bl, base);
 		ft_putnbr_base(nb % bl, base);
 	}
-	else 
+	else
 	{
 		c = base[nb];
 		write(1, &c, 1);

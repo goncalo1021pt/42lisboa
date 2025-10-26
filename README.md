@@ -1,4 +1,5 @@
 # 42 Lisboa Projects Backup
+**Note:** Future projects will be maintained in separate repositories. This repository may be dismantled in the future to organize each project individually.
 
 This repository contains all the projects I have completed at 42 Lisboa, including both the Common Core and Piscine projects.
 
@@ -19,7 +20,7 @@ This repository contains all the projects I have completed at 42 Lisboa, includi
 | [minishell](https://github.com/goncalo1021pt/Minishell)                                     | Recreating a small version of bash                         | ✅ 110%      |
 | [cub3d](https://github.com/goncalo1021pt/cub3d)                                             | Recreating a Wolfenstein-like 3D game using raycasting     | ✅ 125%      |
 | netpractice                                                                                 | Networking practice project                                | ✅ 100%      |
-| [cpp-modules](https://github.com/goncalo1021pt/42lisboa/tree/main/commoncore/cpp)           | C++ practice modules                                       | 🔄 ongoing   |
+| [cpp-modules](https://github.com/goncalo1021pt/42lisboa/tree/main/commoncore/cpp)           | C++ practice modules                                       | ✅ 100%      |
 ## About
 
 This repository serves as a backup and showcase of my work at 42 Lisboa. It is now organized and ready for review.

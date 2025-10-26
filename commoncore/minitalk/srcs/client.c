@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfontao- <gfontao-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: goncalo1021pt <goncalo1021pt@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:49:58 by gfontao-          #+#    #+#             */
-/*   Updated: 2023/11/21 10:58:47 by gfontao-         ###   ########.fr       */
+/*   Updated: 2025/04/14 20:42:01 by goncalo1021      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ void	convert_to_binary(char *str, pid_t pid)
 		{
 			if (kill(pid, SIGUSR1) == -1)
 				error_message("Error: Invalid PID");
+			write(1, "1", 1);
 		}
 		else
 		{
 			if (kill(pid, SIGUSR2) == -1)
 				error_message("Error: Invalid PID");
+			write(1, "0", 1);
 		}
 		ctd++;
 		usleep(DELAY);
